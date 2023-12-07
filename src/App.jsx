@@ -1,27 +1,21 @@
 import { useState, useEffect } from "react";
+import { Loader } from "./components/loader/Loader";
 import "./App.css";
 
 function App() {
-  const loadImage = "src/assets/coffee-gif.gif";
   const [loader, setLoader] = useState(false);
 
-  useEffect(() => {
+  const showLoader = () => {
     setLoader(true);
     setTimeout(() => {
       setLoader(false);
-    }, 2000);
+    }, 1000);
+  };
+
+  useEffect(() => {
+    showLoader();
   }, []);
-  return (
-    <>
-      {loader ? (
-        <div className="loaderContainer">
-          <img className="loader" src={loadImage} alt="loader" />
-        </div>
-      ) : (
-        <h1>Hello, React!</h1>
-      )}
-    </>
-  );
+  return <>{loader ? <Loader /> : <h1>Hello, React!</h1>}</>;
 }
 
 export default App;

@@ -3,14 +3,4 @@
   margin: 0 auto;
   text-align: center;
 }
-.loaderContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-.loader {
-  width: 130px;
-  height: auto;
-  object-fit: cover;
-}
+
