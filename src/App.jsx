@@ -7,6 +7,7 @@ import { Sidebar } from "./components/sidebar/Sidebar";
 import { Home } from "./pages/home/Home";
 import { About } from "./pages/about/About";
 import { Menu } from "./pages/menu/Menu";
+import { NotFound } from "./pages/notFound/NotFound";
 
 function App() {
   const [loader, setLoader] = useState(false);
@@ -26,13 +27,17 @@ function App() {
       {loader ? (
         <Loader />
       ) : (
-        <Sidebar>
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/about" element={<About />}></Route>
-            <Route path="/menu" element={<Menu />}></Route>
-          </Routes>
-        </Sidebar>
+        <div className="App">
+          <Sidebar />
+          <div className="routes">
+            <Routes>
+              <Route path="/" element={<Home />}></Route>
+              <Route path="/about" element={<About />}></Route>
+              <Route path="/menu" element={<Menu />}></Route>
+              <Route path="*" element={<NotFound />}></Route>
+            </Routes>
+          </div>
+        </div>
       )}
     </>
   );
