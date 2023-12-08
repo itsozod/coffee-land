@@ -29,14 +29,14 @@ function App() {
       ) : (
         <div className="App">
           <Sidebar />
-          <div className="routes">
+          <main className="routes">
             <Routes>
               <Route path="/" element={<Home />}></Route>
               <Route path="/about" element={<About />}></Route>
               <Route path="/menu" element={<Menu />}></Route>
               <Route path="*" element={<NotFound />}></Route>
             </Routes>
-          </div>
+          </main>
         </div>
       )}
     </>
