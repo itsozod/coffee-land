@@ -1,0 +1,14 @@
+.section_home {
+  background-image: url("coffee-girl.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 0;
+  background-attachment: fixed;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  border-radius: 12px;
+}
+.home_title {
+  color: #fff;
+}

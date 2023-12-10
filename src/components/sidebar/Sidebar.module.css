@@ -1,9 +1,8 @@
 .sidebar {
   background-color: #000;
   color: #fff;
-  height: 100vh;
+  min-height: 100vh;
   transition: all 0.3s;
-  position: absolute;
 }
 .top_section {
   display: flex;
