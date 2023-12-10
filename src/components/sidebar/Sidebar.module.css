@@ -3,6 +3,7 @@
   color: #fff;
   height: 100vh;
   transition: all 0.3s;
+  position: absolute;
 }
 .top_section {
   display: flex;
@@ -14,7 +15,6 @@
 }
 .bars {
   display: flex;
-  /* margin-left: 0px; */
   font-size: 25px;
 }
 .link {

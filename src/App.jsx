@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Loader } from "./components/loader/Loader";
+import { Header } from "./components/header/Header";
 
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
@@ -12,7 +13,7 @@ import { NotFound } from "./pages/notFound/NotFound";
 function App() {
   const [loader, setLoader] = useState(false);
 
-  const showLoader = async () => {
+  const showLoader = () => {
     setLoader(true);
     setTimeout(() => {
       setLoader(false);
@@ -27,17 +28,20 @@ function App() {
       {loader ? (
         <Loader />
       ) : (
-        <div className="App">
-          <Sidebar />
-          <main className="routes">
-            <Routes>
-              <Route path="/" element={<Home />}></Route>
-              <Route path="/about" element={<About />}></Route>
-              <Route path="/menu" element={<Menu />}></Route>
-              <Route path="*" element={<NotFound />}></Route>
-            </Routes>
-          </main>
-        </div>
+        <>
+          <Header onClick={() => showLoader()} />
+          <div className="App">
+            <Sidebar />
+            <main className="routes">
+              <Routes>
+                <Route path="/" element={<Home />}></Route>
+                <Route path="/about" element={<About />}></Route>
+                <Route path="/menu" element={<Menu />}></Route>
+                <Route path="*" element={<NotFound />}></Route>
+              </Routes>
+            </main>
+          </div>
+        </>
       )}
     </>
   );

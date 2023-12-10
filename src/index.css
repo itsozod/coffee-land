@@ -5,3 +5,7 @@
   margin: 0;
   box-sizing: border-box;
 }
+body {
+  background-color: #ddbea9;
+  height: 100vh;
+}
