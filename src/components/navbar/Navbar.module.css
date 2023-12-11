@@ -20,9 +20,6 @@
   height: 100%;
   cursor: pointer;
 }
-.navLink.active {
-  color: #15cdfc;
-}
 .faBars {
   display: none;
   color: #fff;
