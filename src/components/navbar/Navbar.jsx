@@ -3,12 +3,11 @@ import styles from "./Navbar.module.css";
 import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
-const Navbar = ({ onClick }) => {
+export const Navbar = ({ onClick }) => {
   return (
     <>
       <nav className={styles.nav}>
         <NavLink
-          onClick={onClick}
           style={({ isActive }) => {
             return isActive ? { color: "#15cdfc" } : {};
           }}
@@ -18,7 +17,7 @@ const Navbar = ({ onClick }) => {
           <h3>Coffeeland</h3>
           <img className={styles.coffee_img} src="coffee-icon.png" alt="logo" />
         </NavLink>
-        <FaBars className={styles.faBars} />
+        <FaBars className={styles.faBars} onClick={onClick} />
         <div className={styles.nav_menu}>
           <NavLink
             style={({ isActive }) => {
@@ -57,5 +56,3 @@ const Navbar = ({ onClick }) => {
     </>
   );
 };
-
-export default Navbar;

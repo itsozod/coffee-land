@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Loader } from "./components/loader/Loader";
-import Navbar from "./components/navbar/Navbar";
+import { Navbar } from "./components/navbar/Navbar";
+import { Sidebar } from "./components/sidebar/Sidebar";
 import { Routes, Route } from "react-router-dom";
 import { Home } from "./pages/home/Home";
 import { About } from "./pages/about/About";
@@ -12,6 +13,11 @@ import "./App.css";
 
 function App() {
   const [loader, setLoader] = useState(false);
+  const [toggle, setToggle] = useState(false);
+
+  const toggleSidebar = () => {
+    setToggle((prevToggle) => !prevToggle);
+  };
 
   const showLoader = () => {
     setLoader(true);
@@ -31,10 +37,9 @@ function App() {
       ) : (
         <>
           <Navbar
-            onClick={() => {
-              showLoader();
-            }}
+            onClick={toggleSidebar}
           />
+          <Sidebar toggle={toggle} onClick={() => toggleSidebar()} />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
