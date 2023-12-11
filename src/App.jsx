@@ -23,28 +23,7 @@ function App() {
   useEffect(() => {
     showLoader();
   }, []);
-  return (
-    <>
-      {loader ? (
-        <Loader />
-      ) : (
-        <>
-          <Header onClick={() => showLoader()} />
-          <div className="App">
-            <Sidebar />
-            <main className="routes">
-              <Routes>
-                <Route path="/" element={<Home />}></Route>
-                <Route path="/about" element={<About />}></Route>
-                <Route path="/menu" element={<Menu />}></Route>
-                <Route path="*" element={<NotFound />}></Route>
-              </Routes>
-            </main>
-          </div>
-        </>
-      )}
-    </>
-  );
+  return <>{loader ? <Loader /> : <></>}</>;
 }
 
 export default App;
