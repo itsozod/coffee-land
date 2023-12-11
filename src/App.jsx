@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { Loader } from "./components/loader/Loader";
-
-import "./App.css";
+import Navbar from "./components/navbar/Navbar";
+import { Routes, Route } from "react-router-dom";
 import { Home } from "./pages/home/Home";
 import { About } from "./pages/about/About";
 import { Menu } from "./pages/menu/Menu";
 import { NotFound } from "./pages/notFound/NotFound";
+import SignIn from "./pages/signin/SignIn";
+import SignUp from "./pages/signup/SignUp";
+import "./App.css";
 
 function App() {
   const [loader, setLoader] = useState(false);
@@ -20,7 +23,30 @@ function App() {
   useEffect(() => {
     showLoader();
   }, []);
-  return <>{loader ? <Loader /> : <></>}</>;
+
+  return (
+    <>
+      {loader ? (
+        <Loader />
+      ) : (
+        <>
+          <Navbar
+            onClick={() => {
+              showLoader();
+            }}
+          />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </>
+      )}
+    </>
+  );
 }
 
 export default App;
