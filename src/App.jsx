@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 import { Loader } from "./components/loader/Loader";
-import { Header } from "./components/header/Header";
 
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import { Sidebar } from "./components/sidebar/Sidebar";
 import { Home } from "./pages/home/Home";
 import { About } from "./pages/about/About";
 import { Menu } from "./pages/menu/Menu";
