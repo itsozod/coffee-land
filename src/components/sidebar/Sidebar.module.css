@@ -9,6 +9,7 @@
   opacity: 0.8;
   transition: all 0.5s ease;
   display: none;
+  z-index: 10;
   @media screen and (max-width: 768px) {
     display: flex;
     justify-content: center;
@@ -17,6 +18,7 @@
 .sidebar_nav {
   display: flex;
   justify-content: space-around;
+  position: relative;
 }
 .sidebar_ul {
   display: flex;
@@ -48,4 +50,14 @@
   transition: all 0.2s ease-in-out;
   background: #fff;
   color: #010606;
+}
+.cancelBtn {
+  color: #fff;
+  font-size: 50px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+  transform: translate(-50%, 50%);
 }

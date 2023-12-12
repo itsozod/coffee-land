@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { NavLink } from "react-router-dom";
 import styles from "./Sidebar.module.css";
+import { MdCancel } from "react-icons/md";
 
 export const Sidebar = ({ toggle, onClick }) => {
   return (
@@ -10,6 +11,7 @@ export const Sidebar = ({ toggle, onClick }) => {
       onClick={onClick}
     >
       <nav className={styles.sidebar_nav}>
+        <MdCancel className={styles.cancelBtn} />
         <div className={styles.sidebar_ul}>
           <NavLink className={styles.sidebar_link} to={"/about"}>
             About

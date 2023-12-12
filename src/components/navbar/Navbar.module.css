@@ -59,6 +59,7 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
+  cursor: pointer;
 }
 .btnLink:hover {
   transition: all 0.2s ease-in-out;
