@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { NavLink } from "react-router-dom";
 import styles from "./Sidebar.module.css";
 
 export const Sidebar = ({ toggle, onClick }) => {
@@ -8,7 +9,22 @@ export const Sidebar = ({ toggle, onClick }) => {
       className={styles.sidebar}
       onClick={onClick}
     >
-      <h1 className={styles.sidebar_title}>Sidebar</h1>
+      <nav className={styles.sidebar_nav}>
+        <div className={styles.sidebar_ul}>
+          <NavLink className={styles.sidebar_link} to={"/about"}>
+            About
+          </NavLink>
+          <NavLink className={styles.sidebar_link} to={"/menu"}>
+            Menu
+          </NavLink>
+          <NavLink className={styles.sidebar_link} to={"/signin"}>
+            Sign in
+          </NavLink>
+          <NavLink className={styles.btnLink} to={"/signin"}>
+            Sign Up
+          </NavLink>
+        </div>
+      </nav>
     </div>
   );
 };
