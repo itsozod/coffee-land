@@ -13,16 +13,34 @@ export const Sidebar = ({ toggle, onClick }) => {
       <nav className={styles.sidebar_nav}>
         <MdCancel className={styles.cancelBtn} />
         <div className={styles.sidebar_ul}>
-          <NavLink className={styles.sidebar_link} to={"/about"}>
+          <NavLink
+            style={({ isActive }) => {
+              return isActive ? { color: "#15cdfc" } : {};
+            }}
+            className={styles.sidebar_link}
+            to={"/about"}
+          >
             About
           </NavLink>
-          <NavLink className={styles.sidebar_link} to={"/menu"}>
+          <NavLink
+            style={({ isActive }) => {
+              return isActive ? { color: "#15cdfc" } : {};
+            }}
+            className={styles.sidebar_link}
+            to={"/menu"}
+          >
             Menu
           </NavLink>
-          <NavLink className={styles.sidebar_link} to={"/signin"}>
+          <NavLink
+            style={({ isActive }) => {
+              return isActive ? { color: "#15cdfc" } : {};
+            }}
+            className={styles.sidebar_link}
+            to={"/signin"}
+          >
             Sign in
           </NavLink>
-          <NavLink className={styles.btnLink} to={"/signin"}>
+          <NavLink className={styles.btnLink} to={"/signup"}>
             Sign Up
           </NavLink>
         </div>
