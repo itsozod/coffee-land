@@ -24,6 +24,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  margin-top: 30px;
 }
 .sidebar_link {
   color: #fff;
@@ -53,11 +54,12 @@
 }
 .cancelBtn {
   color: #fff;
-  font-size: 50px;
+  font-size: 40px;
   position: absolute;
   top: 0;
   left: 50%;
   right: 0;
   bottom: 0;
-  transform: translate(-50%, 50%);
+  transform: translate(-50%, 80%);
+  cursor: pointer;
 }
