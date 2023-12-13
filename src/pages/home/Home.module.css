@@ -1,15 +1,29 @@
 .section_home {
+  position: relative;
+  height: 90vh;
+}
+
+.section_home::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
   background-image: url("coffee-girl.jpg");
   background-size: cover;
   background-attachment: fixed;
-  background-position: calc(50%, 50%);
+  background-position: calc(50% + 0px) calc(10% + 0px);
   background-repeat: no-repeat;
-  height: 90vh;
-  @media screen and (max-width: 768px) {
+  opacity: 0.7;
+}
+@media screen and (max-width: 768px) {
+  .section_home::before {
     background-position: center;
   }
 }
 .home_title {
+  position: relative;
   color: #fff;
   text-align: center;
 }
