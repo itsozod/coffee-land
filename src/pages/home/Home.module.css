@@ -5,7 +5,11 @@
   background-position: calc(50%, 50%);
   background-repeat: no-repeat;
   height: 90vh;
+  @media screen and (max-width: 768px) {
+    background-position: center;
+  }
 }
 .home_title {
+  color: #fff;
   text-align: center;
 }

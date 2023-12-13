@@ -36,9 +36,7 @@ function App() {
         <Loader />
       ) : (
         <>
-          <Navbar
-            onClick={toggleSidebar}
-          />
+          <Navbar onClick={() => toggleSidebar()} />
           <Sidebar toggle={toggle} onClick={() => toggleSidebar()} />
           <Routes>
             <Route path="/" element={<Home />} />
