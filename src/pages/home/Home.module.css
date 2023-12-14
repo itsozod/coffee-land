@@ -1,6 +1,9 @@
 .section_home {
   position: relative;
   height: 90vh;
+  background-color: black;
+  display: flex;
+  justify-content: center;
 }
 
 .section_home::before {
@@ -15,15 +18,55 @@
   background-attachment: fixed;
   background-position: calc(50% + 0px) calc(10% + 0px);
   background-repeat: no-repeat;
-  opacity: 0.7;
+  opacity: 0.4;
 }
 @media screen and (max-width: 768px) {
   .section_home::before {
     background-position: center;
   }
 }
-.home_title {
-  position: relative;
+.home_container {
+  display: flex;
+  justify-content: center;
   color: #fff;
-  text-align: center;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  text-shadow: 2px 2px 5px brown;
+  margin: 10px;
+}
+.loader {
+  width: 90px;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 35px;
+}
+.home_title {
+  font-size: 40px;
+  margin-top: -40px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.home_info {
+  font-size: 50px;
+  margin-top: 40px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.home_info2 {
+  font-size: 50px;
+}
+.menuBtnLink {
+  color: #000;
+  text-decoration: none;
+  font-size: 25px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+.menuBtnLink:hover {
+  transition: all 0.3s ease;
+  color: #fff;
+  background-color: darkred;
 }
