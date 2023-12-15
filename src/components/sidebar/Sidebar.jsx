@@ -15,7 +15,9 @@ export const Sidebar = ({ toggle, onClick }) => {
         <div className={styles.sidebar_ul}>
           <NavLink
             style={({ isActive }) => {
-              return isActive ? { color: "#15cdfc" } : {};
+              return isActive
+                ? { color: "#15cdfc", backgroundColor: "darkred" }
+                : {};
             }}
             className={styles.sidebar_link}
             to={"/about"}
@@ -24,7 +26,9 @@ export const Sidebar = ({ toggle, onClick }) => {
           </NavLink>
           <NavLink
             style={({ isActive }) => {
-              return isActive ? { color: "#15cdfc" } : {};
+              return isActive
+                ? { color: "#15cdfc", backgroundColor: "darkred" }
+                : {};
             }}
             className={styles.sidebar_link}
             to={"/menu"}
@@ -33,7 +37,9 @@ export const Sidebar = ({ toggle, onClick }) => {
           </NavLink>
           <NavLink
             style={({ isActive }) => {
-              return isActive ? { color: "#15cdfc" } : {};
+              return isActive
+                ? { color: "#15cdfc", backgroundColor: "darkred" }
+                : {};
             }}
             className={styles.sidebar_link}
             to={"/signin"}

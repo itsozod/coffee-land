@@ -24,15 +24,17 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
   margin-top: 40px;
 }
 .sidebar_link {
   color: #fff;
   display: flex;
   text-decoration: none;
-  padding: 0 1rem;
+  padding: 5px 20px 5px 20px;
   cursor: pointer;
-  font-size: 25px;
+  font-size: 23px;
+  border-radius: 15px;
 }
 .btnLink {
   border-radius: 4px;
