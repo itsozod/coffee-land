@@ -1,3 +1,4 @@
+/* home */
 .section_home {
   position: relative;
   height: 90vh;
@@ -5,7 +6,6 @@
   display: flex;
   justify-content: center;
 }
-
 .section_home::before {
   position: absolute;
   content: "";
@@ -69,4 +69,54 @@
   transition: all 0.3s ease;
   color: #fff;
   background-color: darkred;
+}
+.custom_curve {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom_curve .svg_home {
+  position: relative;
+  display: block;
+  width: calc(105% + 1.3px);
+  height: 56px;
+  transform: rotateY(180deg);
+}
+
+.custom_curve .shape_fill {
+  fill: bisque;
+}
+/* home1 */
+.section_home1 {
+  position: relative;
+  background-color: bisque;
+  height: 100vh;
+  z-index: 0;
+}
+.custom_curve1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+  margin-top: -55px;
+  z-index: 1;
+}
+
+.custom_curve1 .svg_home1 {
+  position: relative;
+  display: block;
+  width: calc(105% + 1.3px);
+  height: 56px;
+  transform: rotateY(180deg);
+}
+
+.custom_curve1 .shape_fill1 {
+  fill: bisque;
 }
