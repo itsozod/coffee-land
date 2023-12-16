@@ -10,6 +10,7 @@ import { NotFound } from "./pages/notFound/NotFound";
 import SignIn from "./pages/signin/SignIn";
 import SignUp from "./pages/signup/SignUp";
 import "./App.css";
+import { ThemeProvider } from "./hooks/ThemeProvider";
 
 function App() {
   const [loader, setLoader] = useState(false);
@@ -36,16 +37,18 @@ function App() {
         <Loader />
       ) : (
         <>
-          <Navbar onClick={() => toggleSidebar()} />
-          <Sidebar toggle={toggle} onClick={() => toggleSidebar()} />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/menu" element={<Menu />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <ThemeProvider>
+            <Navbar onClick={() => toggleSidebar()} />
+            <Sidebar toggle={toggle} onClick={() => toggleSidebar()} />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/menu" element={<Menu />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/signin" element={<SignIn />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </ThemeProvider>
         </>
       )}
     </>

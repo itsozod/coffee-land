@@ -1,10 +1,5 @@
-/* eslint-disable react/prop-types */
-import { useState } from "react";
+import { DarkModeContext } from "./ThemeProvider";
+import { useContext } from "react";
 export const useDarkMode = () => {
-  const [darkMode, setDarkMode] = useState(false);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-  return [darkMode, toggleDarkMode];
+  return useContext(DarkModeContext);
 };
