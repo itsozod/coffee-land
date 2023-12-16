@@ -6,7 +6,6 @@
   box-sizing: border-box;
 }
 body {
-  background-color: #ddbea9;
-  /* width: 100%; */
+  background-color: gray;
   height: 100vh;
 }
