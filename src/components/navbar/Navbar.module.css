@@ -5,7 +5,7 @@
   object-fit: cover;
 }
 .nav {
-  background: bisque;
+  /* background: bisque; */
   height: 80px;
   display: flex;
   justify-content: space-between;

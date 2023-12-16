@@ -1,6 +1,9 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Home.module.css";
+import { useDarkMode } from "../../hooks/UseDarkMode";
 export const Home = () => {
+  const [darkMode] = useDarkMode();
+  console.log("Dark mode", darkMode);
   return (
     <>
       <section className={styles.section_home}>
@@ -32,7 +35,12 @@ export const Home = () => {
           </NavLink>
         </div>
       </section>
-      <section className={styles.section_home1}>
+      <section
+        className={styles.section_home1}
+        style={{
+          backgroundColor: darkMode ? "#1a193a" : "bisque",
+        }}
+      >
         <div className={styles.custom_curve1}>
           <svg
             className={styles.svg_home1}

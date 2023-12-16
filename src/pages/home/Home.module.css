@@ -78,7 +78,6 @@
   overflow: hidden;
   line-height: 0;
 }
-
 .custom_curve .svg_home {
   position: relative;
   display: block;
@@ -95,7 +94,7 @@
   position: relative;
   background-color: bisque;
   height: 90vh;
-  z-index: 0;
+  /* z-index: 0; */
 }
 .custom_curve1 {
   position: absolute;
@@ -106,7 +105,7 @@
   line-height: 0;
   transform: rotate(180deg);
   margin-top: -55px;
-  z-index: 1;
+  /* z-index: 1; */
 }
 
 .custom_curve1 .svg_home1 {

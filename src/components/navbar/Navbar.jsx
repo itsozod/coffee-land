@@ -2,11 +2,20 @@
 import styles from "./Navbar.module.css";
 import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { useDarkMode } from "../../hooks/UseDarkMode";
 
 export const Navbar = ({ onClick }) => {
+  const [darkMode, toggleDarkMode] = useDarkMode();
+  console.log("Dark mode:", darkMode);
   return (
     <>
-      <nav className={styles.nav}>
+      <nav
+        className={styles.nav}
+        style={{
+          backgroundColor: darkMode ? "#1a193a" : "bisque",
+          transition: ".3s ease",
+        }}
+      >
         <NavLink
           style={({ isActive }) => {
             return isActive ? { color: "#15cdfc" } : {};
@@ -57,6 +66,7 @@ export const Navbar = ({ onClick }) => {
           <NavLink className={styles.btnLink} to="/signup">
             Sign Up
           </NavLink>
+          <button onClick={toggleDarkMode}>Dark</button>
         </div>
       </nav>
     </>
