@@ -20,7 +20,7 @@ export const Navbar = ({ onClick }) => {
           style={({ isActive }) => {
             return isActive ? { color: "#15cdfc" } : {};
           }}
-          className={styles.navLinkHome}
+          className={darkMode ? styles.navLinkHomeDark : styles.navLinkHome}
           to={"/"}
         >
           <h3>Coffeeland</h3>
@@ -34,7 +34,7 @@ export const Navbar = ({ onClick }) => {
                 ? { color: "#15cdfc", backgroundColor: "darkred" }
                 : {};
             }}
-            className={styles.navLink}
+            className={darkMode ? styles.navLinkDark : styles.navLink}
             to={"/about"}
           >
             About
@@ -45,7 +45,7 @@ export const Navbar = ({ onClick }) => {
                 ? { color: "#15cdfc", backgroundColor: "darkred" }
                 : {};
             }}
-            className={styles.navLink}
+            className={darkMode ? styles.navLinkDark : styles.navLink}
             to={"/menu"}
           >
             Menu
@@ -56,7 +56,7 @@ export const Navbar = ({ onClick }) => {
                 ? { color: "#15cdfc", backgroundColor: "darkred" }
                 : {};
             }}
-            className={styles.navLink}
+            className={darkMode ? styles.navLinkDark : styles.navLink}
             to={"/signin"}
           >
             Sign In
