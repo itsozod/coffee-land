@@ -100,3 +100,10 @@
   background: #fff;
   color: #010606;
 }
+.toggleDark {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+}

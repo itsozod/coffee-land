@@ -63,10 +63,12 @@ export const Navbar = ({ onClick }) => {
           </NavLink>
         </div>
         <div className={styles.navBtnLink}>
+          <button className={styles.toggleDark} onClick={toggleDarkMode}>
+            {darkMode ? "Light" : "Dark"}
+          </button>
           <NavLink className={styles.btnLink} to="/signup">
             Sign Up
           </NavLink>
-          <button onClick={toggleDarkMode}>Dark</button>
         </div>
       </nav>
     </>
