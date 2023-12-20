@@ -16,10 +16,12 @@ function App() {
   const [loader, setLoader] = useState(false);
   const [toggle, setToggle] = useState(false);
 
+  // toggle sidebar after 768px width
   const toggleSidebar = () => {
     setToggle((prevToggle) => !prevToggle);
   };
 
+  // function to show loader
   const showLoader = () => {
     setLoader(true);
     setTimeout(() => {
@@ -27,6 +29,7 @@ function App() {
     }, 1000);
   };
 
+  // call the loader function when component is mounted
   useEffect(() => {
     showLoader();
   }, []);
@@ -40,6 +43,7 @@ function App() {
           <ThemeProvider>
             <Navbar onClick={() => toggleSidebar()} />
             <Sidebar toggle={toggle} onClick={() => toggleSidebar()} />
+            {/* Routes */}
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />

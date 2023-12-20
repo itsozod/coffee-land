@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import styles from "./Home.module.css";
 import { useDarkMode } from "../../hooks/UseDarkMode";
 export const Home = () => {
+  // custom hook to track the state for light/dark mode
   const [darkMode] = useDarkMode();
   console.log("Dark mode", darkMode);
   return (
