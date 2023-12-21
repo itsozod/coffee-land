@@ -53,8 +53,10 @@
   word-wrap: break-word;
   word-break: break-all;
 }
-.home_info2 {
-  font-size: 50px;
+.home_info::after {
+  display: block;
+  text-align: center;
+  content: "like never before";
 }
 .menuBtnLink {
   color: #000;
@@ -93,7 +95,6 @@
 .section_home1 {
   position: relative;
   background-color: bisque;
-  /* height: 90vh; */
 }
 .custom_curve1 {
   position: absolute;
@@ -157,4 +158,18 @@
 .coffee_img5 {
   max-width: 100%;
   height: auto;
+}
+.whyus_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.why_us {
+  color: goldenrod;
+}
+.special::after {
+  content: "very special";
+  display: block;
+  text-align: center;
 }

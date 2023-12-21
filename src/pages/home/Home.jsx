@@ -34,7 +34,6 @@ export const Home = () => {
           />
           <h1 className={styles.home_title}>Welcome to Coffeeland</h1>
           <h1 className={styles.home_info}>Experience Coffee</h1>
-          <h1 className={styles.home_info2}>like never before</h1>
           <NavLink className={styles.menuBtnLink} to={"/menu"}>
             Explore menu
           </NavLink>
@@ -81,12 +80,16 @@ export const Home = () => {
         </div>
         <div className={styles.pics_container}>
           <div className={styles.layout}>
-              <img className={styles.coffee_img1} src="coffee-img1.jpg" alt="" />
-              <img className={styles.coffee_img2} src="coffee-img2.jpg" alt="" />
+            <img className={styles.coffee_img1} src="coffee-img1.jpg" alt="" />
+            <img className={styles.coffee_img2} src="coffee-img2.jpg" alt="" />
             <img className={styles.coffee_img3} src="coffee-img3.jpg" alt="" />
             <img className={styles.coffee_img4} src="coffee-img4.jpg" alt="" />
             <img className={styles.coffee_img5} src="coffee-img5.jpg" alt="" />
           </div>
+        </div>
+        <div className={styles.whyus_container}>
+          <h2 className={styles.why_us}>Why us</h2>
+          <h1 className={styles.special}>What makes our coffee</h1>
         </div>
       </section>
     </>
