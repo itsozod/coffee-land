@@ -91,6 +91,11 @@ export const Home = () => {
           <h2 className={styles.why_us}>Why us</h2>
           <h1 className={styles.special}>What makes our coffee</h1>
         </div>
+        <div className={styles.special_container}>
+          <img className={styles.special_img} src="tree.svg" alt="Tree" />
+          <img className={styles.special_img} src="milk.svg" alt="Milk" />
+          <img className={styles.special_img} src="pot.svg" alt="Pot" />
+        </div>
       </section>
     </>
   );

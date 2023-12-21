@@ -173,3 +173,14 @@
   display: block;
   text-align: center;
 }
+.special_container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.special_img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin: 10px;
+}
