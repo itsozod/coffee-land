@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Loader } from "./components/loader/Loader";
 import { Navbar } from "./components/navbar/Navbar";
 import { Sidebar } from "./components/sidebar/Sidebar";
@@ -10,8 +10,7 @@ import { NotFound } from "./pages/notFound/NotFound";
 import SignIn from "./pages/signin/SignIn";
 import SignUp from "./pages/signup/SignUp";
 import "./App.css";
-import { ThemeProvider } from "./hooks/ThemeProvider";
-
+import { ThemeProvider } from "./hooks/darkmodeHook/ThemeProvider";
 function App() {
   const [loader, setLoader] = useState(false);
   const [toggle, setToggle] = useState(false);

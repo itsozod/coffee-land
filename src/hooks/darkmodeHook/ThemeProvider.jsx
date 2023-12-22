@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, createContext } from "react";
-export const DarkModeContext = createContext();
+export const DarkModeContext = createContext(null);
 
 // Component to wrap around whole app and change its state
 export const ThemeProvider = ({ children }) => {

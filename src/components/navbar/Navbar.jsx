@@ -2,7 +2,7 @@
 import styles from "./Navbar.module.css";
 import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { useDarkMode } from "../../hooks/UseDarkMode";
+import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
 
 export const Navbar = ({ onClick }) => {
   // custom hook to track the state for light/dark mode
