@@ -184,3 +184,12 @@
   object-fit: cover;
   margin: 10px;
 }
+/* special img container */
+.special_img_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
+}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { Loader } from "./components/loader/Loader";
 import { Navbar } from "./components/navbar/Navbar";
 import { Sidebar } from "./components/sidebar/Sidebar";
@@ -15,11 +15,6 @@ function App() {
   const [loader, setLoader] = useState(false);
   const [toggle, setToggle] = useState(false);
 
-  // toggle sidebar after 768px width
-  const toggleSidebar = () => {
-    setToggle((prevToggle) => !prevToggle);
-  };
-
   // function to show loader
   const showLoader = () => {
     setLoader(true);
@@ -32,6 +27,11 @@ function App() {
   useEffect(() => {
     showLoader();
   }, []);
+
+  // toggle sidebar after 768px width
+  const toggleSidebar = () => {
+    setToggle((prevToggle) => !prevToggle);
+  };
 
   return (
     <>
