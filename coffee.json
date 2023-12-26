@@ -1,0 +1,12 @@
+{
+  "coffees": [
+    { "id": 1, "title": "Americano", "img": "americano.jpg", "price": 1 },
+    { "id": 2, "title": "Cappucino", "img": "cappucino.jpg", "price": 2 },
+    { "id": 3, "title": "Cold Brew", "img": "cold brew.jpg", "price": 3 },
+    { "id": 4, "title": "Iced Coffee", "img": "iced coffee.jpg", "price": 4 },
+    { "id": 5, "title": "Latte", "img": "latte-coffee.jpg", "price": 5 },
+    { "id": 6, "title": "Black", "img": "black-coffee.jpg", "price": 7 },
+    { "id": 7, "title": "Expresso", "img": "expresso-coffee.jpg", "price": 9 },
+    { "id": 8, "title": "Cortado", "img": "cortado-coffee.jpg", "price": 8 }
+  ]
+}
