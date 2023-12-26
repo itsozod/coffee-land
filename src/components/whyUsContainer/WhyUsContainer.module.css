@@ -1,0 +1,38 @@
+/* whyuscontainer */
+.whyus_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.why_us {
+  color: goldenrod;
+}
+.special::after {
+  content: "very special";
+  display: block;
+  text-align: center;
+}
+.special_container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  @media screen and (max-width: 540px) {
+    flex-direction: column;
+  }
+}
+.special_img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin: 10px;
+}
+/* special img container */
+.special_img_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
+}
