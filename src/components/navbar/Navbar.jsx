@@ -69,6 +69,17 @@ export const Navbar = ({ onClick }) => {
                 : {};
             }}
             className={darkMode ? styles.navLinkDark : styles.navLink}
+            to={"/booking"}
+          >
+            Book
+          </NavLink>
+          <NavLink
+            style={({ isActive }) => {
+              return isActive
+                ? { color: "#15cdfc", backgroundColor: "darkred" }
+                : {};
+            }}
+            className={darkMode ? styles.navLinkDark : styles.navLink}
             to={"/signin"}
           >
             Sign In

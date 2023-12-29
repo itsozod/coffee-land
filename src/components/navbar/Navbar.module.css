@@ -40,6 +40,7 @@
   cursor: pointer;
   font-size: 23px;
   border-radius: 12px;
+  font-size: 12px;
 }
 .navLinkDark {
   color: #fff;
@@ -55,7 +56,7 @@
 .faBars {
   display: none;
   color: #fff;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 915px) {
     display: block;
     position: absolute;
     top: 0;
@@ -70,7 +71,7 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 915px) {
     display: none;
   }
 }
@@ -78,7 +79,7 @@
   display: flex;
   align-items: center;
   margin-right: 24px;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 915px) {
     display: none;
   }
 }
