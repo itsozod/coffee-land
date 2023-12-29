@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
-  @media screen and (max-width: 540px) {
+  @media screen and (max-width: 635px) {
     flex-direction: column;
   }
 }
@@ -14,13 +14,13 @@
 }
 .small_welcome {
   color: goldenrod;
-  @media screen and (max-width: 540px) {
+  @media screen and (max-width: 635px) {
     text-align: center;
   }
 }
 .welcome_info2 {
   margin-top: 23px;
-  @media screen and (max-width: 540px) {
+  @media screen and (max-width: 635px) {
     margin-top: 0px;
   }
 }
@@ -32,7 +32,7 @@
   justify-content: center;
   grid-row-gap: 25px;
   padding: 10px;
-  @media screen and (max-width: 540px) {
+  @media screen and (max-width: 635px) {
     grid-template-columns: 1fr 1fr;
   }
 }

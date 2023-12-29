@@ -2,10 +2,12 @@ import { CoffeeCard } from "../../components/coffeeCard/CoffeeCard";
 import styles from "./Menu.module.css";
 import { useState, useEffect } from "react";
 import { SearchLoader } from "../../components/searchLoader/SearchLoader";
+import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
 export const Menu = () => {
   const [coffees, setCoffees] = useState([]);
   const [loading, setLoading] = useState(false);
   const [order, setOrder] = useState("");
+  const [darkMode] = useDarkMode();
 
   useEffect(() => {
     const getCoffees = async () => {
@@ -36,7 +38,13 @@ export const Menu = () => {
   };
   return (
     <>
-      <section className={styles.menu_section}>
+      <section
+        style={{
+          backgroundColor: darkMode ? "#1a193a" : "bisque",
+          transition: ".3s ease",
+        }}
+        className={styles.menu_section}
+      >
         {loading ? (
           <SearchLoader />
         ) : (

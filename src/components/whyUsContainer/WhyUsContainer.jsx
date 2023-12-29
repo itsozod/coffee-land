@@ -1,13 +1,29 @@
 import styles from "./WhyUsContainer.module.css";
+import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
 
 export const WhyUsContainer = () => {
+  const [darkMode] = useDarkMode();
   return (
     <>
       <div className={styles.whyus_container}>
         <h2 className={styles.why_us}>Why us</h2>
-        <h1 className={styles.special}>What makes our coffee</h1>
+        <h1
+          style={{
+            color: darkMode ? "#fff" : "#000",
+            transition: ".3s ease",
+          }}
+          className={styles.special}
+        >
+          What makes our coffee
+        </h1>
       </div>
-      <section className={styles.special_container}>
+      <section
+        className={styles.special_container}
+        style={{
+          color: darkMode ? "#fff" : "#000",
+          transition: ".3s ease",
+        }}
+      >
         <article className={styles.special_img_container}>
           <img className={styles.special_img} src="tree.svg" alt="Tree" />
           <h1>Organic Coffee</h1>

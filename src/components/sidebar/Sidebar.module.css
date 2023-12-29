@@ -10,7 +10,7 @@
   transition: all 0.5s ease;
   display: none;
   z-index: 10;
-  @media screen and (max-width: 915px) {
+  @media screen and (max-width: 880px) {
     display: flex;
     justify-content: center;
   }

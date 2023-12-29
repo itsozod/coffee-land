@@ -1,17 +1,31 @@
 import styles from "./WelcomeContainer.module.css";
+import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
 
 export const WelcomeContainer = () => {
+  const [darkMode] = useDarkMode();
   return (
     <>
       <div className={styles.welcome_container}>
         <div className={styles.welcome_info1}>
           <h3 className={styles.small_welcome}>Welcome to Coffeeland</h3>
-          <h1 className={styles.taste_message}>
+          <h1
+            style={{
+              color: darkMode ? "#fff" : "#000",
+              transition: ".3s ease",
+            }}
+            className={styles.taste_message}
+          >
             Experince a new way to taste coffee
           </h1>
         </div>
         <div className={styles.welcome_info2}>
-          <h3 className={styles.sip_message}>
+          <h3
+            style={{
+              color: darkMode ? "#fff" : "#000",
+              transition: ".3s ease",
+            }}
+            className={styles.sip_message}
+          >
             Sip into a symphony of flavors, where every drop tells a tale of
             roasted perfection.
           </h3>
@@ -30,4 +44,3 @@ export const WelcomeContainer = () => {
     </>
   );
 };
-
