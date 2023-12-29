@@ -3,4 +3,24 @@
   justify-content: center;
   align-items: center;
   background-color: bisque;
+  flex-direction: column;
+}
+.img_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn_img {
+  width: 200px;
+  margin: 10px;
+}
+.img_coffee {
+  width: 100%;
+  object-fit: cover;
+  height: 200px;
+}
+.booked_img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }
