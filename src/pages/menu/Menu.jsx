@@ -5,6 +5,7 @@ import { SearchLoader } from "../../components/searchLoader/SearchLoader";
 export const Menu = () => {
   const [coffees, setCoffees] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [order, setOrder] = useState("");
 
   useEffect(() => {
     const getCoffees = async () => {
@@ -21,6 +22,18 @@ export const Menu = () => {
     };
     getCoffees();
   }, []);
+
+  const handleClick = (id) => {
+    console.log("Id:", id);
+    const orderedCoffee = coffees.map((coffee) => {
+      if (coffee.id === id) {
+        setOrder(coffee.title);
+      } else {
+        return coffee;
+      }
+    });
+    return orderedCoffee;
+  };
   return (
     <>
       <section className={styles.menu_section}>
@@ -29,10 +42,16 @@ export const Menu = () => {
         ) : (
           <div className={styles.coffee_container}>
             {coffees.map((coffee) => (
-              <CoffeeCard key={coffee.id} coffee={coffee} />
+              <CoffeeCard
+                key={coffee.id}
+                coffee={coffee}
+                onClick={() => handleClick(coffee.id)}
+              />
             ))}
           </div>
         )}
+        <h1>Coffee name for Order</h1>
+        {order ? <p>Coffee: {order}</p> : <p>You did not order anything yet</p>}
       </section>
     </>
   );

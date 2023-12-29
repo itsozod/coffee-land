@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import { Home } from "./pages/home/Home";
 import { About } from "./pages/about/About";
 import { Menu } from "./pages/menu/Menu";
+import { Cart } from "./pages/cart/Cart";
 import { NotFound } from "./pages/notFound/NotFound";
 import SignIn from "./pages/signin/SignIn";
 import SignUp from "./pages/signup/SignUp";
@@ -47,6 +48,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/menu" element={<Menu />} />
+              <Route path="/cart" element={<Cart />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/signin" element={<SignIn />} />
               <Route path="*" element={<NotFound />} />
