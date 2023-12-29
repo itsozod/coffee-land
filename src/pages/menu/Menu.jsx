@@ -1,6 +1,7 @@
 import { CoffeeCard } from "../../components/coffeeCard/CoffeeCard";
 import styles from "./Menu.module.css";
 import { useState, useEffect } from "react";
+import { SearchLoader } from "../../components/searchLoader/SearchLoader";
 export const Menu = () => {
   const [coffees, setCoffees] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -22,15 +23,17 @@ export const Menu = () => {
   }, []);
   return (
     <>
-      {loading ? (
-        <h1>Loading...</h1>
-      ) : (
-        <div className={styles.coffee_container}>
-          {coffees.map((coffee) => (
-            <CoffeeCard key={coffee.id} coffee={coffee} />
-          ))}
-        </div>
-      )}
+      <section className={styles.menu_section}>
+        {loading ? (
+          <SearchLoader />
+        ) : (
+          <div className={styles.coffee_container}>
+            {coffees.map((coffee) => (
+              <CoffeeCard key={coffee.id} coffee={coffee} />
+            ))}
+          </div>
+        )}
+      </section>
     </>
   );
 };
