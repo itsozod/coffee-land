@@ -3,27 +3,20 @@ import styles from "./Menu.module.css";
 import { useState, useEffect } from "react";
 import { SearchLoader } from "../../components/searchLoader/SearchLoader";
 import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
+import { useDispatch, useSelector } from "react-redux";
+import { getDatas } from "../../store/features/coffees/coffeesSlice";
 export const Menu = () => {
-  const [coffees, setCoffees] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const coffees = useSelector((state) => state.coffees.coffees);
+  const loader = useSelector((state) => state.coffees.loader);
+  const dispatch = useDispatch();
   const [order, setOrder] = useState("");
   const [darkMode] = useDarkMode();
 
   useEffect(() => {
-    const getCoffees = async () => {
-      try {
-        console.log("Coffees");
-        setLoading(true);
-        const response = await fetch("http://localhost:3000/coffees");
-        const data = await response.json();
-        setCoffees(data);
-        setLoading(false);
-      } catch (e) {
-        console.error(e);
-      }
-    };
-    getCoffees();
-  }, []);
+    console.log("Coffees");
+    dispatch(getDatas());
+  }, [dispatch]);
+  console.log(coffees);
 
   const handleClick = (id) => {
     console.log("Id:", id);
@@ -45,7 +38,7 @@ export const Menu = () => {
           transition: ".3s",
         }}
       >
-        {loading ? (
+        {loader ? (
           <SearchLoader />
         ) : (
           <div className={styles.coffee_container}>
