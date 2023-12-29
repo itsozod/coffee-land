@@ -38,17 +38,17 @@ export const Menu = () => {
   };
   return (
     <>
-      <section className={styles.menu_section}>
+      <section
+        className={styles.menu_section}
+        style={{
+          backgroundColor: darkMode ? "#1a193a" : "bisque",
+          transition: ".3s",
+        }}
+      >
         {loading ? (
           <SearchLoader />
         ) : (
-          <div
-            className={styles.coffee_container}
-            style={{
-              backgroundColor: darkMode ? "#1a193a" : "bisque",
-              transition: ".3s",
-            }}
-          >
+          <div className={styles.coffee_container}>
             {coffees.map((coffee) => (
               <CoffeeCard
                 key={coffee.id}
