@@ -39,11 +39,9 @@
   width: 90px;
   height: auto;
   object-fit: cover;
-  margin-bottom: 35px;
 }
 .home_title {
   font-size: 40px;
-  margin-top: -40px;
   word-wrap: break-word;
   word-break: break-all;
 }
