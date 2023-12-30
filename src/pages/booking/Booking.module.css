@@ -5,7 +5,7 @@
   flex-direction: column;
   background-color: #000;
   position: relative;
-  height: 90vh;
+  min-height: 100vh;
 }
 .booking_section::before {
   position: absolute;
@@ -28,8 +28,9 @@
   position: relative;
 }
 .btn_img {
-  width: 200px;
   margin: 10px;
+  background-color: transparent;
+  border: none;
 }
 .img_coffee {
   width: 100%;
@@ -37,8 +38,8 @@
   height: 200px;
 }
 .booked_img {
-  width: 100px;
-  height: 100px;
+  width: 400px;
+  height: 400px;
   object-fit: cover;
   position: relative;
 }
