@@ -21,25 +21,75 @@
   background-repeat: no-repeat;
   opacity: 0.4;
 }
+.table_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: bisque;
+  margin: 10px;
+  border-radius: 12px;
+}
 .img_container {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  @media screen and (max-width: 483px) {
+    flex-direction: column;
+  }
 }
 .btn_img {
   margin: 10px;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
-.img_coffee {
+.img_table {
   width: 100%;
   object-fit: cover;
   height: 200px;
-}
-.booked_img {
-  width: 400px;
-  height: 400px;
-  object-fit: cover;
   position: relative;
+}
+
+/* dishes container */
+.dishes_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 300px;
+  margin: 10px;
+  background-color: aquamarine;
+  position: relative;
+}
+.dish {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+}
+.dish_img {
+  max-width: 100%;
+  height: auto;
+  position: relative;
+}
+/*  */
+.booked_img_container {
+  position: relative;
+  max-width: 400px;
+}
+
+.booked_img {
+  width: 100%;
+  height: auto;
+}
+
+.table_dish {
+  width: 100px;
+  position: absolute;
+  bottom: 32%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
 }

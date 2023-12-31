@@ -1,42 +1,44 @@
 import styles from "./Booking.module.css";
-const images = ["dinner-table-design.png", "wooden-table.png"];
-const food = ["egg-salmon-avocado.png"];
+import { tables, dishes } from "../../../tableAndDishes";
 import { useState } from "react";
 export const Booking = () => {
-  const [image, setImage] = useState("");
+  const [tablesImg, setTablesImg] = useState("");
   const [foods, setFoods] = useState("");
   return (
     <section className={styles.booking_section}>
       <h1 style={{ position: "relative", color: "#fff" }}>Book a table</h1>
-      <div className={styles.img_container}>
-        {images.map((img) => (
-          <button
-            className={styles.btn_img}
-            key={img}
-            onClick={() => setImage(img)}
+      <article className={styles.img_container}>
+        {tables.map((table) => (
+          <article className={styles.table_container} key={table.id}>
+            <h1 style={{ position: "relative", color: "#000" }}>
+              {table.title}
+            </h1>
+            <button
+              className={styles.btn_img}
+              onClick={() => setTablesImg(table.table)}
+            >
+              <img className={styles.img_table} src={table.table} alt="Image" />
+            </button>
+          </article>
+        ))}
+      </article>
+      <h1 style={{ position: "relative", color: "#fff" }}>Our dishes</h1>
+      <div className={styles.dishes_container}>
+        {dishes.map((dish) => (
+          <div
+            className={styles.dish}
+            key={dish.id}
+            onClick={() => setFoods(dish.food)}
           >
-            <img className={styles.img_coffee} src={img} alt="Image" />
-          </button>
+            <p>{dish.title}</p>
+            <img className={styles.dish_img} src={dish.food}></img>
+          </div>
         ))}
       </div>
-      {food.map((food) => (
-        <img
-          style={{ width: "130px", position: "relative" }}
-          key={food}
-          src={food}
-          onClick={() => setFoods(food)}
-        ></img>
-      ))}
-
-      {image ? (
-        <div>
-          <img className={styles.booked_img} src={image} alt="Image"></img>
-          {foods && (
-            <img
-              style={{ position: "absolute", top: "65%", left: "45%", width: "130px" }}
-              src={food}
-            ></img>
-          )}
+      {tablesImg ? (
+        <div className={styles.booked_img_container}>
+          {foods && <img className={styles.table_dish} src={foods}></img>}
+          <img className={styles.booked_img} src={tablesImg} alt="Image"></img>
         </div>
       ) : (
         ""
