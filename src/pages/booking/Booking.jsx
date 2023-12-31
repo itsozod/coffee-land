@@ -23,18 +23,18 @@ export const Booking = () => {
         ))}
       </article>
       <h1 style={{ position: "relative", color: "#fff" }}>Our dishes</h1>
-      <div className={styles.dishes_container}>
+      <article className={styles.dishes_container}>
         {dishes.map((dish) => (
-          <div
+          <article
             className={styles.dish}
             key={dish.id}
             onClick={() => setFoods(dish.food)}
           >
             <p>{dish.title}</p>
             <img className={styles.dish_img} src={dish.food}></img>
-          </div>
+          </article>
         ))}
-      </div>
+      </article>
       {tablesImg ? (
         <div className={styles.booked_img_container}>
           {foods && <img className={styles.table_dish} src={foods}></img>}

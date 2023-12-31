@@ -88,8 +88,8 @@
 .table_dish {
   width: 100px;
   position: absolute;
-  bottom: 32%;
-  left: 50%;
+  bottom: 35%;
+  left: 53%;
   transform: translateX(-50%);
   z-index: 1;
 }
