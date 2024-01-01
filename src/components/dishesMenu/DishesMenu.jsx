@@ -9,7 +9,7 @@ export const DishesMenu = ({ dish, onClick, menuFood }) => {
         onClick={onClick}
         style={{ border: menuFood === dish.food ? "2px solid red" : "" }}
       >
-        <p>{dish.title}</p>
+        <p className={styles.dish_title}>{dish.title}</p>
         <img className={styles.dish_img} src={dish.food}></img>
       </article>
     </>

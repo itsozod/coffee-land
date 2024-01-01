@@ -1,5 +1,5 @@
 import styles from "./Booking.module.css";
-import { tables, dishes } from "../../../tableAndDishes";
+import { tables, dishes, dishesBack } from "../../../tableAndDishes";
 import { useState } from "react";
 import { Tables } from "../../components/tables/Tables";
 import { DishesMenu } from "../../components/dishesMenu/DishesMenu";
@@ -63,7 +63,7 @@ export const Booking = () => {
             ))}
           </div>
           <div className={styles.back}>
-            {dishes.map((dish) => (
+            {dishesBack.map((dish) => (
               <DishesMenu
                 key={dish.id}
                 dish={dish}

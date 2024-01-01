@@ -32,3 +32,16 @@ export const dishes = [
     food: "sushi-platter.png",
   },
 ];
+
+export const dishesBack = [
+  {
+    id: 1,
+    title: "Fresh Salad",
+    food: "fresh-salad.png",
+  },
+  {
+    id: 2,
+    title: "Spaghetti",
+    food: "spaghetti.png",
+  },
+];
