@@ -1,65 +1,46 @@
 import styles from "./Booking.module.css";
 import { tables, dishes } from "../../../tableAndDishes";
 import { useState } from "react";
+import { Tables } from "../../components/tables/Tables";
+import { DishesMenu } from "../../components/dishesMenu/DishesMenu";
 export const Booking = () => {
   const [tablesImg, setTablesImg] = useState("");
   const [foods, setFoods] = useState("");
+  const [rotate, setRotate] = useState(false);
   return (
     <section className={styles.booking_section}>
       <h1 style={{ position: "relative", color: "#fff" }}>Book a table</h1>
       <article className={styles.img_container}>
         {tables.map((table) => (
-          <article className={styles.table_container} key={table.id}>
-            <h1 style={{ position: "relative", color: "#000" }}>
-              {table.title}
-            </h1>
-            <button
-              className={styles.btn_img}
-              onClick={() => setTablesImg(table.table)}
-            >
-              <img className={styles.img_table} src={table.table} alt="Image" />
-            </button>
-          </article>
+          <Tables
+            key={table.id}
+            table={table}
+            onClick={() => setTablesImg(table.table)}
+          />
         ))}
       </article>
       <h1 style={{ position: "relative", color: "#fff" }}>Our dishes</h1>
-      {/* <article className={styles.dishes_container}>
-        {dishes.map((dish) => (
-          <article
-            className={styles.dish}
-            key={dish.id}
-            onClick={() => setFoods(dish.food)}
-          >
-            <p>{dish.title}</p>
-            <img className={styles.dish_img} src={dish.food}></img>
-          </article>
-        ))}
-      </article> */}
-
       <div className={styles.container}>
-        <div className={styles.card}>
+        <div
+          className={styles.card}
+          style={{ transform: rotate ? "rotateY(180deg)" : "" }}
+        >
           <div className={styles.front}>
             {dishes.map((dish) => (
-              <article
-                className={styles.dish}
+              <DishesMenu
                 key={dish.id}
+                dish={dish}
                 onClick={() => setFoods(dish.food)}
-              >
-                <p>{dish.title}</p>
-                <img className={styles.dish_img} src={dish.food}></img>
-              </article>
+              />
             ))}
           </div>
           <div className={styles.back}>
             {dishes.map((dish) => (
-              <article
-                className={styles.dish}
+              <DishesMenu
                 key={dish.id}
+                dish={dish}
                 onClick={() => setFoods(dish.food)}
-              >
-                <p>{dish.title}</p>
-                <img className={styles.dish_img} src={dish.food}></img>
-              </article>
+              />
             ))}
           </div>
         </div>
