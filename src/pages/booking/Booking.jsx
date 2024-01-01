@@ -3,6 +3,8 @@ import { tables, dishes } from "../../../tableAndDishes";
 import { useState } from "react";
 import { Tables } from "../../components/tables/Tables";
 import { DishesMenu } from "../../components/dishesMenu/DishesMenu";
+import { FaArrowAltCircleRight } from "react-icons/fa";
+import { FaArrowAltCircleLeft } from "react-icons/fa";
 export const Booking = () => {
   const [tablesImg, setTablesImg] = useState("");
   const [foods, setFoods] = useState("");
@@ -20,6 +22,12 @@ export const Booking = () => {
         ))}
       </article>
       <h1 style={{ position: "relative", color: "#fff" }}>Our dishes</h1>
+      <button
+        onClick={() => setRotate((prevRotate) => !prevRotate)}
+        className={styles.rotate_btn}
+      >
+        {rotate ? <FaArrowAltCircleLeft /> : <FaArrowAltCircleRight />}
+      </button>
       <div className={styles.container}>
         <div
           className={styles.card}

@@ -73,7 +73,6 @@
   background-color: blue;
 }
 
-
 /* booked container */
 .booked_img_container {
   position: relative;
@@ -92,4 +91,15 @@
   left: 53%;
   transform: translateX(-50%);
   z-index: 1;
+}
+/* rotate button */
+.rotate_btn {
+  position: relative;
+  cursor: pointer;
+  font-size: 30px;
+  border-radius: 12px;
+  border: none;
+  margin: 5px;
+  background-color: transparent;
+  color: white;
 }
