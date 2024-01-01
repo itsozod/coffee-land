@@ -28,7 +28,7 @@ export const dishes = [
   },
   {
     id: 4,
-    title: "Sushi-PLatter",
+    title: "Sushi-Platter",
     food: "sushi-platter.png",
   },
 ];
