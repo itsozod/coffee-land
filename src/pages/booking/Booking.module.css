@@ -89,11 +89,10 @@
   width: 100%;
   height: auto;
 }
-
 .table_dish {
   width: 100px;
   position: absolute;
-  bottom: 35%;
+  bottom: 40%;
   left: 53%;
   transform: translateX(-50%);
   z-index: 1;
@@ -108,4 +107,17 @@
   margin: 5px;
   background-color: transparent;
   color: white;
+}
+.book_table_btn_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.book_table_btn {
+  padding: 8px;
+  border: none;
+  border-radius: 12px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: aqua;
 }
