@@ -52,15 +52,49 @@
 }
 
 /* dishes container */
-.dishes_container {
+/* .dishes_container {
+  max-width: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  max-width: 300px;
-  margin: 10px;
   background-color: aquamarine;
   position: relative;
+  margin: 10px;
+} */
+
+/* .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 350px;
+  position: relative;
+}
+.card {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.3s;
+}
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.front {
+  background-color: blueviolet;
+}
+.back {
+  transform: rotateY(180deg);
+  background-color: blue;
 }
 .dish {
   display: flex;
@@ -74,6 +108,69 @@
   height: auto;
   position: relative;
 }
+.container:hover .card {
+  transform: rotateY(180deg);
+} */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 350px; /* Allow height to adjust based on content */
+  position: relative;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  max-width: 300px;
+  max-height: 350px;
+  transform-style: preserve-3d;
+  transition: transform 0.3s;
+}
+
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.front {
+  background-color: blueviolet;
+}
+
+.back {
+  transform: rotateY(180deg);
+  background-color: blue;
+}
+
+.dish {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  padding: 5px;
+}
+
+.dish_img {
+  max-width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.container:hover .card {
+  transform: rotateY(180deg);
+}
+
 /*  */
 .booked_img_container {
   position: relative;

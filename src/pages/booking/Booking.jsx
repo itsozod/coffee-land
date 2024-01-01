@@ -23,7 +23,7 @@ export const Booking = () => {
         ))}
       </article>
       <h1 style={{ position: "relative", color: "#fff" }}>Our dishes</h1>
-      <article className={styles.dishes_container}>
+      {/* <article className={styles.dishes_container}>
         {dishes.map((dish) => (
           <article
             className={styles.dish}
@@ -34,7 +34,36 @@ export const Booking = () => {
             <img className={styles.dish_img} src={dish.food}></img>
           </article>
         ))}
-      </article>
+      </article> */}
+
+      <div className={styles.container}>
+        <div className={styles.card}>
+          <div className={styles.front}>
+            {dishes.map((dish) => (
+              <article
+                className={styles.dish}
+                key={dish.id}
+                onClick={() => setFoods(dish.food)}
+              >
+                <p>{dish.title}</p>
+                <img className={styles.dish_img} src={dish.food}></img>
+              </article>
+            ))}
+          </div>
+          <div className={styles.back}>
+            {dishes.map((dish) => (
+              <article
+                className={styles.dish}
+                key={dish.id}
+                onClick={() => setFoods(dish.food)}
+              >
+                <p>{dish.title}</p>
+                <img className={styles.dish_img} src={dish.food}></img>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
       {tablesImg ? (
         <div className={styles.booked_img_container}>
           {foods && <img className={styles.table_dish} src={foods}></img>}
