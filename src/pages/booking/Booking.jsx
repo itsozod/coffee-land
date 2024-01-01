@@ -7,7 +7,7 @@ import { FaArrowAltCircleRight } from "react-icons/fa";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 export const Booking = () => {
   const [tablesImg, setTablesImg] = useState("");
-  const [foods, setFoods] = useState("");
+  const [menuFood, setMenuFood] = useState("");
   const [rotate, setRotate] = useState(false);
   return (
     <section className={styles.booking_section}>
@@ -16,6 +16,7 @@ export const Booking = () => {
         {tables.map((table) => (
           <Tables
             key={table.id}
+            tables={tablesImg}
             table={table}
             onClick={() => setTablesImg(table.table)}
           />
@@ -38,7 +39,8 @@ export const Booking = () => {
               <DishesMenu
                 key={dish.id}
                 dish={dish}
-                onClick={() => setFoods(dish.food)}
+                menuFood={menuFood}
+                onClick={() => setMenuFood(dish.food)}
               />
             ))}
           </div>
@@ -47,7 +49,8 @@ export const Booking = () => {
               <DishesMenu
                 key={dish.id}
                 dish={dish}
-                onClick={() => setFoods(dish.food)}
+                menuFood={menuFood}
+                onClick={() => setMenuFood(dish.food)}
               />
             ))}
           </div>
@@ -55,8 +58,9 @@ export const Booking = () => {
       </div>
       {tablesImg ? (
         <div className={styles.booked_img_container}>
-          {foods && <img className={styles.table_dish} src={foods}></img>}
+          {menuFood && <img className={styles.table_dish} src={menuFood}></img>}
           <img className={styles.booked_img} src={tablesImg} alt="Image"></img>
+          <button>Book</button>
         </div>
       ) : (
         ""

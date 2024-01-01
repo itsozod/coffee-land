@@ -12,6 +12,7 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+  outline: none;
 }
 .img_table {
   width: 100%;

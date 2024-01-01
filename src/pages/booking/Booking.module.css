@@ -48,6 +48,7 @@
   max-height: 350px;
   transform-style: preserve-3d;
   transition: transform 0.3s;
+  margin: 10px;
 }
 
 .front,
@@ -77,6 +78,10 @@
 .booked_img_container {
   position: relative;
   max-width: 400px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  margin: 10px;
+  border-radius: 12px;
 }
 
 .booked_img {
