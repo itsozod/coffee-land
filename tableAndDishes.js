@@ -44,4 +44,14 @@ export const dishesBack = [
     title: "Spaghetti",
     food: "spaghetti.png",
   },
+  {
+    id: 3,
+    title: "Dessert",
+    food: "dessert.png",
+  },
+  {
+    id: 4,
+    title: "Samosa",
+    food: "samosa.png",
+  },
 ];
