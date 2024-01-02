@@ -62,7 +62,7 @@ export const Booking = () => {
               />
             ))}
           </div>
-          <div className={styles.back}>
+          <div className={styles.back} style={{ zIndex: rotate ? "10" : 0 }}>
             {dishesBack.map((dish) => (
               <DishesMenu
                 key={dish.id}
