@@ -27,71 +27,84 @@ export const Navbar = ({ onClick }) => {
           <h3>Coffeeland</h3>
           <img className={styles.coffee_img} src="coffee-icon.png" alt="logo" />
         </NavLink>
+
         <FaBars className={styles.faBars} onClick={onClick} />
-        <div className={styles.nav_menu}>
-          <NavLink
-            style={({ isActive }) => {
-              return isActive
-                ? { color: "#15cdfc", backgroundColor: "darkred" }
-                : {};
-            }}
-            className={darkMode ? styles.navLinkDark : styles.navLink}
-            to={"/about"}
-          >
-            About
-          </NavLink>
-          <NavLink
-            style={({ isActive }) => {
-              return isActive
-                ? { color: "#15cdfc", backgroundColor: "darkred" }
-                : {};
-            }}
-            className={darkMode ? styles.navLinkDark : styles.navLink}
-            to={"/menu"}
-          >
-            Menu
-          </NavLink>
-          <NavLink
-            style={({ isActive }) => {
-              return isActive
-                ? { color: "#15cdfc", backgroundColor: "darkred" }
-                : {};
-            }}
-            className={darkMode ? styles.navLinkDark : styles.navLink}
-            to={"/cart"}
-          >
-            Cart
-          </NavLink>
-          <NavLink
-            style={({ isActive }) => {
-              return isActive
-                ? { color: "#15cdfc", backgroundColor: "darkred" }
-                : {};
-            }}
-            className={darkMode ? styles.navLinkDark : styles.navLink}
-            to={"/booking"}
-          >
-            Book
-          </NavLink>
-          <NavLink
-            style={({ isActive }) => {
-              return isActive
-                ? { color: "#15cdfc", backgroundColor: "darkred" }
-                : {};
-            }}
-            className={darkMode ? styles.navLinkDark : styles.navLink}
-            to={"/signin"}
-          >
-            Sign In
-          </NavLink>
-        </div>
+        <ul className={styles.nav_menu}>
+          <li className={styles.link_links}>
+            <NavLink
+              style={({ isActive }) => {
+                return isActive
+                  ? { color: "#15cdfc", backgroundColor: "darkred" }
+                  : {};
+              }}
+              className={darkMode ? styles.navLinkDark : styles.navLink}
+              to={"/about"}
+            >
+              About
+            </NavLink>
+          </li>
+          <li className={styles.link_links}>
+            <NavLink
+              style={({ isActive }) => {
+                return isActive
+                  ? { color: "#15cdfc", backgroundColor: "darkred" }
+                  : {};
+              }}
+              className={darkMode ? styles.navLinkDark : styles.navLink}
+              to={"/menu"}
+            >
+              Menu
+            </NavLink>
+          </li>
+          <li className={styles.link_links}>
+            <NavLink
+              style={({ isActive }) => {
+                return isActive
+                  ? { color: "#15cdfc", backgroundColor: "darkred" }
+                  : {};
+              }}
+              className={darkMode ? styles.navLinkDark : styles.navLink}
+              to={"/cart"}
+            >
+              Cart
+            </NavLink>
+          </li>
+          <li className={styles.link_links}>
+            <NavLink
+              style={({ isActive }) => {
+                return isActive
+                  ? { color: "#15cdfc", backgroundColor: "darkred" }
+                  : {};
+              }}
+              className={darkMode ? styles.navLinkDark : styles.navLink}
+              to={"/booking"}
+            >
+              Book
+            </NavLink>
+          </li>
+          <li className={styles.link_links}>
+            <NavLink
+              style={({ isActive }) => {
+                return isActive
+                  ? { color: "#15cdfc", backgroundColor: "darkred" }
+                  : {};
+              }}
+              className={darkMode ? styles.navLinkDark : styles.navLink}
+              to={"/signin"}
+            >
+              Sign In
+            </NavLink>
+          </li>
+        </ul>
         <div className={styles.navBtnLink}>
           <button className={styles.toggleDark} onClick={toggleDarkMode}>
             {darkMode ? "Light" : "Dark"}
           </button>
-          <NavLink className={styles.btnLink} to="/signup">
-            Sign Up
-          </NavLink>
+          <li className={styles.link_links_signup}>
+            <NavLink className={styles.btnLink} to="/signup">
+              Sign Up
+            </NavLink>
+          </li>
         </div>
       </nav>
     </>
