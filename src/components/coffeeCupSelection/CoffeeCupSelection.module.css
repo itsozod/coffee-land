@@ -1,0 +1,12 @@
+.coffeeCupBtn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.coffeeCupImg {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  padding: 10px;
+}

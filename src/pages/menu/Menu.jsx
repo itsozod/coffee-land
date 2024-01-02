@@ -1,15 +1,16 @@
 import { CoffeeCard } from "../../components/coffeeCard/CoffeeCard";
 import styles from "./Menu.module.css";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { SearchLoader } from "../../components/searchLoader/SearchLoader";
 import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
 import { useDispatch, useSelector } from "react-redux";
 import { getDatas } from "../../store/features/coffees/coffeesSlice";
+import { setCoffeeName } from "../../store/features/coffeeCupSelection/coffeeCupSlice";
+import { CoffeeCupSelection } from "../../components/coffeeCupSelection/CoffeeCupSelection";
 export const Menu = () => {
   const coffees = useSelector((state) => state.coffees.coffees);
   const loader = useSelector((state) => state.coffees.loader);
   const dispatch = useDispatch();
-  const [order, setOrder] = useState("");
   const [darkMode] = useDarkMode();
 
   useEffect(() => {
@@ -22,7 +23,7 @@ export const Menu = () => {
     console.log("Id:", id);
     const orderedCoffee = coffees.map((coffee) => {
       if (coffee.id === id) {
-        setOrder(coffee.title);
+        dispatch(setCoffeeName(coffee.title));
       } else {
         return coffee;
       }
@@ -66,8 +67,9 @@ export const Menu = () => {
             2
           </button>
         </div>
-        <h1>Coffee name for Order</h1>
-        {order ? <p>Coffee: {order}</p> : <p>You did not order anything yet</p>}
+        <div className={styles.coffeeCupContainer}>
+          <CoffeeCupSelection />
+        </div>
       </section>
     </>
   );
