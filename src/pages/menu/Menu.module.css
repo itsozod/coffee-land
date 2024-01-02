@@ -2,8 +2,20 @@
   background-color: bisque;
 }
 .coffee_container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    justify-content: center;
-    align-items: center;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-content: center;
+  align-items: center;
+}
+.paginate_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.paginate_btn {
+  margin: 5px;
+  padding: 8px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+}

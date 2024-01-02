@@ -51,6 +51,21 @@ export const Menu = () => {
             ))}
           </div>
         )}
+        {/* get back to this */}
+        <div className={styles.paginate_container}>
+          <button
+            onClick={() => dispatch(getDatas())}
+            className={styles.paginate_btn}
+          >
+            1
+          </button>
+          <button
+            onClick={() => dispatch(getDatas(2))}
+            className={styles.paginate_btn}
+          >
+            2
+          </button>
+        </div>
         <h1>Coffee name for Order</h1>
         {order ? <p>Coffee: {order}</p> : <p>You did not order anything yet</p>}
       </section>

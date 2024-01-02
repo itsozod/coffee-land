@@ -13,10 +13,12 @@ export const Booking = () => {
   const [rotate, setRotate] = useState(false);
   const [openSnackBar, setOpenSnackBar] = useState(false);
 
+  // opening snackbatr for success or error
   const handleBookBtn = () => {
     setOpenSnackBar(true);
   };
 
+  // success message after orfering
   const handleCloseSuccess = () => {
     setOpenSnackBar(false);
     setTimeout(() => {
@@ -24,6 +26,7 @@ export const Booking = () => {
       setMenuFood("");
     }, 1500);
   };
+  // error message after orfering
   const handleCloseError = () => {
     setOpenSnackBar(false);
   };
