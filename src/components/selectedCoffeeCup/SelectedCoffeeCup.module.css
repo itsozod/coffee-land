@@ -1,0 +1,13 @@
+.selectedCoffeeCup {
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+}
+.selectedCoffeeCupImg {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}

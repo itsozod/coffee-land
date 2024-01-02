@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDatas } from "../../store/features/coffees/coffeesSlice";
 import { setCoffeeName } from "../../store/features/coffeeCupSelection/coffeeCupSlice";
 import { CoffeeCupSelection } from "../../components/coffeeCupSelection/CoffeeCupSelection";
+import { SelectedCoffeeCup } from "../../components/selectedCoffeeCup/SelectedCoffeeCup";
 export const Menu = () => {
   const coffees = useSelector((state) => state.coffees.coffees);
   const loader = useSelector((state) => state.coffees.loader);
@@ -70,6 +71,7 @@ export const Menu = () => {
         <div className={styles.coffeeCupContainer}>
           <CoffeeCupSelection />
         </div>
+        <SelectedCoffeeCup />
       </section>
     </>
   );
