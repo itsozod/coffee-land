@@ -5,14 +5,16 @@ import { SearchLoader } from "../../components/searchLoader/SearchLoader";
 import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
 import { useDispatch, useSelector } from "react-redux";
 import { getDatas } from "../../store/features/coffees/coffeesSlice";
-import { setCoffeeName } from "../../store/features/coffeeCupSelection/coffeeCupSlice";
+// import { setCoffeeName } from "../../store/features/coffeeCupSelection/coffeeCupSlice";
 import { CoffeeCupSelection } from "../../components/coffeeCupSelection/CoffeeCupSelection";
 import { SelectedCoffeeCup } from "../../components/selectedCoffeeCup/SelectedCoffeeCup";
+import { useCart } from "react-use-cart";
 export const Menu = () => {
   const coffees = useSelector((state) => state.coffees.coffees);
   const loader = useSelector((state) => state.coffees.loader);
   const dispatch = useDispatch();
   const [darkMode] = useDarkMode();
+  const { addItem } = useCart();
 
   useEffect(() => {
     console.log("Coffees");
@@ -20,17 +22,17 @@ export const Menu = () => {
   }, [dispatch]);
   console.log(coffees);
 
-  const handleClick = (id) => {
-    console.log("Id:", id);
-    const orderedCoffee = coffees.map((coffee) => {
-      if (coffee.id === id) {
-        dispatch(setCoffeeName(coffee.title));
-      } else {
-        return coffee;
-      }
-    });
-    return orderedCoffee;
-  };
+  // const handleClick = (id) => {
+  //   console.log("Id:", id);
+  //   const orderedCoffee = coffees.map((coffee) => {
+  //     if (coffee.id === id) {
+  //       dispatch(setCoffeeName(coffee.title));
+  //     } else {
+  //       return coffee;
+  //     }
+  //   });
+  //   return orderedCoffee;
+  // };
   return (
     <>
       <section
@@ -48,7 +50,7 @@ export const Menu = () => {
               <CoffeeCard
                 key={coffee.id}
                 coffee={coffee}
-                onClick={() => handleClick(coffee.id)}
+                onClick={() => addItem(coffee)}
               />
             ))}
           </div>

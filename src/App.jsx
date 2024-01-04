@@ -13,6 +13,7 @@ import SignIn from "./pages/signin/SignIn";
 import SignUp from "./pages/signup/SignUp";
 import "./App.css";
 import { ThemeProvider } from "./hooks/darkmodeHook/ThemeProvider";
+import { CartProvider } from "react-use-cart";
 function App() {
   const [loader, setLoader] = useState(false);
   const [toggle, setToggle] = useState(false);
@@ -41,21 +42,23 @@ function App() {
         <Loader />
       ) : (
         <>
-          <ThemeProvider>
-            <Navbar onClick={() => toggleSidebar()} />
-            <Sidebar toggle={toggle} onClick={() => toggleSidebar()} />
-            {/* Routes */}
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/menu" element={<Menu />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/booking" element={<Booking />} />
-              <Route path="/signup" element={<SignUp />} />
-              <Route path="/signin" element={<SignIn />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </ThemeProvider>
+          <CartProvider>
+            <ThemeProvider>
+              <Navbar onClick={() => toggleSidebar()} />
+              <Sidebar toggle={toggle} onClick={() => toggleSidebar()} />
+              {/* Routes */}
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/menu" element={<Menu />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/booking" element={<Booking />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/signin" element={<SignIn />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </ThemeProvider>
+          </CartProvider>
         </>
       )}
     </>
