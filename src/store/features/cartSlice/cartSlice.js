@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  cart: [],
+  cart: JSON.parse(localStorage.getItem("cart")) || [],
 };
 
 export const cartSlice = createSlice({
@@ -9,6 +9,7 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart: (state, { payload }) => {
       state.cart.push(payload);
+      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
   },
 });
