@@ -3,11 +3,15 @@ import styles from "./Navbar.module.css";
 import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
+import { useSelector } from "react-redux";
 
 export const Navbar = ({ onClick }) => {
   // custom hook to track the state for light/dark mode
   const [darkMode, toggleDarkMode] = useDarkMode();
   console.log("Dark mode:", darkMode);
+  const cartLength = useSelector((state) => state.cart.cart).length;
+  const cart = useSelector((state) => state.cart.cart);
+  console.log(cartLength);
   return (
     <>
       <nav
@@ -68,6 +72,9 @@ export const Navbar = ({ onClick }) => {
             >
               Cart
             </NavLink>
+          </li>
+          <li className={styles.cart_length}>
+            {cart.length > 0 && cartLength}
           </li>
           <li className={styles.link_links}>
             <NavLink

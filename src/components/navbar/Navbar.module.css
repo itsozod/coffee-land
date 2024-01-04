@@ -13,6 +13,7 @@
 .link_links {
   list-style-type: none;
   height: 100%;
+  position: relative;
 }
 .link_links_signup {
   list-style-type: none;
@@ -77,6 +78,7 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
+  position: relative;
   @media screen and (max-width: 880px) {
     display: none;
   }
@@ -113,4 +115,14 @@
   border-radius: 12px;
   border: none;
   cursor: pointer;
+}
+.cart_length {
+  position: absolute;
+  list-style-type: none;
+  background-color: #fff;
+  color: red;
+  padding: 0px 5px;
+  left: 53%;
+  border-radius: 12px;
+  bottom: 50%;
 }
