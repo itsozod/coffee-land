@@ -1,6 +1,20 @@
-.order_section {
+.cart_section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  background-color: bisque;
+}
+.cart_card {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: bisque;
+  flex-direction: column;
+  background-color: aqua;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 12px;
+}
+.cart_img {
+  width: 120px;
+  height: 200px;
+  object-fit: cover;
 }
