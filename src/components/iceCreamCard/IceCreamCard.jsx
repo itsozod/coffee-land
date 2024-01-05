@@ -3,7 +3,10 @@ import styles from "./IceCreamCard.module.css";
 import { useEffect } from "react";
 import { getIceCreams } from "../../store/features/iceCreamSlice/iceCreamSlice";
 import { SearchLoader } from "../searchLoader/SearchLoader";
-import { addToCart } from "../../store/features/cartSlice/cartSlice";
+import {
+  addToCart,
+  updateCart,
+} from "../../store/features/cartSlice/cartSlice";
 
 export const IceCreamCard = () => {
   const iceCreams = useSelector((state) => state.iceCreams.iceCreams);
@@ -13,7 +16,14 @@ export const IceCreamCard = () => {
   const cart = useSelector((state) => state.cart.cart);
   const checkCart = (item) => {
     const checkedCart = cart.some((cartItem) => cartItem.id === item.id);
-    if (!checkedCart) {
+    if (checkedCart) {
+      const updatedCart = cart.map((cartItem) =>
+        cartItem.id === item.id
+          ? { ...cartItem, quantity: cartItem.quantity + 1 }
+          : cartItem
+      );
+      dispatch(updateCart(updatedCart));
+    } else {
       dispatch(addToCart(item));
     }
   };
