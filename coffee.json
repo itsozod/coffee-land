@@ -13,8 +13,15 @@
     { "id": 1, "title": "Waffle cone", "img": "waffle-cone.png", "price": 3 },
     {
       "id": 2,
-      "title": "Strawberry ice-cream",
-      "img": "strawberry-ice.png",
+      "title": "White ice-cream",
+      "img": "white-ice.png",
+      "price": 2
+    },
+    { "id": 3, "title": "Waffle cone", "img": "waffle-cone.png", "price": 3 },
+    {
+      "id": 4,
+      "title": "White ice-cream",
+      "img": "white-ice.png",
       "price": 2
     }
   ]

@@ -3,12 +3,20 @@ import styles from "./IceCreamCard.module.css";
 import { useEffect } from "react";
 import { getIceCreams } from "../../store/features/iceCreamSlice/iceCreamSlice";
 import { SearchLoader } from "../searchLoader/SearchLoader";
+import { addToCart } from "../../store/features/cartSlice/cartSlice";
 
 export const IceCreamCard = () => {
   const iceCreams = useSelector((state) => state.iceCreams.iceCreams);
   const iceLoader = useSelector((state) => state.iceCreams.iceLoader);
   console.log(iceCreams);
   const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart.cart);
+  const checkCart = (item) => {
+    const checkedCart = cart.some((cartItem) => cartItem.id === item.id);
+    if (!checkedCart) {
+      dispatch(addToCart(item));
+    }
+  };
   useEffect(() => {
     dispatch(getIceCreams());
   }, [dispatch]);
@@ -27,7 +35,12 @@ export const IceCreamCard = () => {
                 alt={iceCream.title}
               />
               <h3>${iceCream.price}</h3>
-              <button className={styles.order_btn}>Order</button>
+              <button
+                onClick={() => checkCart(iceCream)}
+                className={styles.order_btn}
+              >
+                Add to cart
+              </button>
             </article>
           ))}
         </div>

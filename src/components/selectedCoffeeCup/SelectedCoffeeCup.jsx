@@ -13,10 +13,16 @@ export const SelectedCoffeeCup = () => {
   const handleAddToCart = () => {
     const coffeeItem = {
       id: uuid(),
-      coffeeName,
-      coffeeCupImg,
+      title: coffeeName,
+      img: coffeeCupImg,
     };
-    dispatch(addToCart(coffeeItem));
+    const checkedCart = cart.some(
+      (cartItem) =>
+        cartItem.title === coffeeItem.title && cartItem.img === coffeeItem.img
+    );
+    if (!checkedCart) {
+      dispatch(addToCart(coffeeItem));
+    }
   };
   return (
     <>

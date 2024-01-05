@@ -1,29 +1,14 @@
 import styles from "./Menu.module.css";
 import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
-// import { setCoffeeName } from "../../store/features/coffeeCupSelection/coffeeCupSlice";
-// import { CoffeeCupSelection } from "../../components/coffeeCupSelection/CoffeeCupSelection";
-// import { SelectedCoffeeCup } from "../../components/selectedCoffeeCup/SelectedCoffeeCup";
-// import { useCart } from "react-use-cart";
+import { CoffeeCupSelection } from "../../components/coffeeCupSelection/CoffeeCupSelection";
+import { SelectedCoffeeCup } from "../../components/selectedCoffeeCup/SelectedCoffeeCup";
 import { CoffeeCard } from "../../components/coffeeCard/CoffeeCard";
 import { IceCreamCard } from "../../components/iceCreamCard/IceCreamCard";
 import { useState } from "react";
 export const Menu = () => {
   const [darkMode] = useDarkMode();
-  // const { addItem } = useCart();
   const [show, setShow] = useState(true);
-  // console.log(coffees);
 
-  // const handleClick = (id) => {
-  //   console.log("Id:", id);
-  //   const orderedCoffee = coffees.map((coffee) => {
-  //     if (coffee.id === id) {
-  //       dispatch(setCoffeeName(coffee.title));
-  //     } else {
-  //       return coffee;
-  //     }
-  //   });
-  //   return orderedCoffee;
-  // };
   return (
     <>
       <section
@@ -50,6 +35,14 @@ export const Menu = () => {
           </button>
         </div>
         {show ? <CoffeeCard /> : <IceCreamCard />}
+        {show && (
+          <>
+            <div className={styles.coffeeCupContainer}>
+              <CoffeeCupSelection />
+            </div>
+            <SelectedCoffeeCup />
+          </>
+        )}
       </section>
     </>
   );

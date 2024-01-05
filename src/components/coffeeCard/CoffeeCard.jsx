@@ -4,6 +4,7 @@ import styles from "./CoffeeCard.module.css";
 import { SearchLoader } from "../../components/searchLoader/SearchLoader";
 import { useEffect } from "react";
 import { getDatas } from "../../store/features/coffees/coffeesSlice";
+import { setCoffeeName } from "../../store/features/coffeeCupSelection/coffeeCupSlice";
 
 export const CoffeeCard = () => {
   const coffees = useSelector((state) => state.coffees.coffees);
@@ -14,6 +15,18 @@ export const CoffeeCard = () => {
     dispatch(getDatas());
   }, [dispatch]);
   console.log(coffees);
+
+  const handleClick = (id) => {
+    console.log("Id:", id);
+    const orderedCoffee = coffees.map((coffee) => {
+      if (coffee.id === id) {
+        dispatch(setCoffeeName(coffee.title));
+      } else {
+        return coffee;
+      }
+    });
+    return orderedCoffee;
+  };
   return (
     <>
       {loader ? (
@@ -29,7 +42,13 @@ export const CoffeeCard = () => {
                 alt={coffee.title}
               />
               <h3>${coffee.price}</h3>
-              <button className={styles.order_btn}>Order</button>
+              <button
+                // onClick={() => addItem(coffee)}
+                onClick={() => handleClick(coffee.id)}
+                className={styles.order_btn}
+              >
+                Order
+              </button>
             </article>
           ))}
         </div>
