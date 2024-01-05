@@ -13,8 +13,13 @@ export const cartSlice = createSlice({
     },
     updateCart: (state, { payload }) => {
       state.cart = payload;
+      localStorage.setItem("cart", JSON.stringify(state.cart));
+    },
+    removeFromCart: (state, { payload }) => {
+      state.cart = state.cart.filter((cartItem) => cartItem.id !== payload.id);
+      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
   },
 });
 
-export const { addToCart, updateCart } = cartSlice.actions;
+export const { addToCart, updateCart, removeFromCart } = cartSlice.actions;
