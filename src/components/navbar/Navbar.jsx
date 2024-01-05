@@ -9,9 +9,14 @@ export const Navbar = ({ onClick }) => {
   // custom hook to track the state for light/dark mode
   const [darkMode, toggleDarkMode] = useDarkMode();
   console.log("Dark mode:", darkMode);
-  const cartLength = useSelector((state) => state.cart.cart).length;
+  // const cartLength = useSelector((state) => state.cart.cart).length;
   const cart = useSelector((state) => state.cart.cart);
-  console.log(cartLength);
+  const totalQuantity = cart.reduce(
+    (currentQuantity, { quantity }) => quantity + currentQuantity,
+    0
+  );
+  console.log(totalQuantity);
+  // console.log(cartLength);
   return (
     <>
       <nav
@@ -74,7 +79,7 @@ export const Navbar = ({ onClick }) => {
             </NavLink>
           </li>
           <li className={styles.cart_length}>
-            {cart.length > 0 && cartLength}
+            {cart.length > 0 && totalQuantity}
           </li>
           <li className={styles.link_links}>
             <NavLink

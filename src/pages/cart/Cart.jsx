@@ -7,6 +7,16 @@ export const Cart = () => {
   const cart = useSelector((state) => state.cart.cart);
   console.log(cart);
   const [darkMode] = useDarkMode();
+  const totalPrice = cart.reduce(
+    (currentPrice, { price, quantity }) => price * quantity + currentPrice,
+    0
+  );
+  console.log(totalPrice);
+  const totalQuantity = cart.reduce(
+    (currentQuantity, { quantity }) => quantity + currentQuantity,
+    0
+  );
+  console.log(totalQuantity);
   return (
     <>
       <section
@@ -41,6 +51,9 @@ export const Cart = () => {
               <p>Quantity: {item.quantity}</p>
             </article>
           ))}
+        </div>
+        <div className={styles.totalContainer}>
+          <p>Total: ${totalPrice}</p>
         </div>
       </section>
     </>
