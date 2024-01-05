@@ -2,7 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./Cart.module.css";
 import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
 import { NavLink } from "react-router-dom";
-import { removeFromCart } from "../../store/features/cartSlice/cartSlice";
+import {
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+} from "../../store/features/cartSlice/cartSlice";
 
 export const Cart = () => {
   const cart = useSelector((state) => state.cart.cart);
@@ -22,6 +26,27 @@ export const Cart = () => {
 
   const handleRemoveItem = (item) => {
     dispatch(removeFromCart(item));
+  };
+
+  const handleIncQuantity = (item) => {
+    const checkQuantity = cart.map((cartItem) =>
+      cartItem.id === item.id
+        ? { ...cartItem, quantity: cartItem.quantity + 1 }
+        : cartItem
+    );
+    dispatch(increaseQuantity(checkQuantity));
+  };
+
+  const handleDecQuantity = (item) => {
+    const checkQuantity = cart.map((cartItem) =>
+      cartItem.id === item.id && cartItem.quantity !== 0
+        ? { ...cartItem, quantity: cartItem.quantity - 1 }
+        : cartItem
+    );
+    const filterQuantity = checkQuantity.filter(
+      (cartItem) => cartItem.quantity !== 0
+    );
+    dispatch(decreaseQuantity(filterQuantity));
   };
   return (
     <>
@@ -54,14 +79,24 @@ export const Cart = () => {
               <p>{item.title}</p>
               <img className={styles.cart_img} src={item.img} alt="" />
               <p>Price: ${item.price}</p>
+              <button onClick={() => handleDecQuantity(item)}>-</button>
               <p>Quantity: {item.quantity}</p>
+              <button onClick={() => handleIncQuantity(item)}>+</button>
               <button onClick={() => handleRemoveItem(item)}>Remove</button>
             </article>
           ))}
         </div>
-        <div className={styles.totalContainer}>
-          <p>Total: ${totalPrice}</p>
-        </div>
+        {cart.length > 0 && (
+          <div
+            className={styles.totalContainer}
+            style={{
+              color: darkMode ? "white" : "black",
+              transition: ".3s",
+            }}
+          >
+            <p>Total: ${totalPrice}</p>
+          </div>
+        )}
       </section>
     </>
   );
