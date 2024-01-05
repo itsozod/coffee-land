@@ -25,3 +25,17 @@
   margin: 10px;
   padding: 10px;
 }
+.menu_btn {
+  border: none;
+  border-radius: 12px;
+  padding: 8px;
+  margin: 10px;
+  font-size: 18px;
+  outline: none;
+  cursor: pointer;
+}
+.menu_btn_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

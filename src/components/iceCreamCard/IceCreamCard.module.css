@@ -1,0 +1,32 @@
+.ice_cream_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+.iceCream_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  background-color: aqua;
+  border-radius: 12px;
+}
+.iceCream_title {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.iceCream_img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  padding: 10px;
+  border-radius: 12px;
+}
+.order_btn {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 12px;
+  border: none;
+  margin: 10px;
+}

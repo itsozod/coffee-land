@@ -1,26 +1,17 @@
-import { CoffeeCard } from "../../components/coffeeCard/CoffeeCard";
 import styles from "./Menu.module.css";
-import { useEffect } from "react";
-import { SearchLoader } from "../../components/searchLoader/SearchLoader";
 import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
-import { useDispatch, useSelector } from "react-redux";
-import { getDatas } from "../../store/features/coffees/coffeesSlice";
 // import { setCoffeeName } from "../../store/features/coffeeCupSelection/coffeeCupSlice";
-import { CoffeeCupSelection } from "../../components/coffeeCupSelection/CoffeeCupSelection";
-import { SelectedCoffeeCup } from "../../components/selectedCoffeeCup/SelectedCoffeeCup";
-import { useCart } from "react-use-cart";
+// import { CoffeeCupSelection } from "../../components/coffeeCupSelection/CoffeeCupSelection";
+// import { SelectedCoffeeCup } from "../../components/selectedCoffeeCup/SelectedCoffeeCup";
+// import { useCart } from "react-use-cart";
+import { CoffeeCard } from "../../components/coffeeCard/CoffeeCard";
+import { IceCreamCard } from "../../components/iceCreamCard/IceCreamCard";
+import { useState } from "react";
 export const Menu = () => {
-  const coffees = useSelector((state) => state.coffees.coffees);
-  const loader = useSelector((state) => state.coffees.loader);
-  const dispatch = useDispatch();
   const [darkMode] = useDarkMode();
-  const { addItem } = useCart();
-
-  useEffect(() => {
-    console.log("Coffees");
-    dispatch(getDatas());
-  }, [dispatch]);
-  console.log(coffees);
+  // const { addItem } = useCart();
+  const [show, setShow] = useState(true);
+  // console.log(coffees);
 
   // const handleClick = (id) => {
   //   console.log("Id:", id);
@@ -42,21 +33,33 @@ export const Menu = () => {
           transition: ".3s",
         }}
       >
-        {loader ? (
-          <SearchLoader />
-        ) : (
-          <div className={styles.coffee_container}>
-            {coffees.map((coffee) => (
-              <CoffeeCard
-                key={coffee.id}
-                coffee={coffee}
-                onClick={() => addItem(coffee)}
-              />
-            ))}
-          </div>
-        )}
-        {/* get back to this */}
-        <div className={styles.paginate_container}>
+        <div className={styles.menu_btn_container}>
+          <button
+            style={{ backgroundColor: show ? "lightblue" : "" }}
+            className={styles.menu_btn}
+            onClick={() => setShow(true)}
+          >
+            Coffees
+          </button>
+          <button
+            style={{ backgroundColor: !show ? "lightblue" : "" }}
+            className={styles.menu_btn}
+            onClick={() => setShow(false)}
+          >
+            Ice-creams
+          </button>
+        </div>
+        {show ? <CoffeeCard /> : <IceCreamCard />}
+      </section>
+    </>
+  );
+};
+
+{
+  /* get back to this */
+}
+{
+  /* <div className={styles.paginate_container}>
           <button
             onClick={() => dispatch(getDatas())}
             className={styles.paginate_btn}
@@ -73,8 +76,5 @@ export const Menu = () => {
         <div className={styles.coffeeCupContainer}>
           <CoffeeCupSelection />
         </div>
-        <SelectedCoffeeCup />
-      </section>
-    </>
-  );
-};
+        <SelectedCoffeeCup /> */
+}

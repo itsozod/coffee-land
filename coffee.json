@@ -8,5 +8,14 @@
     { "id": 6, "title": "Black", "img": "black-coffee.jpg", "price": 7 },
     { "id": 7, "title": "Expresso", "img": "expresso-coffee.jpg", "price": 9 },
     { "id": 8, "title": "Cortado", "img": "cortado-coffee.jpg", "price": 8 }
+  ],
+  "ice-creams": [
+    { "id": 1, "title": "Waffle cone", "img": "waffle-cone.png", "price": 3 },
+    {
+      "id": 2,
+      "title": "Strawberry ice-cream",
+      "img": "strawberry-ice.png",
+      "price": 2
+    }
   ]
 }
