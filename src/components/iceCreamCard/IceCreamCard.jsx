@@ -11,7 +11,6 @@ import {
 export const IceCreamCard = () => {
   const iceCreams = useSelector((state) => state.iceCreams.iceCreams);
   const iceLoader = useSelector((state) => state.iceCreams.iceLoader);
-  console.log(iceCreams);
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
   const checkCart = (item) => {

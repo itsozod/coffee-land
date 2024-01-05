@@ -1,7 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./SelectedCoffeeCup.module.css";
 import { v4 as uuid } from "uuid";
-import { addToCart } from "../../store/features/cartSlice/cartSlice";
+import {
+  addToCart,
+  updateCart,
+} from "../../store/features/cartSlice/cartSlice";
 
 export const SelectedCoffeeCup = () => {
   const coffeeCupImg = useSelector((state) => state.coffeeCup.coffeeCupImg);
@@ -24,7 +27,14 @@ export const SelectedCoffeeCup = () => {
       (cartItem) =>
         cartItem.title === coffeeItem.title && cartItem.img === coffeeItem.img
     );
-    if (!checkedCart) {
+    if (checkedCart) {
+      const updatedCart = cart.map((cartItem) =>
+        cartItem.title === coffeeItem.title && cartItem.img === coffeeItem.img
+          ? { ...cartItem, quantity: cartItem.quantity + 1 }
+          : cartItem
+      );
+      dispatch(updateCart(updatedCart));
+    } else {
       dispatch(addToCart(coffeeItem));
     }
   };

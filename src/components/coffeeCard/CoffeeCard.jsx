@@ -47,7 +47,6 @@ export const CoffeeCard = () => {
               />
               <h3>${coffee.price}</h3>
               <button
-                // onClick={() => addItem(coffee)}
                 onClick={() => handleClick(coffee.id)}
                 className={styles.order_btn}
               >
