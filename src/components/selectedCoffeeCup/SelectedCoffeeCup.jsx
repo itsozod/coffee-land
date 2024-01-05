@@ -6,6 +6,8 @@ import { addToCart } from "../../store/features/cartSlice/cartSlice";
 export const SelectedCoffeeCup = () => {
   const coffeeCupImg = useSelector((state) => state.coffeeCup.coffeeCupImg);
   const coffeeName = useSelector((state) => state.coffeeCup.coffeeName);
+  const coffeePrice = useSelector((state) => state.coffeeCup.coffeePrice);
+  const coffeeQuantity = useSelector((state) => state.coffeeCup.coffeeQuantity);
   const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
   console.log("cart:", cart);
@@ -15,6 +17,8 @@ export const SelectedCoffeeCup = () => {
       id: uuid(),
       title: coffeeName,
       img: coffeeCupImg,
+      price: coffeePrice,
+      quantity: coffeeQuantity,
     };
     const checkedCart = cart.some(
       (cartItem) =>
@@ -34,6 +38,7 @@ export const SelectedCoffeeCup = () => {
             src={coffeeCupImg}
             alt="Selected Coffee Cup"
           />
+          <p>Price: ${coffeePrice}</p>
           <button onClick={() => handleAddToCart()}>Add to cart</button>
         </article>
       )}

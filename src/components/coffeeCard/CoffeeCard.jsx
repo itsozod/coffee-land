@@ -5,6 +5,8 @@ import { SearchLoader } from "../../components/searchLoader/SearchLoader";
 import { useEffect } from "react";
 import { getDatas } from "../../store/features/coffees/coffeesSlice";
 import { setCoffeeName } from "../../store/features/coffeeCupSelection/coffeeCupSlice";
+import { setCoffeePrice } from "../../store/features/coffeeCupSelection/coffeeCupSlice";
+import { setCoffeeQuantity } from "../../store/features/coffeeCupSelection/coffeeCupSlice";
 
 export const CoffeeCard = () => {
   const coffees = useSelector((state) => state.coffees.coffees);
@@ -21,6 +23,8 @@ export const CoffeeCard = () => {
     const orderedCoffee = coffees.map((coffee) => {
       if (coffee.id === id) {
         dispatch(setCoffeeName(coffee.title));
+        dispatch(setCoffeePrice(coffee.price));
+        dispatch(setCoffeeQuantity(coffee.quantity));
       } else {
         return coffee;
       }
