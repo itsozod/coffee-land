@@ -1,7 +1,10 @@
 .cart_section {
+  background-color: bisque;
+  min-height: 90vh;
+}
+.cart_container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  background-color: bisque;
 }
 .cart_card {
   display: flex;
@@ -17,4 +20,24 @@
   width: 120px;
   height: 200px;
   object-fit: cover;
+}
+.empty_cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.empty_btn {
+  border-radius: 12px;
+  padding: 8px;
+  margin: 10px;
+  border: none;
+  outline: none;
+  background-color: lightseagreen;
+  font-weight: bold;
+  font-size: 16px;
+}
+.empty_link {
+  text-decoration: none;
+  color: black;
 }
