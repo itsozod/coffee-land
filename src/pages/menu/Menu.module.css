@@ -34,6 +34,7 @@
   font-size: 18px;
   outline: none;
   cursor: pointer;
+  font-weight: bold;
 }
 .menu_btn_container {
   display: flex;

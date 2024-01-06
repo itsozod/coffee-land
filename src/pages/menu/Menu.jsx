@@ -20,14 +20,14 @@ export const Menu = () => {
       >
         <div className={styles.menu_btn_container}>
           <button
-            style={{ backgroundColor: show ? "lightblue" : "" }}
+            style={{ backgroundColor: show ? "#fb8500" : "" }}
             className={styles.menu_btn}
             onClick={() => setShow(true)}
           >
             Coffees
           </button>
           <button
-            style={{ backgroundColor: !show ? "lightblue" : "" }}
+            style={{ backgroundColor: !show ? "#fb8500" : "" }}
             className={styles.menu_btn}
             onClick={() => setShow(false)}
           >

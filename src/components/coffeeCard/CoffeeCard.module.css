@@ -10,8 +10,9 @@
   justify-content: center;
   align-items: center;
   margin: 10px;
-  background-color: aqua;
+  background-color: #4ea8de;
   border-radius: 12px;
+  border: 2px solid #b56576;
 }
 .coffee_title {
   margin-top: 10px;
