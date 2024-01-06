@@ -79,10 +79,26 @@ export const Cart = () => {
               <p>{item.title}</p>
               <img className={styles.cart_img} src={item.img} alt="" />
               <p>Price: ${item.price}</p>
-              <button onClick={() => handleDecQuantity(item)}>-</button>
+              <button
+                className={styles.quantity_btn}
+                onClick={() => handleDecQuantity(item)}
+              >
+                -
+              </button>
               <p>Quantity: {item.quantity}</p>
-              <button onClick={() => handleIncQuantity(item)}>+</button>
-              <button onClick={() => handleRemoveItem(item)}>Remove</button>
+              <button
+                className={styles.quantity_btn}
+                onClick={() => handleIncQuantity(item)}
+              >
+                +
+              </button>
+              <p>Subtotal: ${item.price * item.quantity}</p>
+              <button
+                className={styles.remove_cart_btn}
+                onClick={() => handleRemoveItem(item)}
+              >
+                Remove
+              </button>
             </article>
           ))}
         </div>

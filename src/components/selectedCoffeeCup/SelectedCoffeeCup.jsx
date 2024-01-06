@@ -5,6 +5,7 @@ import {
   addToCart,
   updateCart,
 } from "../../store/features/cartSlice/cartSlice";
+import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
 
 export const SelectedCoffeeCup = () => {
   const coffeeCupImg = useSelector((state) => state.coffeeCup.coffeeCupImg);
@@ -13,6 +14,7 @@ export const SelectedCoffeeCup = () => {
   const coffeeQuantity = useSelector((state) => state.coffeeCup.coffeeQuantity);
   const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
+  const [darkMode] = useDarkMode();
   console.log("cart:", cart);
 
   const handleAddToCart = () => {
@@ -41,7 +43,10 @@ export const SelectedCoffeeCup = () => {
   return (
     <>
       {coffeeName && (
-        <article className={styles.selectedCoffeeCup}>
+        <article
+          className={styles.selectedCoffeeCup}
+          style={{ color: darkMode ? "white" : "black" }}
+        >
           <p>{coffeeName}</p>
           <img
             className={styles.selectedCoffeeCupImg}
@@ -49,7 +54,12 @@ export const SelectedCoffeeCup = () => {
             alt="Selected Coffee Cup"
           />
           <p>Price: ${coffeePrice}</p>
-          <button onClick={() => handleAddToCart()}>Add to cart</button>
+          <button
+            className={styles.selected_cup_cart}
+            onClick={() => handleAddToCart()}
+          >
+            Add to cart
+          </button>
         </article>
       )}
     </>

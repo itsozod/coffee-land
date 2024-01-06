@@ -11,3 +11,17 @@
   height: auto;
   object-fit: cover;
 }
+.selected_cup_cart {
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  padding: 6px;
+  margin: 8px;
+  cursor: pointer;
+  background-color: #dda15e;
+  font-size: 14px;
+  font-weight: bold;
+}
+.selected_cup_cart:hover {
+  background-color: #bc6c25;
+}

@@ -12,7 +12,6 @@ import { SelectedCoffeeCup } from "../selectedCoffeeCup/SelectedCoffeeCup";
 
 export const CoffeeCard = () => {
   const coffees = useSelector((state) => state.coffees.coffees);
-  // const coffeeName = useSelector((state) => state.coffeeCup.coffeeName);
   const loader = useSelector((state) => state.coffees.loader);
   const dispatch = useDispatch();
   useEffect(() => {

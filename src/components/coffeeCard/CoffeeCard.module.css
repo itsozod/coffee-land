@@ -13,6 +13,7 @@
   background-color: #4ea8de;
   border-radius: 12px;
   border: 2px solid #b56576;
+  box-shadow: 3px 3px 5px #fcca46;
 }
 .coffee_title {
   margin-top: 10px;
@@ -32,6 +33,11 @@
   border-radius: 12px;
   border: none;
   margin: 10px;
+  background-color: #d4a373;
+  font-weight: bold;
+}
+.order_btn:hover {
+  background-color: #ca6702;
 }
 .order_link {
   text-decoration: none;

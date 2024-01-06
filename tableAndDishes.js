@@ -2,34 +2,34 @@ export const tables = [
   {
     id: 1,
     title: "Standart table",
-    table: "standart-table.png",
+    table: "/standart-table.png",
   },
   {
     id: 2,
     title: "VIP table",
-    table: "vip-table.png",
+    table: "/vip-table.png",
   },
 ];
 export const dishes = [
   {
     id: 1,
     title: "Egg",
-    food: "egg-salmon-avocado.png",
+    food: "/egg-salmon-avocado.png",
   },
   {
     id: 2,
     title: "Hamburger",
-    food: "hamburger.png",
+    food: "/hamburger.png",
   },
   {
     id: 3,
     title: "Nuggets",
-    food: "chicken-nuggets.png",
+    food: "/chicken-nuggets.png",
   },
   {
     id: 4,
     title: "Sushi-Platter",
-    food: "sushi-platter.png",
+    food: "/sushi-platter.png",
   },
 ];
 
@@ -37,21 +37,21 @@ export const dishesBack = [
   {
     id: 1,
     title: "Fresh Salad",
-    food: "fresh-salad.png",
+    food: "/fresh-salad.png",
   },
   {
     id: 2,
     title: "Spaghetti",
-    food: "spaghetti.png",
+    food: "/spaghetti.png",
   },
   {
     id: 3,
     title: "Dessert",
-    food: "dessert.png",
+    food: "/dessert.png",
   },
   {
     id: 4,
     title: "Samosa",
-    food: "samosa.png",
+    food: "/samosa.png",
   },
 ];

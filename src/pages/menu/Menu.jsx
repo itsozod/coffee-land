@@ -1,8 +1,6 @@
 import styles from "./Menu.module.css";
 import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-// import { CoffeeCupSelection } from "../../components/coffeeCupSelection/CoffeeCupSelection";
-// import { SelectedCoffeeCup } from "../../components/selectedCoffeeCup/SelectedCoffeeCup";
 export const Menu = () => {
   const [darkMode] = useDarkMode();
   const location = useLocation();
@@ -24,6 +22,7 @@ export const Menu = () => {
                 location.pathname === "/menu"
                   ? "2px solid white"
                   : "none",
+              color: darkMode ? "white" : "brown",
             }}
             className={styles.menu_link_tab}
             to={"/menu/coffeecard"}
@@ -36,11 +35,12 @@ export const Menu = () => {
                 location.pathname === "/menu/icecreamcard"
                   ? "2px solid white"
                   : "none",
+              color: darkMode ? "white" : "brown",
             }}
             className={styles.menu_link_tab}
             to={"/menu/icecreamcard"}
           >
-            Icecreams
+            Ice-creams
           </NavLink>
         </div>
         <Outlet />
