@@ -13,7 +13,8 @@ import SignIn from "./pages/signin/SignIn";
 import SignUp from "./pages/signup/SignUp";
 import "./App.css";
 import { ThemeProvider } from "./hooks/darkmodeHook/ThemeProvider";
-// import { CartProvider } from "react-use-cart";
+import { IceCreamCard } from "./components/iceCreamCard/IceCreamCard";
+import { CoffeeCard } from "./components/coffeeCard/CoffeeCard";
 function App() {
   const [loader, setLoader] = useState(false);
   const [toggle, setToggle] = useState(false);
@@ -49,7 +50,11 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
-              <Route path="/menu" element={<Menu />} />
+              <Route path="/menu" element={<Menu />}>
+                <Route index element={<CoffeeCard />} />
+                <Route path="coffeecard" element={<CoffeeCard />} />
+                <Route path="icecreamcard" element={<IceCreamCard />} />
+              </Route>
               <Route path="/cart" element={<Cart />} />
               <Route path="/booking" element={<Booking />} />
               <Route path="/signup" element={<SignUp />} />

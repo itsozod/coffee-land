@@ -8,7 +8,7 @@
   cursor: pointer;
 }
 .coffeeCupImg {
-  width: 100%;
+  width: 100px;
   height: auto;
   object-fit: cover;
   padding: 10px;

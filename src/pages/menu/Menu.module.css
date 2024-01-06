@@ -8,36 +8,20 @@
   justify-content: center;
   align-items: center;
 }
-.paginate_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.paginate_btn {
-  margin: 5px;
-  padding: 8px;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-}
 .coffeeCupContainer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   margin: 10px;
   padding: 10px;
 }
-.menu_btn {
-  border: none;
-  border-radius: 12px;
-  padding: 8px;
-  margin: 10px;
-  font-size: 18px;
-  outline: none;
-  cursor: pointer;
-  font-weight: bold;
-}
-.menu_btn_container {
+.menu_links_container {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.menu_link_tab {
+  margin: 10px;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
 }

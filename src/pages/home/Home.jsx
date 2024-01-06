@@ -31,7 +31,7 @@ export const Home = () => {
         <div className={styles.home_container}>
           <img
             className={styles.loader}
-            src="coffee-icon.png"
+            src="/coffee-icon.png"
             alt="Coffee-icon"
           />
           <h1 className={styles.home_title}>Welcome to Coffeeland</h1>

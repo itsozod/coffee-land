@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./CoffeeCupSelection.module.css";
 import { setCoffeeCupImg } from "../../store/features/coffeeCupSelection/coffeeCupSlice";
 const coffeeCups = [
-  "coffee-cup-bisque.png",
-  "coffee-cup-purple.png",
-  "coffee-cup-lightblue.png",
+  "/coffee-cup-bisque.png",
+  "/coffee-cup-purple.png",
+  "/coffee-cup-lightblue.png",
 ];
 
 export const CoffeeCupSelection = () => {

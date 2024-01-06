@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   coffeeName: "",
-  coffeeCupImg: "coffee-cup-bisque.png",
+  coffeeCupImg: "/coffee-cup-bisque.png",
   coffeePrice: null,
   coffeeQuantity: null,
 };

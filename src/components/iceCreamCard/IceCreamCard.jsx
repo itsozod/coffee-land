@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./IceCreamCard.module.css";
 import { useEffect } from "react";
 import { getIceCreams } from "../../store/features/iceCreamSlice/iceCreamSlice";
-import { SearchLoader } from "../searchLoader/SearchLoader";
+import { SearchLoader } from "../../components/searchLoader/SearchLoader";
 import {
   addToCart,
   updateCart,

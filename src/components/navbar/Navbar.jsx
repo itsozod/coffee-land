@@ -34,7 +34,11 @@ export const Navbar = ({ onClick }) => {
           to={"/"}
         >
           <h3>Coffeeland</h3>
-          <img className={styles.coffee_img} src="coffee-icon.png" alt="logo" />
+          <img
+            className={styles.coffee_img}
+            src="/coffee-icon.png"
+            alt="logo"
+          />
         </NavLink>
 
         <FaBars className={styles.faBars} onClick={onClick} />
