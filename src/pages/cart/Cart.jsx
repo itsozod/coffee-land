@@ -9,6 +9,8 @@ import {
 } from "../../store/features/cartSlice/cartSlice";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
+import SendIcon from "@mui/icons-material/Send";
+import { getFromOrders } from "../../store/features/orderSlice/orderSlice";
 
 export const Cart = () => {
   const cart = useSelector((state) => state.cart.cart);
@@ -25,6 +27,8 @@ export const Cart = () => {
     0
   );
   console.log(totalQuantity);
+  const orders = useSelector((state) => state.orders.orders);
+  console.log(orders);
 
   const handleRemoveItem = (item) => {
     dispatch(removeFromCart(item));
@@ -106,16 +110,33 @@ export const Cart = () => {
           ))}
         </div>
         {cart.length > 0 && (
-          <div
-            className={styles.totalContainer}
-            style={{
-              color: darkMode ? "white" : "black",
-              transition: ".3s",
-            }}
-          >
-            <p>Total: ${totalPrice}</p>
-          </div>
+          <>
+            <div
+              className={styles.totalContainer}
+              style={{
+                color: darkMode ? "white" : "black",
+                transition: ".3s",
+              }}
+            >
+              <p>Total: ${totalPrice}</p>
+            </div>
+            <div className={styles.checkout_container}>
+              <Button
+                onClick={() => dispatch(getFromOrders(cart))}
+                variant="contained"
+                endIcon={<SendIcon />}
+              >
+                Checkout
+              </Button>
+            </div>
+          </>
         )}
+        {orders.map((order) => (
+          <article key={order.id}>
+            <p>{order.title}</p>
+            <img style={{ width: "100px" }} src={order.img} alt="" />
+          </article>
+        ))}
       </section>
     </>
   );

@@ -51,22 +51,14 @@
   align-items: center;
   margin: 10px;
 }
-.remove_cart_btn {
-  background-color: #ff595e;
-  border: none;
-  border-radius: 12px;
-  outline: none;
-  padding: 6px;
-  margin: 8px;
-  cursor: pointer;
-  font-weight: bold;
-}
-.remove_cart_btn:hover {
-  background-color: #a41623;
-}
 .quantity_btn {
   border: none;
   border-radius: 12px;
   padding: 3px 8px;
   cursor: pointer;
+}
+.checkout_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

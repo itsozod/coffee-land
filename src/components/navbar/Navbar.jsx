@@ -139,9 +139,9 @@ export const Navbar = ({ onClick }) => {
           <FormControlLabel
             control={
               <MaterialUISwitch
-                onClick={() => toggleDarkMode()}
+                onChange={() => toggleDarkMode()}
                 sx={{ m: 1 }}
-                defaultChecked={darkMode}
+                checked={darkMode}
               />
             }
           />
