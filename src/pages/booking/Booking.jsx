@@ -6,30 +6,19 @@ import { DishesMenu } from "../../components/dishesMenu/DishesMenu";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { Button, Snackbar, Alert } from "@mui/material";
+import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
 
 export const Booking = () => {
   const [tablesImg, setTablesImg] = useState("");
   const [menuFood, setMenuFood] = useState("");
   const [rotate, setRotate] = useState(false);
-  const [openSnackBar, setOpenSnackBar] = useState(false);
+  const [
+    snackBar,
+    handleOpenSnackBar,
+    handleCloseErrorSnackBar,
+    handleCloseSuccessSnackBar,
+  ] = useSnackBar();
 
-  // opening snackbatr for success or error
-  const handleBookBtn = () => {
-    setOpenSnackBar(true);
-  };
-
-  // success message after orfering
-  const handleCloseSuccess = () => {
-    setOpenSnackBar(false);
-    setTimeout(() => {
-      setTablesImg("");
-      setMenuFood("");
-    }, 1500);
-  };
-  // error message after orfering
-  const handleCloseError = () => {
-    setOpenSnackBar(false);
-  };
   return (
     <section className={styles.booking_section}>
       <h1 style={{ position: "relative", color: "#fff" }}>Book a table</h1>
@@ -87,18 +76,22 @@ export const Booking = () => {
                 backgroundColor: "aqua",
                 ":hover": { backgroundColor: "aquamarine" },
               }}
-              onClick={() => handleBookBtn()}
+              onClick={() => handleOpenSnackBar()}
             >
               Book Table
             </Button>
             {menuFood ? (
               <Snackbar
-                open={openSnackBar}
+                open={snackBar}
                 autoHideDuration={6000}
-                onClose={handleCloseSuccess}
+                onClose={() =>
+                  handleCloseSuccessSnackBar(setTablesImg, setMenuFood)
+                }
               >
                 <Alert
-                  onClose={handleCloseSuccess}
+                  onClose={() =>
+                    handleCloseSuccessSnackBar(setTablesImg, setMenuFood)
+                  }
                   severity="success"
                   sx={{ width: "100%" }}
                 >
@@ -108,12 +101,12 @@ export const Booking = () => {
               </Snackbar>
             ) : (
               <Snackbar
-                open={openSnackBar}
+                open={snackBar}
                 autoHideDuration={6000}
-                onClose={handleCloseError}
+                onClose={handleCloseErrorSnackBar}
               >
                 <Alert
-                  onClose={handleCloseError}
+                  onClose={handleCloseErrorSnackBar}
                   severity="error"
                   sx={{ width: "100%" }}
                 >

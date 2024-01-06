@@ -116,8 +116,8 @@ export const Navbar = ({ onClick }) => {
 
         <FaBars className={styles.faBars} onClick={onClick} />
         <ul className={styles.nav_menu}>
-          {navLinks.map((navLink) => (
-            <li className={styles.link_links} key={navLink}>
+          {navLinks.map((navLink, idx) => (
+            <li className={styles.link_links} key={idx}>
               <NavLink
                 style={({ isActive }) => {
                   return isActive
