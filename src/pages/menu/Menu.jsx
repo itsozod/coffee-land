@@ -1,13 +1,12 @@
 import styles from "./Menu.module.css";
 import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
-import { CoffeeCupSelection } from "../../components/coffeeCupSelection/CoffeeCupSelection";
-import { SelectedCoffeeCup } from "../../components/selectedCoffeeCup/SelectedCoffeeCup";
-import { CoffeeCard } from "../../components/coffeeCard/CoffeeCard";
-import { IceCreamCard } from "../../components/iceCreamCard/IceCreamCard";
-import { useState } from "react";
+// import { CoffeeCupSelection } from "../../components/coffeeCupSelection/CoffeeCupSelection";
+// import { SelectedCoffeeCup } from "../../components/selectedCoffeeCup/SelectedCoffeeCup";
+// import { CoffeeCard } from "../../components/coffeeCard/CoffeeCard";
+// import { IceCreamCard } from "../../components/iceCreamCard/IceCreamCard";
+// import { useState } from "react";
 export const Menu = () => {
   const [darkMode] = useDarkMode();
-  const [show, setShow] = useState(true);
 
   return (
     <>
@@ -18,7 +17,7 @@ export const Menu = () => {
           transition: ".3s",
         }}
       >
-        <div className={styles.menu_btn_container}>
+        {/* <div className={styles.menu_btn_container}>
           <button
             style={{ backgroundColor: show ? "#fb8500" : "" }}
             className={styles.menu_btn}
@@ -42,7 +41,7 @@ export const Menu = () => {
             </div>
             <SelectedCoffeeCup />
           </>
-        )}
+        )} */}
       </section>
     </>
   );
