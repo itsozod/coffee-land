@@ -7,6 +7,8 @@ import {
   increaseQuantity,
   decreaseQuantity,
 } from "../../store/features/cartSlice/cartSlice";
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export const Cart = () => {
   const cart = useSelector((state) => state.cart.cart);
@@ -93,12 +95,13 @@ export const Cart = () => {
                 +
               </button>
               <p>Subtotal: ${item.price * item.quantity}</p>
-              <button
-                className={styles.remove_cart_btn}
+              <Button
                 onClick={() => handleRemoveItem(item)}
+                variant="contained"
+                startIcon={<DeleteIcon />}
               >
-                Remove
-              </button>
+                Delete
+              </Button>
             </article>
           ))}
         </div>

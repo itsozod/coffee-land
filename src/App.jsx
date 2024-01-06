@@ -9,6 +9,7 @@ import { Menu } from "./pages/menu/Menu";
 import { Cart } from "./pages/cart/Cart";
 import { Booking } from "./pages/booking/Booking";
 import { NotFound } from "./pages/notFound/NotFound";
+import { Orders } from "./pages/orders/Orders";
 import SignIn from "./pages/signin/SignIn";
 import SignUp from "./pages/signup/SignUp";
 import "./App.css";
@@ -56,6 +57,7 @@ function App() {
                 <Route path="icecreamcard" element={<IceCreamCard />} />
               </Route>
               <Route path="/cart" element={<Cart />} />
+              <Route path="/orders" element={<Orders />} />
               <Route path="/booking" element={<Booking />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/signin" element={<SignIn />} />

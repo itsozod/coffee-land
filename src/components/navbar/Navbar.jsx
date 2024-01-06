@@ -54,6 +54,33 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
+const navLinks = [
+  {
+    path: "/about",
+    name: "About",
+  },
+  {
+    path: "/menu",
+    name: "Menu",
+  },
+  {
+    path: "/cart",
+    name: "Cart",
+  },
+  {
+    path: "/orders",
+    name: "Orders",
+  },
+  {
+    path: "/booking",
+    name: "Book",
+  },
+  // {
+  //   path: "/signin",
+  //   name: "Sign In",
+  // },
+];
+
 export const Navbar = ({ onClick }) => {
   // custom hook to track the state for light/dark mode
   const [darkMode, toggleDarkMode] = useDarkMode();
@@ -89,73 +116,23 @@ export const Navbar = ({ onClick }) => {
 
         <FaBars className={styles.faBars} onClick={onClick} />
         <ul className={styles.nav_menu}>
-          <li className={styles.link_links}>
-            <NavLink
-              style={({ isActive }) => {
-                return isActive
-                  ? { color: "#15cdfc", backgroundColor: "darkred" }
-                  : {};
-              }}
-              className={darkMode ? styles.navLinkDark : styles.navLink}
-              to={"/about"}
-            >
-              About
-            </NavLink>
-          </li>
-          <li className={styles.link_links}>
-            <NavLink
-              style={({ isActive }) => {
-                return isActive
-                  ? { color: "#15cdfc", backgroundColor: "darkred" }
-                  : {};
-              }}
-              className={darkMode ? styles.navLinkDark : styles.navLink}
-              to={"/menu"}
-            >
-              Menu
-            </NavLink>
-          </li>
-          <li className={styles.link_links}>
-            <NavLink
-              style={({ isActive }) => {
-                return isActive
-                  ? { color: "#15cdfc", backgroundColor: "darkred" }
-                  : {};
-              }}
-              className={darkMode ? styles.navLinkDark : styles.navLink}
-              to={"/cart"}
-            >
-              Cart
-            </NavLink>
-          </li>
+          {navLinks.map((navLink) => (
+            <li className={styles.link_links} key={navLink}>
+              <NavLink
+                style={({ isActive }) => {
+                  return isActive
+                    ? { color: "#15cdfc", backgroundColor: "darkred" }
+                    : {};
+                }}
+                className={darkMode ? styles.navLinkDark : styles.navLink}
+                to={navLink.path}
+              >
+                {navLink.name}
+              </NavLink>
+            </li>
+          ))}
           <li className={styles.cart_length}>
             {cart.length > 0 && totalQuantity}
-          </li>
-          <li className={styles.link_links}>
-            <NavLink
-              style={({ isActive }) => {
-                return isActive
-                  ? { color: "#15cdfc", backgroundColor: "darkred" }
-                  : {};
-              }}
-              className={darkMode ? styles.navLinkDark : styles.navLink}
-              to={"/booking"}
-            >
-              Book
-            </NavLink>
-          </li>
-          <li className={styles.link_links}>
-            <NavLink
-              style={({ isActive }) => {
-                return isActive
-                  ? { color: "#15cdfc", backgroundColor: "darkred" }
-                  : {};
-              }}
-              className={darkMode ? styles.navLinkDark : styles.navLink}
-              to={"/signin"}
-            >
-              Sign In
-            </NavLink>
           </li>
         </ul>
         <div className={styles.navBtnLink}>
@@ -168,11 +145,11 @@ export const Navbar = ({ onClick }) => {
               />
             }
           />
-          <li className={styles.link_links_signup}>
+          {/* <li className={styles.link_links_signup}>
             <NavLink className={styles.btnLink} to="/signup">
               Sign Up
             </NavLink>
-          </li>
+          </li> */}
         </div>
       </nav>
     </>
