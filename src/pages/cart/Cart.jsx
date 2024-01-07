@@ -11,11 +11,7 @@ import { clearCart } from "../../store/features/cartSlice/cartSlice";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
-import {
-  getFromOrdersPrev,
-  getFromOrders,
-  setAddress,
-} from "../../store/features/orderSlice/orderSlice";
+import { getFromOrders } from "../../store/features/orderSlice/orderSlice";
 
 export const Cart = () => {
   const cart = useSelector((state) => state.cart.cart);
@@ -34,7 +30,6 @@ export const Cart = () => {
   console.log(totalQuantity);
   const orders = useSelector((state) => state.orders.orders);
   console.log("Orders", orders);
-  const address = useSelector((state) => state.orders.address);
 
   const handleRemoveItem = (item) => {
     dispatch(removeFromCart(item));
@@ -60,12 +55,8 @@ export const Cart = () => {
     );
     dispatch(decreaseQuantity(filterQuantity));
   };
-  const ordersPrev = useSelector((state) => state.orders.ordersPrev);
-  console.log("OrdersPrev", ordersPrev);
   const handleAddToOrders = (items) => {
-    const newOrder = items.map((item) => ({ ...item, address: address }));
-    dispatch(getFromOrdersPrev([...ordersPrev, ...newOrder]));
-    dispatch(getFromOrders([...ordersPrev, ...newOrder]));
+    dispatch(getFromOrders([...items, ...orders]));
     dispatch(clearCart([]));
   };
   return (
@@ -135,11 +126,6 @@ export const Cart = () => {
               <p>Total: ${totalPrice}</p>
             </div>
             <div className={styles.checkout_container}>
-              <input
-                type="text"
-                value={address}
-                onChange={(e) => dispatch(setAddress(e.target.value))}
-              />
               <Button
                 onClick={() => handleAddToOrders(cart)}
                 variant="contained"
@@ -154,9 +140,6 @@ export const Cart = () => {
           <article key={order.id}>
             <p>{order.title}</p>
             <img style={{ width: "100px" }} src={order.img} alt="" />
-            <p style={{ color: "white" }}>
-              Address to Deliver: {order.address}
-            </p>
           </article>
         ))}
       </section>
