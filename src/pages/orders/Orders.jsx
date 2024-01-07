@@ -1,14 +1,23 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./Orders.module.css";
 import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
+import { clearOrders } from "../../store/features/orderSlice/orderSlice";
+import { Alert, Snackbar } from "@mui/material";
+import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
 
 export const Orders = () => {
   const [darkMode] = useDarkMode();
+  const [snackBar, handleOpenSnackBar, handleCloseSnackBar] = useSnackBar();
   const navigate = useNavigate();
   const orders = useSelector((state) => state.orders.orders);
+  const dispatch = useDispatch();
   console.log("Orders", orders);
+  const handleClearOrders = () => {
+    dispatch(clearOrders([]));
+    handleOpenSnackBar();
+  };
   return (
     <section
       className={styles.orders_section}
@@ -43,6 +52,26 @@ export const Orders = () => {
           </article>
         ))}
       </div>
+      {orders.length > 0 && (
+        <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
+          <Button onClick={() => handleClearOrders()} variant="contained">
+            Clear Orders
+          </Button>
+        </Box>
+      )}
+      <Snackbar
+        open={snackBar}
+        autoHideDuration={4000}
+        onClose={() => handleCloseSnackBar()}
+      >
+        <Alert
+          onClose={() => handleCloseSnackBar()}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
+          Orders were cleared successfully!
+        </Alert>
+      </Snackbar>
     </section>
   );
 };

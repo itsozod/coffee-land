@@ -90,6 +90,11 @@ export const Navbar = ({ onClick }) => {
     (currentQuantity, { quantity }) => quantity + currentQuantity,
     0
   );
+  const orders = useSelector((state) => state.orders.orders);
+  const totalOrdersQuantity = orders.reduce(
+    (currentOrderQuantity, { quantity }) => quantity + currentOrderQuantity,
+    0
+  );
   return (
     <>
       <nav
@@ -133,6 +138,9 @@ export const Navbar = ({ onClick }) => {
           ))}
           <li className={styles.cart_length}>
             {cart.length > 0 && totalQuantity}
+          </li>
+          <li className={styles.order_length}>
+            {orders.length > 0 && totalOrdersQuantity}
           </li>
         </ul>
         <div className={styles.navBtnLink}>

@@ -15,6 +15,10 @@ export const orderSlice = createSlice({
       state.orders = payload;
       localStorage.setItem("orders", JSON.stringify(state.orders));
     },
+    clearOrders: (state, { payload }) => {
+      state.orders = payload;
+      localStorage.setItem("orders", JSON.stringify(state.orders));
+    },
   },
 });
-export const { getFromOrders, updateOrder } = orderSlice.actions;
+export const { getFromOrders, updateOrder, clearOrders } = orderSlice.actions;

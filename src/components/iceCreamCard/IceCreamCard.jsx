@@ -7,8 +7,11 @@ import {
   addToCart,
   updateCart,
 } from "../../store/features/cartSlice/cartSlice";
+import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
+import { Alert, Snackbar } from "@mui/material";
 
 export const IceCreamCard = () => {
+  const [snackBar, handleOpenSnackBar, handleCloseSnackBar] = useSnackBar();
   const iceCreams = useSelector((state) => state.iceCreams.iceCreams);
   const iceLoader = useSelector((state) => state.iceCreams.iceLoader);
   const dispatch = useDispatch();
@@ -22,8 +25,10 @@ export const IceCreamCard = () => {
           : cartItem
       );
       dispatch(updateCart(updatedCart));
+      handleOpenSnackBar();
     } else {
       dispatch(addToCart(item));
+      handleOpenSnackBar();
     }
   };
   useEffect(() => {
@@ -54,6 +59,19 @@ export const IceCreamCard = () => {
           ))}
         </div>
       )}
+      <Snackbar
+        open={snackBar}
+        autoHideDuration={4000}
+        onClose={() => handleCloseSnackBar()}
+      >
+        <Alert
+          onClose={() => handleCloseSnackBar()}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
+          Your ice-cream is added to cart!
+        </Alert>
+      </Snackbar>
     </>
   );
 };

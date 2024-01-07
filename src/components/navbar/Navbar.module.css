@@ -126,3 +126,13 @@
   border-radius: 12px;
   bottom: 50%;
 }
+.order_length {
+  position: absolute;
+  list-style-type: none;
+  background-color: #fff;
+  color: red;
+  padding: 0px 5px;
+  left: 73%;
+  border-radius: 12px;
+  bottom: 50%;
+}

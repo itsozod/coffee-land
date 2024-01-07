@@ -9,8 +9,11 @@ import { setCoffeePrice } from "../../store/features/coffeeCupSelection/coffeeCu
 import { setCoffeeQuantity } from "../../store/features/coffeeCupSelection/coffeeCupSlice";
 import { CoffeeCupSelection } from "../coffeeCupSelection/CoffeeCupSelection";
 import { SelectedCoffeeCup } from "../selectedCoffeeCup/SelectedCoffeeCup";
+import { Alert, Snackbar } from "@mui/material";
+import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
 
 export const CoffeeCard = () => {
+  const [snackBar, handleOpenSnackBar, handleCloseSnackBar] = useSnackBar();
   const coffees = useSelector((state) => state.coffees.coffees);
   const loader = useSelector((state) => state.coffees.loader);
   const dispatch = useDispatch();
@@ -27,6 +30,7 @@ export const CoffeeCard = () => {
         dispatch(setCoffeeName(coffee.title));
         dispatch(setCoffeePrice(coffee.price));
         dispatch(setCoffeeQuantity(coffee.quantity));
+        handleOpenSnackBar();
       } else {
         return coffee;
       }
@@ -60,6 +64,19 @@ export const CoffeeCard = () => {
       )}
       <CoffeeCupSelection />
       <SelectedCoffeeCup />
+      <Snackbar
+        open={snackBar}
+        autoHideDuration={4000}
+        onClose={() => handleCloseSnackBar()}
+      >
+        <Alert
+          onClose={() => handleCloseSnackBar()}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
+          You chose your coffee, go down to choose your coffee box!
+        </Alert>
+      </Snackbar>
     </>
   );
 };

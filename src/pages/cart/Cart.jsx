@@ -15,8 +15,11 @@ import {
   getFromOrders,
   updateOrder,
 } from "../../store/features/orderSlice/orderSlice";
+import { Alert, Snackbar } from "@mui/material";
+import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
 
 export const Cart = () => {
+  const [snackBar, handleOpenSnackBar, handleCloseSnackBar] = useSnackBar();
   const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
   console.log(cart);
@@ -68,14 +71,19 @@ export const Cart = () => {
           orderItem.id === cartItems.id ||
           (orderItem.title === cartItems.title &&
             orderItem.img === cartItems.img)
-            ? { ...orderItem, quantity: orderItem.quantity + 1 }
+            ? {
+                ...orderItem,
+                quantity: orderItem.quantity + cartItems.quantity,
+              }
             : orderItem
         );
         dispatch(updateOrder(updatedOrder));
         dispatch(clearCart([]));
+        handleOpenSnackBar();
       } else {
         dispatch(getFromOrders(cartItems));
         dispatch(clearCart([]));
+        handleOpenSnackBar();
       }
     }
   };
@@ -156,6 +164,19 @@ export const Cart = () => {
             </div>
           </>
         )}
+        <Snackbar
+          open={snackBar}
+          autoHideDuration={4000}
+          onClose={() => handleCloseSnackBar()}
+        >
+          <Alert
+            onClose={() => handleCloseSnackBar()}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            Your order was accepted, check orders tab to see your orders!
+          </Alert>
+        </Snackbar>
       </section>
     </>
   );

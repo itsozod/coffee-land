@@ -6,8 +6,11 @@ import {
   updateCart,
 } from "../../store/features/cartSlice/cartSlice";
 import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
+import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
+import { Alert, Snackbar } from "@mui/material";
 
 export const SelectedCoffeeCup = () => {
+  const [snackBar, handleOpenSnackBar, handleCloseSnackBar] = useSnackBar();
   const coffeeCupImg = useSelector((state) => state.coffeeCup.coffeeCupImg);
   const coffeeName = useSelector((state) => state.coffeeCup.coffeeName);
   const coffeePrice = useSelector((state) => state.coffeeCup.coffeePrice);
@@ -36,8 +39,10 @@ export const SelectedCoffeeCup = () => {
           : cartItem
       );
       dispatch(updateCart(updatedCart));
+      handleOpenSnackBar();
     } else {
       dispatch(addToCart(coffeeItem));
+      handleOpenSnackBar();
     }
   };
   return (
@@ -62,6 +67,19 @@ export const SelectedCoffeeCup = () => {
           </button>
         </article>
       )}
+      <Snackbar
+        open={snackBar}
+        autoHideDuration={4000}
+        onClose={() => handleCloseSnackBar()}
+      >
+        <Alert
+          onClose={() => handleCloseSnackBar()}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
+          Your coffee is added to cart!
+        </Alert>
+      </Snackbar>
     </>
   );
 };
