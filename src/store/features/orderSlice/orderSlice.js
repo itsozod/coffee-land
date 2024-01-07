@@ -8,9 +8,13 @@ export const orderSlice = createSlice({
   initialState,
   reducers: {
     getFromOrders: (state, { payload }) => {
+      state.orders.push(payload);
+      localStorage.setItem("orders", JSON.stringify(state.orders));
+    },
+    updateOrder: (state, { payload }) => {
       state.orders = payload;
       localStorage.setItem("orders", JSON.stringify(state.orders));
     },
   },
 });
-export const { getFromOrdersPrev, getFromOrders } = orderSlice.actions;
+export const { getFromOrders, updateOrder } = orderSlice.actions;

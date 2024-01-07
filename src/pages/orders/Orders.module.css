@@ -1,0 +1,30 @@
+.orders_section {
+  min-height: 90vh;
+  background-color: bisque;
+}
+.orders_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.order_card {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #d4a373;
+  margin: 10px;
+  color: #000;
+  border-radius: 12px;
+  border: 2px solid #ef233c;
+}
+.order_img {
+  width: 120px;
+  height: 200px;
+  object-fit: cover;
+}
+.empty_order_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

@@ -11,7 +11,10 @@ import { clearCart } from "../../store/features/cartSlice/cartSlice";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
-import { getFromOrders } from "../../store/features/orderSlice/orderSlice";
+import {
+  getFromOrders,
+  updateOrder,
+} from "../../store/features/orderSlice/orderSlice";
 
 export const Cart = () => {
   const cart = useSelector((state) => state.cart.cart);
@@ -55,9 +58,26 @@ export const Cart = () => {
     );
     dispatch(decreaseQuantity(filterQuantity));
   };
-  const handleAddToOrders = (items) => {
-    dispatch(getFromOrders([...items, ...orders]));
-    dispatch(clearCart([]));
+  const handleAddToOrders = (cart, orders) => {
+    for (const cartItems of cart) {
+      const checkOrder = orders.some(
+        (orderItem) => orderItem.id === cartItems.id
+      );
+      if (checkOrder) {
+        const updatedOrder = orders.map((orderItem) =>
+          orderItem.id === cartItems.id ||
+          (orderItem.title === cartItems.title &&
+            orderItem.img === cartItems.img)
+            ? { ...orderItem, quantity: orderItem.quantity + 1 }
+            : orderItem
+        );
+        dispatch(updateOrder(updatedOrder));
+        dispatch(clearCart([]));
+      } else {
+        dispatch(getFromOrders(cartItems));
+        dispatch(clearCart([]));
+      }
+    }
   };
   return (
     <>
@@ -127,7 +147,7 @@ export const Cart = () => {
             </div>
             <div className={styles.checkout_container}>
               <Button
-                onClick={() => handleAddToOrders(cart)}
+                onClick={() => handleAddToOrders(cart, orders)}
                 variant="contained"
                 endIcon={<SendIcon />}
               >
@@ -136,12 +156,6 @@ export const Cart = () => {
             </div>
           </>
         )}
-        {orders.map((order) => (
-          <article key={order.id}>
-            <p>{order.title}</p>
-            <img style={{ width: "100px" }} src={order.img} alt="" />
-          </article>
-        ))}
       </section>
     </>
   );
