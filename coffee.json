@@ -85,6 +85,30 @@
       "img": "/white-ice.png",
       "price": 2,
       "quantity": 1
+    },
+    {
+      "id": 5,
+      "title": "Chocolate Vanilla",
+      "img": "/chocolate-ice-cream.png",
+      "price": 2,
+      "quantity": 1
+    },
+    {
+      "id": 6,
+      "title": "Pink ice-cream",
+      "img": "/pink-ice-cream.png",
+      "price": 2,
+      "quantity": 1
+    }
+  ],
+  "tables": [
+    {
+      "id": 1,
+      "name": "Table 1",
+      "status": "Standart table",
+      "img": "",
+      "isOrdered": false,
+      "time": ""
     }
   ]
 }

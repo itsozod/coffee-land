@@ -53,7 +53,12 @@ export const Orders = () => {
         ))}
       </div>
       {orders.length > 0 && (
-        <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
+        <Box
+          display={"flex"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          padding={"10px"}
+        >
           <Button onClick={() => handleClearOrders()} variant="contained">
             Clear Orders
           </Button>

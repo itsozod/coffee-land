@@ -18,11 +18,13 @@ export const iceCreamSlice = createSlice({
 });
 export const { setIceCreams, setIceLoader } = iceCreamSlice.actions;
 
-export const getIceCreams = () => {
+export const getIceCreams = (page = 1) => {
   return async (dispatch) => {
     try {
       dispatch(setIceLoader(true));
-      const response = await fetch(" http://localhost:3000/ice-creams");
+      const response = await fetch(
+        `http://localhost:3000/ice-creams?_page=${page}&_limit=5`
+      );
       const data = await response.json();
       console.log(data);
       dispatch(setIceCreams(data));

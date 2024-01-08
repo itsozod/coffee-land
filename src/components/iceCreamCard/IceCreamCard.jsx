@@ -71,6 +71,7 @@ export const IceCreamCard = () => {
         <Pagination
           count={2}
           color="primary"
+          onChange={(_e, page) => dispatch(getIceCreams(page))}
           sx={{
             "& .MuiPaginationItem-root": {
               color: darkMode ? "white" : "black",

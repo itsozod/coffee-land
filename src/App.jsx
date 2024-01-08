@@ -12,6 +12,7 @@ import { NotFound } from "./pages/notFound/NotFound";
 import { Orders } from "./pages/orders/Orders";
 // import SignIn from "./pages/signin/SignIn";
 // import SignUp from "./pages/signup/SignUp";
+import { ChatBot } from "./pages/chatBot/ChatBot";
 import "./App.css";
 import { ThemeProvider } from "./hooks/darkmodeHook/ThemeProvider";
 import { IceCreamCard } from "./components/iceCreamCard/IceCreamCard";
@@ -59,6 +60,7 @@ function App() {
               <Route path="/cart" element={<Cart />} />
               <Route path="/orders" element={<Orders />} />
               <Route path="/booking" element={<Booking />} />
+              <Route path="/chatbot" element={<ChatBot />} />
               {/* <Route path="/signup" element={<SignUp />} /> */}
               {/* <Route path="/signin" element={<SignIn />} /> */}
               <Route path="*" element={<NotFound />} />
