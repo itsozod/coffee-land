@@ -76,6 +76,7 @@ export const CoffeeCard = () => {
         <Pagination
           count={2}
           color="primary"
+          onChange={(_e, page) => dispatch(getDatas(page))}
           sx={{
             "& .MuiPaginationItem-root": {
               color: darkMode ? "white" : "black",
@@ -90,7 +91,7 @@ export const CoffeeCard = () => {
       <SelectedCoffeeCup />
       <Snackbar
         open={snackBar}
-        autoHideDuration={4000}
+        autoHideDuration={1000}
         onClose={() => handleCloseSnackBar()}
       >
         <Alert

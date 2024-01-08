@@ -52,13 +52,13 @@ export const SelectedCoffeeCup = () => {
           className={styles.selectedCoffeeCup}
           style={{ color: darkMode ? "white" : "black" }}
         >
-          <p>{coffeeName}</p>
+          <h3>{coffeeName}</h3>
           <img
             className={styles.selectedCoffeeCupImg}
             src={coffeeCupImg}
             alt="Selected Coffee Cup"
           />
-          <p>Price: ${coffeePrice}</p>
+          <h4>Price: ${coffeePrice}</h4>
           <button
             className={styles.selected_cup_cart}
             onClick={() => handleAddToCart()}

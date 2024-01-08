@@ -18,11 +18,13 @@ export const coffeesSlice = createSlice({
 
 export const { setDatas, setLoader } = coffeesSlice.actions;
 
-export const getDatas = () => {
+export const getDatas = (page = 1) => {
   return async (dispatch) => {
     try {
       dispatch(setLoader(true));
-      const response = await fetch(`http://localhost:3000/coffees`);
+      const response = await fetch(
+        `http://localhost:3000/coffees?_page=${page}&_limit=4`
+      );
       const data = await response.json();
       dispatch(setDatas(data));
       dispatch(setLoader(false));

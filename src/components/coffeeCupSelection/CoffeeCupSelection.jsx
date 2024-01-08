@@ -6,6 +6,11 @@ const coffeeCups = [
   "/coffee-cup-bisque.png",
   "/coffee-cup-purple.png",
   "/coffee-cup-lightblue.png",
+  "/coffee-cup-full-white.png",
+  "/coffee-cup-white-black.png",
+  "/coffee-cup-bisque-black.png",
+  "/coffee-cup-green.png",
+  "/coffee-cup-blue-white.png",
 ];
 
 export const CoffeeCupSelection = () => {
