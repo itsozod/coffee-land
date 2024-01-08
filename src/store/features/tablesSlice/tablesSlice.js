@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   tables: [],
+  tableLoader: false,
   tableName: "",
   tableImg: "",
   tableFoodImg: "",
@@ -13,6 +14,9 @@ export const tablesSlice = createSlice({
   reducers: {
     setTables: (state, { payload }) => {
       state.tables = payload;
+    },
+    setTableLoader: (state, { payload }) => {
+      state.tableLoader = payload;
     },
     setTableName: (state, { payload }) => {
       state.tableName = payload;
@@ -30,8 +34,24 @@ export const tablesSlice = createSlice({
 });
 export const {
   setTables,
+  setTableLoader,
   setTableName,
   setTableImg,
   setTableFoodImg,
   setTableDrinkImg,
 } = tablesSlice.actions;
+
+export const getTables = () => {
+  return async (dispatch) => {
+    try {
+      dispatch(setTableLoader(true));
+      const response = await fetch("http://localhost:3000/tables");
+      const data = await response.json();
+      dispatch(setTables(data));
+      dispatch(setTableLoader(false));
+    } catch (error) {
+      console.error(error);
+      dispatch(setTableLoader(false));
+    }
+  };
+};

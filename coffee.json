@@ -106,7 +106,79 @@
       "id": 1,
       "name": "Table 1",
       "status": "Standart table",
-      "img": "",
+      "img": "standart-table.png",
+      "isOrdered": false,
+      "time": ""
+    },
+    {
+      "id": 2,
+      "name": "Table 2",
+      "status": "Vip table",
+      "img": "vip-table.png",
+      "isOrdered": false,
+      "time": ""
+    },
+    {
+      "id": 3,
+      "name": "Table 1",
+      "status": "Standart table",
+      "img": "standart-table.png",
+      "isOrdered": false,
+      "time": ""
+    },
+    {
+      "id": 4,
+      "name": "Table 4",
+      "status": "Vip table",
+      "img": "vip-table.png",
+      "isOrdered": false,
+      "time": ""
+    },
+    {
+      "id": 5,
+      "name": "Table 5",
+      "status": "Standart table",
+      "img": "standart-table.png",
+      "isOrdered": false,
+      "time": ""
+    },
+    {
+      "id": 6,
+      "name": "Table 6",
+      "status": "Standart table",
+      "img": "standart-table.png",
+      "isOrdered": false,
+      "time": ""
+    },
+    {
+      "id": 7,
+      "name": "Table 7",
+      "status": "Standart table",
+      "img": "standart-table.png",
+      "isOrdered": false,
+      "time": ""
+    },
+    {
+      "id": 8,
+      "name": "Table 8",
+      "status": "Vip table",
+      "img": "vip-table.png",
+      "isOrdered": false,
+      "time": ""
+    },
+    {
+      "id": 9,
+      "name": "Table 9",
+      "status": "Standart table",
+      "img": "standart-table.png",
+      "isOrdered": false,
+      "time": ""
+    },
+    {
+      "id": 10,
+      "name": "Table 10",
+      "status": "Vip table",
+      "img": "vip-table.png",
       "isOrdered": false,
       "time": ""
     }

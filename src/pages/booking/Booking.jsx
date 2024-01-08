@@ -1,5 +1,5 @@
 import styles from "./Booking.module.css";
-import { tables, dishes, dishesBack } from "../../../tableAndDishes";
+import { dishes, dishesBack } from "../../../tableAndDishes";
 import { useState } from "react";
 import { Tables } from "../../components/tables/Tables";
 import { DishesMenu } from "../../components/dishesMenu/DishesMenu";
@@ -33,18 +33,15 @@ export const Booking = () => {
 
   return (
     <section className={styles.booking_section}>
-      <h1 style={{ position: "relative", color: "#fff" }}>Book a table</h1>
+      <h1 style={{ position: "relative", color: "#fff", textAlign: "center" }}>
+        Book a table
+      </h1>
       <article className={styles.img_container}>
-        {tables.map((table) => (
-          <Tables
-            key={table.id}
-            tables={tableImg}
-            table={table}
-            onClick={() => dispatch(setTableImg(table.table))}
-          />
-        ))}
+        <Tables />
       </article>
-      <h1 style={{ position: "relative", color: "#fff" }}>Our dishes</h1>
+      <h1 style={{ position: "relative", color: "#fff", textAlign: "center" }}>
+        Our dishes
+      </h1>
       <button
         onClick={() => setRotate((prevRotate) => !prevRotate)}
         className={styles.rotate_btn}
