@@ -8,10 +8,12 @@ import {
   updateCart,
 } from "../../store/features/cartSlice/cartSlice";
 import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
-import { Alert, Snackbar } from "@mui/material";
+import { Alert, Pagination, Snackbar, Stack } from "@mui/material";
+import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
 
 export const IceCreamCard = () => {
   const [snackBar, handleOpenSnackBar, handleCloseSnackBar] = useSnackBar();
+  const [darkMode] = useDarkMode();
   const iceCreams = useSelector((state) => state.iceCreams.iceCreams);
   const iceLoader = useSelector((state) => state.iceCreams.iceLoader);
   const dispatch = useDispatch();
@@ -59,6 +61,26 @@ export const IceCreamCard = () => {
           ))}
         </div>
       )}
+      <Stack
+        display={"flex"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        padding={"10px"}
+        spacing={2}
+      >
+        <Pagination
+          count={2}
+          color="primary"
+          sx={{
+            "& .MuiPaginationItem-root": {
+              color: darkMode ? "white" : "black",
+            },
+            "& .MuiPaginationItem-page.Mui-selected": {
+              color: darkMode ? "black" : "white",
+            },
+          }}
+        />
+      </Stack>
       <Snackbar
         open={snackBar}
         autoHideDuration={4000}

@@ -11,9 +11,13 @@ import { CoffeeCupSelection } from "../coffeeCupSelection/CoffeeCupSelection";
 import { SelectedCoffeeCup } from "../selectedCoffeeCup/SelectedCoffeeCup";
 import { Alert, Snackbar } from "@mui/material";
 import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
 
 export const CoffeeCard = () => {
   const [snackBar, handleOpenSnackBar, handleCloseSnackBar] = useSnackBar();
+  const [darkMode] = useDarkMode();
   const coffees = useSelector((state) => state.coffees.coffees);
   const loader = useSelector((state) => state.coffees.loader);
   const dispatch = useDispatch();
@@ -62,6 +66,26 @@ export const CoffeeCard = () => {
           ))}
         </div>
       )}
+      <Stack
+        display={"flex"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        padding={"10px"}
+        spacing={2}
+      >
+        <Pagination
+          count={2}
+          color="primary"
+          sx={{
+            "& .MuiPaginationItem-root": {
+              color: darkMode ? "white" : "black",
+            },
+            "& .MuiPaginationItem-page.Mui-selected": {
+              color: darkMode ? "black" : "white",
+            },
+          }}
+        />
+      </Stack>
       <CoffeeCupSelection />
       <SelectedCoffeeCup />
       <Snackbar
