@@ -7,17 +7,29 @@ import { FaArrowAltCircleRight } from "react-icons/fa";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { Button, Snackbar, Alert } from "@mui/material";
 import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setTableImg,
+  setTableFoodImg,
+} from "../../store/features/tablesSlice/tablesSlice";
 
 export const Booking = () => {
-  const [tablesImg, setTablesImg] = useState("");
-  const [menuFood, setMenuFood] = useState("");
   const [rotate, setRotate] = useState(false);
+  const tableImg = useSelector((state) => state.tables.tableImg);
+  const tableFoodImg = useSelector((state) => state.tables.tableFoodImg);
+  const dispatch = useDispatch();
   const [
     snackBar,
     handleOpenSnackBar,
     handleCloseErrorSnackBar,
     handleCloseSuccessSnackBar,
   ] = useSnackBar();
+
+  const handleClearTable = () => {
+    handleCloseSuccessSnackBar();
+    dispatch(setTableImg(""));
+    dispatch(setTableFoodImg(""));
+  };
 
   return (
     <section className={styles.booking_section}>
@@ -26,9 +38,9 @@ export const Booking = () => {
         {tables.map((table) => (
           <Tables
             key={table.id}
-            tables={tablesImg}
+            tables={tableImg}
             table={table}
-            onClick={() => setTablesImg(table.table)}
+            onClick={() => dispatch(setTableImg(table.table))}
           />
         ))}
       </article>
@@ -49,8 +61,8 @@ export const Booking = () => {
               <DishesMenu
                 key={dish.id}
                 dish={dish}
-                menuFood={menuFood}
-                onClick={() => setMenuFood(dish.food)}
+                menuFood={tableFoodImg}
+                onClick={() => dispatch(setTableFoodImg(dish.food))}
               />
             ))}
           </div>
@@ -59,17 +71,19 @@ export const Booking = () => {
               <DishesMenu
                 key={dish.id}
                 dish={dish}
-                menuFood={menuFood}
-                onClick={() => setMenuFood(dish.food)}
+                menuFood={tableFoodImg}
+                onClick={() => dispatch(setTableFoodImg(dish.food))}
               />
             ))}
           </div>
         </div>
       </div>
-      {tablesImg ? (
+      {tableImg ? (
         <div className={styles.booked_img_container}>
-          {menuFood && <img className={styles.table_dish} src={menuFood}></img>}
-          <img className={styles.booked_img} src={tablesImg} alt="Image"></img>
+          {tableFoodImg && (
+            <img className={styles.table_dish} src={tableFoodImg}></img>
+          )}
+          <img className={styles.booked_img} src={tableImg} alt="Image"></img>
           <div className={styles.book_table_btn_container}>
             <Button
               sx={{
@@ -80,18 +94,14 @@ export const Booking = () => {
             >
               Book Table
             </Button>
-            {menuFood ? (
+            {tableFoodImg ? (
               <Snackbar
                 open={snackBar}
-                autoHideDuration={6000}
-                onClose={() =>
-                  handleCloseSuccessSnackBar(setTablesImg, setMenuFood)
-                }
+                autoHideDuration={4000}
+                onClose={() => handleClearTable()}
               >
                 <Alert
-                  onClose={() =>
-                    handleCloseSuccessSnackBar(setTablesImg, setMenuFood)
-                  }
+                  onClose={() => handleClearTable()}
                   severity="success"
                   sx={{ width: "100%" }}
                 >
@@ -102,11 +112,11 @@ export const Booking = () => {
             ) : (
               <Snackbar
                 open={snackBar}
-                autoHideDuration={6000}
-                onClose={handleCloseErrorSnackBar}
+                autoHideDuration={4000}
+                onClose={() => handleCloseErrorSnackBar()}
               >
                 <Alert
-                  onClose={handleCloseErrorSnackBar}
+                  onClose={() => handleCloseErrorSnackBar()}
                   severity="error"
                   sx={{ width: "100%" }}
                 >

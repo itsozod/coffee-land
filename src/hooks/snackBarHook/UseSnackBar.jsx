@@ -12,14 +12,9 @@ export const useSnackBar = () => {
   const handleCloseErrorSnackBar = () => {
     setSnackBar(false);
   };
-  const handleCloseSuccessSnackBar = (setTablesImg, setMenuFood) => {
+  const handleCloseSuccessSnackBar = () => {
     setSnackBar(false);
-    setTimeout(() => {
-      setTablesImg("");
-      setMenuFood("");
-    }, 1500);
   };
-
   return [
     snackBar,
     handleOpenSnackBar,
