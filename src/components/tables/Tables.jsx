@@ -26,31 +26,29 @@ export const Tables = () => {
         <SearchLoader />
       ) : (
         tableDatas.map((table) => (
-          <>
-            <article
-              key={table.id}
-              className={styles.table_container}
+          <article
+            key={table.id}
+            className={styles.table_container}
+            style={{
+              border: tableImg === table.img ? "2px solid red" : "",
+              backgroundColor: darkMode ? "#1a193a" : "bisque",
+            }}
+          >
+            <h1
+              className={styles.table_status}
               style={{
-                border: tableImg === table.img ? "2px solid red" : "",
-                backgroundColor: darkMode ? "#1a193a" : "bisque",
+                color: darkMode ? "#fff" : "#000",
               }}
             >
-              <h1
-                className={styles.table_status}
-                style={{
-                  color: darkMode ? "#fff" : "#000",
-                }}
-              >
-                {table.status}
-              </h1>
-              <button
-                className={styles.btn_img}
-                onClick={() => dispatch(setTableImg(table.img))}
-              >
-                <img className={styles.img_table} src={table.img} alt="Image" />
-              </button>
-            </article>
-          </>
+              {table.status}
+            </h1>
+            <button
+              className={styles.btn_img}
+              onClick={() => dispatch(setTableImg(table.img))}
+            >
+              <img className={styles.img_table} src={table.img} alt="Image" />
+            </button>
+          </article>
         ))
       )}
     </>

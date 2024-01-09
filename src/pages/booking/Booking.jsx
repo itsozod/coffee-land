@@ -8,6 +8,7 @@ import {
   setTableFoodImg,
 } from "../../store/features/tablesSlice/tablesSlice";
 import { DishesContainer } from "../../components/dishesContainer/DishesContainer";
+import { DateTimePicker } from "../../components/dateTimePicker/DateTimePicker";
 
 export const Booking = () => {
   const tableImg = useSelector((state) => state.tables.tableImg);
@@ -89,6 +90,7 @@ export const Booking = () => {
       ) : (
         ""
       )}
+      <DateTimePicker />
     </section>
   );
 };
