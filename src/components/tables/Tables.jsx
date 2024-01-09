@@ -36,14 +36,13 @@ export const Tables = () => {
               }}
             >
               <h1
+                className={styles.table_status}
                 style={{
-                  position: "relative",
                   color: darkMode ? "#fff" : "#000",
                 }}
               >
-                {table.name}
+                {table.status}
               </h1>
-              <p>{table.status}</p>
               <button
                 className={styles.btn_img}
                 onClick={() => dispatch(setTableImg(table.img))}
