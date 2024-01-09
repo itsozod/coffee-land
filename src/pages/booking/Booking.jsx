@@ -13,6 +13,7 @@ import { DateTimePicker } from "../../components/dateTimePicker/DateTimePicker";
 export const Booking = () => {
   const tableImg = useSelector((state) => state.tables.tableImg);
   const tableFoodImg = useSelector((state) => state.tables.tableFoodImg);
+  const tableDrinkImg = useSelector((state) => state.tables.tableDrinkImg);
   const dispatch = useDispatch();
   const [
     snackBar,
@@ -42,7 +43,10 @@ export const Booking = () => {
       {tableImg ? (
         <div className={styles.booked_img_container}>
           {tableFoodImg && (
-            <img className={styles.table_dish} src={tableFoodImg}></img>
+            <>
+              <img className={styles.table_dish} src={tableFoodImg}></img>
+              <img className={styles.table_dish} src={tableDrinkImg}></img>
+            </>
           )}
           <img className={styles.booked_img} src={tableImg} alt="Image"></img>
           <div className={styles.book_table_btn_container}>

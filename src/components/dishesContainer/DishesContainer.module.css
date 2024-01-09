@@ -3,8 +3,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   width: 100%;
+  @media screen and (max-width: 686px) {
+    flex-direction: column;
+  }
 }
 .container {
   display: flex;

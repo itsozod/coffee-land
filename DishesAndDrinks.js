@@ -43,3 +43,26 @@ export const dishesBack = [
     food: "/samosa.png",
   },
 ];
+
+export const drinks = [
+  {
+    id: 1,
+    title: "Lemon ice tea",
+    drink: "/lemon-ice-tea.png",
+  },
+  {
+    id: 2,
+    title: "Coke",
+    drink: "/coke.png",
+  },
+  {
+    id: 3,
+    title: "Water",
+    drink: "/water.png",
+  },
+  {
+    id: 4,
+    title: "Fanta",
+    drink: "/fanta.png",
+  },
+];

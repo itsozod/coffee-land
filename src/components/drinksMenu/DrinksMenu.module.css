@@ -1,4 +1,4 @@
-.dish {
+.drink {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -12,7 +12,7 @@
   font-size: 18px;
 }
 
-.dish_img {
+.drink_img {
   max-width: 100%;
   height: auto;
   position: relative;
