@@ -1,10 +1,5 @@
 import styles from "./Booking.module.css";
-import { dishes, dishesBack } from "../../../tableAndDishes";
-import { useState } from "react";
 import { Tables } from "../../components/tables/Tables";
-import { DishesMenu } from "../../components/dishesMenu/DishesMenu";
-import { FaArrowAltCircleRight } from "react-icons/fa";
-import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { Button, Snackbar, Alert } from "@mui/material";
 import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,9 +7,9 @@ import {
   setTableImg,
   setTableFoodImg,
 } from "../../store/features/tablesSlice/tablesSlice";
+import { DishesContainer } from "../../components/dishesContainer/DishesContainer";
 
 export const Booking = () => {
-  const [rotate, setRotate] = useState(false);
   const tableImg = useSelector((state) => state.tables.tableImg);
   const tableFoodImg = useSelector((state) => state.tables.tableFoodImg);
   const dispatch = useDispatch();
@@ -42,39 +37,7 @@ export const Booking = () => {
       <h1 style={{ position: "relative", color: "#fff", textAlign: "center" }}>
         Our dishes
       </h1>
-      <button
-        onClick={() => setRotate((prevRotate) => !prevRotate)}
-        className={styles.rotate_btn}
-      >
-        {rotate ? <FaArrowAltCircleLeft /> : <FaArrowAltCircleRight />}
-      </button>
-      <div className={styles.container}>
-        <div
-          className={styles.card}
-          style={{ transform: rotate ? "rotateY(180deg)" : "" }}
-        >
-          <div className={styles.front}>
-            {dishes.map((dish) => (
-              <DishesMenu
-                key={dish.id}
-                dish={dish}
-                menuFood={tableFoodImg}
-                onClick={() => dispatch(setTableFoodImg(dish.food))}
-              />
-            ))}
-          </div>
-          <div className={styles.back} style={{ zIndex: rotate ? "1" : 0 }}>
-            {dishesBack.map((dish) => (
-              <DishesMenu
-                key={dish.id}
-                dish={dish}
-                menuFood={tableFoodImg}
-                onClick={() => dispatch(setTableFoodImg(dish.food))}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
+      <DishesContainer />
       {tableImg ? (
         <div className={styles.booked_img_container}>
           {tableFoodImg && (

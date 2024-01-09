@@ -1,0 +1,64 @@
+/* rotating menu container */
+.dishes_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 350px;
+  position: relative;
+  margin: 10px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  max-width: 300px;
+  max-height: 350px;
+  transform-style: preserve-3d;
+  transition: 0.1s;
+  transform-origin: center;
+  margin: 10px;
+}
+
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  color: #fff;
+  padding: 5px;
+}
+
+.front {
+  background-color: blueviolet;
+  z-index: 1;
+}
+
+.back {
+  transform: rotateY(180deg);
+  background-color: blue;
+}
+
+/* rotate button */
+.rotate_btn {
+  position: relative;
+  cursor: pointer;
+  font-size: 30px;
+  border-radius: 12px;
+  border: none;
+  margin: 5px;
+  background-color: transparent;
+  color: white;
+}
