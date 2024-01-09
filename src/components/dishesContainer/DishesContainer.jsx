@@ -2,7 +2,7 @@ import styles from "./DishesContainer.module.css";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { DishesMenu } from "../../components/dishesMenu/DishesMenu";
-import { dishes, dishesBack } from "../../../tableAndDishes";
+import { dishes, dishesBack } from "../../../Dishes";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setTableFoodImg } from "../../store/features/tablesSlice/tablesSlice";

@@ -121,18 +121,18 @@
   list-style-type: none;
   background-color: #fff;
   color: red;
-  padding: 0px 5px;
-  left: 53%;
+  padding: 0px 4px;
+  left: 44%;
   border-radius: 12px;
-  bottom: 50%;
+  bottom: 53%;
 }
 .order_length {
   position: absolute;
   list-style-type: none;
   background-color: #fff;
   color: red;
-  padding: 0px 5px;
-  left: 73%;
+  padding: 0px 4px;
+  left: 59%;
   border-radius: 12px;
-  bottom: 50%;
+  bottom: 53%;
 }
