@@ -105,14 +105,12 @@
     {
       "id": 1,
       "status": "Standart table",
-      "img": "standart-table.png",
-      "time": ""
+      "img": "standart-table.png"
     },
     {
       "id": 2,
       "status": "Vip table",
-      "img": "vip-table.png",
-      "time": ""
+      "img": "vip-table.png"
     }
   ]
 }

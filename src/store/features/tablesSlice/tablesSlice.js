@@ -6,6 +6,9 @@ const initialState = {
   tableImg: "",
   tableFoodImg: "",
   tableDrinkImg: "",
+  orderedTables: [],
+  tableTime: null,
+  tableDate: null,
 };
 
 export const tablesSlice = createSlice({
@@ -30,6 +33,15 @@ export const tablesSlice = createSlice({
     setTableDrinkImg: (state, { payload }) => {
       state.tableDrinkImg = payload;
     },
+    setOrderedTables: (state, { payload }) => {
+      state.orderedTables.push(payload);
+    },
+    setTableTime: (state, { payload }) => {
+      state.tableTime = payload;
+    },
+    setTableDate: (state, { payload }) => {
+      state.tableDate = payload;
+    },
   },
 });
 export const {
@@ -39,6 +51,9 @@ export const {
   setTableImg,
   setTableFoodImg,
   setTableDrinkImg,
+  setOrderedTables,
+  setTableTime,
+  setTableDate,
 } = tablesSlice.actions;
 
 export const getTables = () => {

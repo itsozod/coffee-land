@@ -5,27 +5,34 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Button } from "@mui/material";
-import { useState } from "react";
 import { v4 as uuid } from "uuid";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setTableTime,
+  setTableDate,
+  setOrderedTables,
+} from "../../store/features/tablesSlice/tablesSlice";
 
 export const DateTimePicker = () => {
-  const [selectedTime, setSelectedTime] = useState(null);
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [timeNDate, setTimeNDate] = useState([]);
+  const tableTime = useSelector((state) => state.tables.tableTime);
+  const tableDate = useSelector((state) => state.tables.tableDate);
+  console.log(tableTime, tableDate);
+  const orderedTables = useSelector((state) => state.tables.orderedTables);
+  console.log(orderedTables);
+  const dispatch = useDispatch();
 
   const handleBookTable = () => {
-    // Perform any actions you need with the selected time and date
-    if (selectedTime === null || selectedDate === null) {
+    if (tableTime === null || tableDate === null) {
       alert("Fill both");
       return;
+    } else {
+      const newOrdered = {
+        id: uuid(),
+        time: tableTime,
+        date: tableDate,
+      };
+      dispatch(setOrderedTables(newOrdered));
     }
-    const newObj = {
-      id: uuid(),
-      time: selectedTime,
-      date: selectedDate,
-    };
-    setTimeNDate((prevDates) => [...prevDates, newObj]);
-    // You can update the state, dispatch an action, etc. based on your logic
   };
 
   return (
@@ -36,16 +43,31 @@ export const DateTimePicker = () => {
           <MobileTimePicker
             label="Choose your time"
             sx={{ width: "220px" }}
-            value={selectedTime}
-            onChange={(newTime) => setSelectedTime(newTime)}
+            onChange={(newData) => {
+              const timeAsDate = new Date(newData);
+              const formattedTime = timeAsDate.toLocaleTimeString([], {
+                hour: "numeric",
+                minute: "2-digit",
+              });
+              dispatch(setTableTime(formattedTime));
+            }}
           />
         </DemoItem>
         <DemoItem label="Date picker">
           <DatePicker
             sx={{ width: "220px" }}
             label="Choose date"
-            value={selectedDate}
-            onChange={(newDate) => setSelectedDate(newDate)}
+            value={tableDate}
+            onChange={(newData) => {
+              const dateAsDate = new Date(newData);
+              const formattedDate = dateAsDate.toLocaleDateString("en-US", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              });
+
+              dispatch(setTableDate(formattedDate));
+            }}
           />
         </DemoItem>
         <Button
@@ -53,17 +75,16 @@ export const DateTimePicker = () => {
           variant="contained"
           onClick={handleBookTable}
         >
-          Book
+          Book a table
         </Button>
       </LocalizationProvider>
 
       {/* Display selected values */}
       <div>
-        {timeNDate.map((entry) => (
+        {orderedTables.map((entry) => (
           <div key={entry.id}>
             <p>
-              {entry.time && entry.time.toString()} :{" "}
-              {entry.date && entry.date.toString()}
+              {entry.time.toString()} : {entry.date.toString()}
             </p>
           </div>
         ))}
