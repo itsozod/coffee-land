@@ -45,6 +45,10 @@ export const Booking = () => {
           {tableFoodImg && (
             <>
               <img className={styles.table_dish} src={tableFoodImg}></img>
+            </>
+          )}
+          {tableDrinkImg && (
+            <>
               <img className={styles.table_dish} src={tableDrinkImg}></img>
             </>
           )}
