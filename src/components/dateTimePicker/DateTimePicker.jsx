@@ -16,9 +16,8 @@ import {
 export const DateTimePicker = () => {
   const tableTime = useSelector((state) => state.tables.tableTime);
   const tableDate = useSelector((state) => state.tables.tableDate);
+  const tableImg = useSelector((state) => state.tables.tableImg);
   console.log(tableTime, tableDate);
-  const orderedTables = useSelector((state) => state.tables.orderedTables);
-  console.log(orderedTables);
   const dispatch = useDispatch();
 
   const handleBookTable = () => {
@@ -30,6 +29,7 @@ export const DateTimePicker = () => {
         id: uuid(),
         time: tableTime,
         date: tableDate,
+        tableImg: tableImg,
       };
       dispatch(setOrderedTables(newOrdered));
     }
@@ -57,7 +57,6 @@ export const DateTimePicker = () => {
           <DatePicker
             sx={{ width: "220px" }}
             label="Choose date"
-            value={tableDate}
             onChange={(newData) => {
               const dateAsDate = new Date(newData);
               const formattedDate = dateAsDate.toLocaleDateString("en-US", {
@@ -78,17 +77,6 @@ export const DateTimePicker = () => {
           Book a table
         </Button>
       </LocalizationProvider>
-
-      {/* Display selected values */}
-      <div>
-        {orderedTables.map((entry) => (
-          <div key={entry.id}>
-            <p>
-              {entry.time.toString()} : {entry.date.toString()}
-            </p>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };

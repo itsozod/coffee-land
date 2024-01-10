@@ -76,6 +76,10 @@ const navLinks = [
     name: "Book",
   },
   {
+    path: "/bookedtable",
+    name: "Tables",
+  },
+  {
     path: "/chatbot",
     name: "Chatbot",
   },
