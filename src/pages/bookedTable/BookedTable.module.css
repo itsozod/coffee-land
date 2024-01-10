@@ -1,4 +1,35 @@
 .booked_table_section {
-  background-color: bisque;
   min-height: 100vh;
+}
+.ordered_table_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+.ordered_table_card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #d4a373;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  border: 2px solid brown;
+  position: relative;
+}
+.ordered_table_img {
+  width: 100%;
+  object-fit: cover;
+}
+.ordered_tablefood_img {
+  width: 50px;
+  position: absolute;
+  left: 22%;
+  top: 50%;
+}
+.ordered_tabledrink_img {
+  width: 60px;
+  position: absolute;
+  left: 54%;
+  top: 48%;
 }

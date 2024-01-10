@@ -4,33 +4,55 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { Button } from "@mui/material";
+import { Alert, Button, Snackbar } from "@mui/material";
 import { v4 as uuid } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setTableTime,
   setTableDate,
   setOrderedTables,
+  setTableImg,
+  setTableFoodImg,
 } from "../../store/features/tablesSlice/tablesSlice";
+import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
 
 export const DateTimePicker = () => {
   const tableTime = useSelector((state) => state.tables.tableTime);
   const tableDate = useSelector((state) => state.tables.tableDate);
   const tableImg = useSelector((state) => state.tables.tableImg);
+  const tableFoodImg = useSelector((state) => state.tables.tableFoodImg);
+  const tableDrinkImg = useSelector((state) => state.tables.tableDrinkImg);
   console.log(tableTime, tableDate);
   const dispatch = useDispatch();
+  const [
+    snackBar,
+    handleOpenSnackBar,
+    handleCloseErrorSnackBar,
+    handleCloseSuccessSnackBar,
+  ] = useSnackBar();
+
+  const handleClearTable = () => {
+    handleCloseSuccessSnackBar();
+    dispatch(setTableImg(""));
+    dispatch(setTableFoodImg(""));
+  };
 
   const handleBookTable = () => {
     if (tableTime === null || tableDate === null) {
       alert("Fill both");
       return;
+    } else if (tableDate && tableTime && !tableImg) {
+      handleOpenSnackBar();
     } else {
       const newOrdered = {
         id: uuid(),
         time: tableTime,
         date: tableDate,
         tableImg: tableImg,
+        tableFoodImg: tableFoodImg,
+        tableDrinkImg: tableDrinkImg,
       };
+      handleOpenSnackBar();
       dispatch(setOrderedTables(newOrdered));
     }
   };
@@ -77,6 +99,35 @@ export const DateTimePicker = () => {
           Book a table
         </Button>
       </LocalizationProvider>
+      {tableImg ? (
+        <Snackbar
+          open={snackBar}
+          autoHideDuration={4000}
+          onClose={() => handleClearTable()}
+        >
+          <Alert
+            onClose={() => handleClearTable()}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            Your table order was accepted successfully!
+          </Alert>
+        </Snackbar>
+      ) : (
+        <Snackbar
+          open={snackBar}
+          autoHideDuration={4000}
+          onClose={() => handleCloseErrorSnackBar()}
+        >
+          <Alert
+            onClose={() => handleCloseErrorSnackBar()}
+            severity="error"
+            sx={{ width: "100%" }}
+          >
+            Choose a table and dish before booking your table!
+          </Alert>
+        </Snackbar>
+      )}
     </div>
   );
 };

@@ -87,9 +87,9 @@
   display: flex;
   align-items: center;
   margin-right: 24px;
-  @media screen and (max-width: 910px) {
+  /* @media screen and (max-width: 910px) {
     display: none;
-  }
+  } */
 }
 .btnLink {
   border-radius: 4px;

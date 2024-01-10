@@ -49,10 +49,18 @@
   height: auto;
 }
 .table_dish {
-  width: 100px;
+  width: 60px;
   position: absolute;
-  bottom: 40%;
-  left: 53%;
+  bottom: 43%;
+  left: 33%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+.table_drink {
+  width: 60px;
+  position: absolute;
+  bottom: 43%;
+  left: 63%;
   transform: translateX(-50%);
   z-index: 1;
 }

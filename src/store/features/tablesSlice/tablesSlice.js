@@ -6,7 +6,7 @@ const initialState = {
   tableImg: "",
   tableFoodImg: "",
   tableDrinkImg: "",
-  orderedTables: [],
+  orderedTables: JSON.parse(localStorage.getItem("orderedtables")) || [],
   tableTime: null,
   tableDate: null,
 };
@@ -35,6 +35,10 @@ export const tablesSlice = createSlice({
     },
     setOrderedTables: (state, { payload }) => {
       state.orderedTables.push(payload);
+      localStorage.setItem(
+        "orderedtables",
+        JSON.stringify(state.orderedTables)
+      );
     },
     setTableTime: (state, { payload }) => {
       state.tableTime = payload;

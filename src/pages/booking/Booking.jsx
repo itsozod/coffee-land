@@ -1,32 +1,13 @@
 import styles from "./Booking.module.css";
 import { Tables } from "../../components/tables/Tables";
-import { Button, Snackbar, Alert } from "@mui/material";
-import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  setTableImg,
-  setTableFoodImg,
-} from "../../store/features/tablesSlice/tablesSlice";
 import { DishesContainer } from "../../components/dishesContainer/DishesContainer";
 import { DateTimePicker } from "../../components/dateTimePicker/DateTimePicker";
+import { useSelector } from "react-redux";
 
 export const Booking = () => {
   const tableImg = useSelector((state) => state.tables.tableImg);
   const tableFoodImg = useSelector((state) => state.tables.tableFoodImg);
   const tableDrinkImg = useSelector((state) => state.tables.tableDrinkImg);
-  const dispatch = useDispatch();
-  const [
-    snackBar,
-    handleOpenSnackBar,
-    handleCloseErrorSnackBar,
-    handleCloseSuccessSnackBar,
-  ] = useSnackBar();
-
-  const handleClearTable = () => {
-    handleCloseSuccessSnackBar();
-    dispatch(setTableImg(""));
-    dispatch(setTableFoodImg(""));
-  };
 
   return (
     <section className={styles.booking_section}>
@@ -49,55 +30,12 @@ export const Booking = () => {
           )}
           {tableDrinkImg && (
             <>
-              <img className={styles.table_dish} src={tableDrinkImg}></img>
+              <img className={styles.table_drink} src={tableDrinkImg}></img>
             </>
           )}
           <img className={styles.booked_img} src={tableImg} alt="Image"></img>
-          <div className={styles.book_table_btn_container}>
-            <Button
-              sx={{
-                backgroundColor: "aqua",
-                ":hover": { backgroundColor: "aquamarine" },
-              }}
-              onClick={() => handleOpenSnackBar()}
-            >
-              Book Table
-            </Button>
-            {tableFoodImg ? (
-              <Snackbar
-                open={snackBar}
-                autoHideDuration={4000}
-                onClose={() => handleClearTable()}
-              >
-                <Alert
-                  onClose={() => handleClearTable()}
-                  severity="success"
-                  sx={{ width: "100%" }}
-                >
-                  Your table order was accepted successfully, we will contact
-                  you!
-                </Alert>
-              </Snackbar>
-            ) : (
-              <Snackbar
-                open={snackBar}
-                autoHideDuration={4000}
-                onClose={() => handleCloseErrorSnackBar()}
-              >
-                <Alert
-                  onClose={() => handleCloseErrorSnackBar()}
-                  severity="error"
-                  sx={{ width: "100%" }}
-                >
-                  Choose a dish before booking your table!
-                </Alert>
-              </Snackbar>
-            )}
-          </div>
         </div>
-      ) : (
-        ""
-      )}
+      ) : null}
       <DateTimePicker />
     </section>
   );
