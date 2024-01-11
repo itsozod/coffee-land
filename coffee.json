@@ -4,7 +4,7 @@
       "id": 1,
       "title": "Americano",
       "img": "/americano.jpg",
-      "price": 1,
+      "price": 3,
       "quantity": 1
     },
     {
@@ -53,7 +53,35 @@
       "id": 8,
       "title": "Cortado",
       "img": "/cortado-coffee.jpg",
-      "price": 8,
+      "price": 10,
+      "quantity": 1
+    },
+    {
+      "id": 9,
+      "title": "Frappuccino",
+      "img": "/frappuccino.jpg",
+      "price": 13,
+      "quantity": 1
+    },
+    {
+      "id": 10,
+      "title": "Macchiato",
+      "img": "/macchiato.png",
+      "price": 10,
+      "quantity": 1
+    },
+    {
+      "id": 11,
+      "title": "Breve",
+      "img": "/coffee-breve.jpg",
+      "price": 9,
+      "quantity": 1
+    },
+    {
+      "id": 12,
+      "title": "Red eye",
+      "img": "/red-eye.png",
+      "price": 12,
       "quantity": 1
     }
   ],
@@ -62,20 +90,20 @@
       "id": 1,
       "title": "Waffle cone",
       "img": "/waffle-cone.png",
-      "price": 3,
+      "price": 4,
       "quantity": 1
     },
     {
       "id": 2,
-      "title": "White ice-cream",
-      "img": "/white-ice.png",
+      "title": "Chocolate strawberry",
+      "img": "/chocolate-strawberry.png",
       "price": 2,
       "quantity": 1
     },
     {
       "id": 3,
-      "title": "Waffle cone",
-      "img": "/waffle-cone.png",
+      "title": "Green ice-cream",
+      "img": "/green-icecream.png",
       "price": 3,
       "quantity": 1
     },
@@ -90,7 +118,7 @@
       "id": 5,
       "title": "Chocolate Vanilla",
       "img": "/chocolate-ice-cream.png",
-      "price": 2,
+      "price": 5,
       "quantity": 1
     },
     {
@@ -98,6 +126,41 @@
       "title": "Pink ice-cream",
       "img": "/pink-ice-cream.png",
       "price": 2,
+      "quantity": 1
+    },
+    {
+      "id": 7,
+      "title": "Cherry ice-cream",
+      "img": "/cherry-ice-cream.png",
+      "price": 4,
+      "quantity": 1
+    },
+    {
+      "id": 8,
+      "title": "Waffle ice-cream",
+      "img": "/waffles-ice-cream.png",
+      "price": 9,
+      "quantity": 1
+    },
+    {
+      "id": 9,
+      "title": "Neapolitan ice-cream",
+      "img": "/neapolitan-ice-cream.png",
+      "price": 9,
+      "quantity": 1
+    },
+    {
+      "id": 10,
+      "title": "Milk ice-cream",
+      "img": "/milk-ice-cream.png",
+      "price": 5,
+      "quantity": 1
+    },
+    {
+      "id": 11,
+      "title": "Vanilla and chocolate",
+      "img": "/vanilla-chocolate.png",
+      "price": 5,
       "quantity": 1
     }
   ],

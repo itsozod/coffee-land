@@ -74,7 +74,7 @@ export const CoffeeCard = () => {
         spacing={2}
       >
         <Pagination
-          count={2}
+          count={3}
           color="primary"
           onChange={(_e, page) => dispatch(getDatas(page))}
           sx={{
