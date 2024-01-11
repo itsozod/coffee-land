@@ -46,6 +46,13 @@ export const tablesSlice = createSlice({
     setTableDate: (state, { payload }) => {
       state.tableDate = payload;
     },
+    clearOrderedTables: (state, { payload }) => {
+      state.orderedTables = payload;
+      localStorage.setItem(
+        "orderedtables",
+        JSON.stringify(state.orderedTables)
+      );
+    },
   },
 });
 export const {
@@ -58,6 +65,7 @@ export const {
   setOrderedTables,
   setTableTime,
   setTableDate,
+  clearOrderedTables,
 } = tablesSlice.actions;
 
 export const getTables = () => {

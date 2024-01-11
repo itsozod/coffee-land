@@ -136,3 +136,13 @@
   border-radius: 12px;
   bottom: 53%;
 }
+.ordered_tables_length {
+  position: absolute;
+  list-style-type: none;
+  background-color: #fff;
+  color: red;
+  padding: 0px 4px;
+  left: 78%;
+  border-radius: 12px;
+  bottom: 53%;
+}

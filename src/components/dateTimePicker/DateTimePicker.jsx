@@ -13,6 +13,7 @@ import {
   setOrderedTables,
   setTableImg,
   setTableFoodImg,
+  setTableDrinkImg,
 } from "../../store/features/tablesSlice/tablesSlice";
 import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
 
@@ -24,17 +25,15 @@ export const DateTimePicker = () => {
   const tableDrinkImg = useSelector((state) => state.tables.tableDrinkImg);
   console.log(tableTime, tableDate);
   const dispatch = useDispatch();
-  const [
-    snackBar,
-    handleOpenSnackBar,
-    handleCloseErrorSnackBar,
-    handleCloseSuccessSnackBar,
-  ] = useSnackBar();
+  const [snackBar, handleOpenSnackBar, handleCloseSnackBar] = useSnackBar();
 
   const handleClearTable = () => {
-    handleCloseSuccessSnackBar();
-    dispatch(setTableImg(""));
-    dispatch(setTableFoodImg(""));
+    handleCloseSnackBar();
+    setTimeout(() => {
+      dispatch(setTableImg(""));
+      dispatch(setTableFoodImg(""));
+      dispatch(setTableDrinkImg(""));
+    }, 500);
   };
 
   const handleBookTable = () => {
@@ -102,7 +101,7 @@ export const DateTimePicker = () => {
       {tableImg ? (
         <Snackbar
           open={snackBar}
-          autoHideDuration={4000}
+          autoHideDuration={3000}
           onClose={() => handleClearTable()}
         >
           <Alert
@@ -116,11 +115,11 @@ export const DateTimePicker = () => {
       ) : (
         <Snackbar
           open={snackBar}
-          autoHideDuration={4000}
-          onClose={() => handleCloseErrorSnackBar()}
+          autoHideDuration={2000}
+          onClose={() => handleCloseSnackBar()}
         >
           <Alert
-            onClose={() => handleCloseErrorSnackBar()}
+            onClose={() => handleCloseSnackBar()}
             severity="error"
             sx={{ width: "100%" }}
           >

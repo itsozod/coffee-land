@@ -33,3 +33,15 @@
   left: 54%;
   top: 48%;
 }
+.empty_ordered_tables {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.clearOrderedTables {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}

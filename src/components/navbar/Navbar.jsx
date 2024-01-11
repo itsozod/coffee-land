@@ -103,6 +103,12 @@ export const Navbar = ({ onClick }) => {
     (currentOrderQuantity, { quantity }) => quantity + currentOrderQuantity,
     0
   );
+
+  const orderedTablesLength = useSelector(
+    (state) => state.tables.orderedTables
+  ).length;
+  const orderedTables = useSelector((state) => state.tables.orderedTables);
+  console.log(orderedTablesLength);
   return (
     <>
       <nav
@@ -149,6 +155,9 @@ export const Navbar = ({ onClick }) => {
           </li>
           <li className={styles.order_length}>
             {orders.length > 0 && totalOrdersQuantity}
+          </li>
+          <li className={styles.ordered_tables_length}>
+            {orderedTables.length > 0 && orderedTablesLength}
           </li>
         </ul>
         <div className={styles.navBtnLink}>

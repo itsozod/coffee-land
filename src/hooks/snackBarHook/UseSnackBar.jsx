@@ -9,17 +9,6 @@ export const useSnackBar = () => {
   const handleCloseSnackBar = () => {
     setSnackBar(false);
   };
-  const handleCloseErrorSnackBar = () => {
-    setSnackBar(false);
-  };
-  const handleCloseSuccessSnackBar = () => {
-    setSnackBar(false);
-  };
-  return [
-    snackBar,
-    handleOpenSnackBar,
-    handleCloseSnackBar,
-    handleCloseErrorSnackBar,
-    handleCloseSuccessSnackBar,
-  ];
+
+  return [snackBar, handleOpenSnackBar, handleCloseSnackBar];
 };
