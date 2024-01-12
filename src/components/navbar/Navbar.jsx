@@ -56,10 +56,6 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 
 const navLinks = [
   {
-    path: "/about",
-    name: "About",
-  },
-  {
     path: "/menu",
     name: "Menu",
   },

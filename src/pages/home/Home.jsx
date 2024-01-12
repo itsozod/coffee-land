@@ -1,12 +1,13 @@
-import { NavLink } from "react-router-dom";
 import styles from "./Home.module.css";
 import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
 import { WelcomeContainer } from "../../components/welcomeContainer/WelcomeContainer";
 import { WhyUsContainer } from "../../components/whyUsContainer/WhyUsContainer";
+import { useNavigate } from "react-router-dom";
 export const Home = () => {
   // custom hook to track the state for light/dark mode
   const [darkMode] = useDarkMode();
   console.log("Dark mode", darkMode);
+  const navigate = useNavigate();
   return (
     <>
       <section className={styles.section_home}>
@@ -36,9 +37,12 @@ export const Home = () => {
           />
           <h1 className={styles.home_title}>Welcome to Coffeeland</h1>
           <h1 className={styles.home_info}>Experience Coffee</h1>
-          <NavLink className={styles.menuBtnLink} to={"/menu"}>
+          <button
+            className={styles.menuBtnLink}
+            onClick={() => navigate("/menu")}
+          >
             Explore menu
-          </NavLink>
+          </button>
         </div>
       </section>
       <section

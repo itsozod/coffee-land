@@ -4,7 +4,6 @@ import { Navbar } from "./components/navbar/Navbar";
 import { Sidebar } from "./components/sidebar/Sidebar";
 import { Routes, Route } from "react-router-dom";
 import { Home } from "./pages/home/Home";
-import { About } from "./pages/about/About";
 import { Menu } from "./pages/menu/Menu";
 import { Cart } from "./pages/cart/Cart";
 import { Booking } from "./pages/booking/Booking";
@@ -52,7 +51,6 @@ function App() {
             {/* Routes */}
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
               <Route path="/menu" element={<Menu />}>
                 <Route index element={<CoffeeCard />} />
                 <Route path="coffeecard" element={<CoffeeCard />} />
