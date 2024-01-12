@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   coffees: [],
   loader: false,
-  query: "",
-  currentPage: 1,
+  coffeeQuery: "",
+  currentCoffeePage: 1,
 };
 export const coffeesSlice = createSlice({
   name: "coffees",
@@ -15,16 +15,16 @@ export const coffeesSlice = createSlice({
     setLoader: (state, { payload }) => {
       state.loader = payload;
     },
-    setQuery: (state, { payload }) => {
-      state.query = payload;
+    setCoffeeQuery: (state, { payload }) => {
+      state.coffeeQuery = payload;
     },
-    setCurrentPage: (state, { payload }) => {
-      state.currentPage = payload;
+    setCurrentCoffeePage: (state, { payload }) => {
+      state.currentCoffeePage = payload;
     },
   },
 });
 
-export const { setDatas, setLoader, setQuery, setCurrentPage } =
+export const { setDatas, setLoader, setCoffeeQuery, setCurrentCoffeePage } =
   coffeesSlice.actions;
 
 export const getDatas = (page, query) => {

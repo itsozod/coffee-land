@@ -5,8 +5,8 @@ import { SearchLoader } from "../../components/searchLoader/SearchLoader";
 import { useEffect } from "react";
 import {
   getDatas,
-  setCurrentPage,
-  setQuery,
+  setCurrentCoffeePage,
+  setCoffeeQuery,
 } from "../../store/features/coffees/coffeesSlice";
 import { setCoffeeName } from "../../store/features/coffeeCupSelection/coffeeCupSlice";
 import { setCoffeePrice } from "../../store/features/coffeeCupSelection/coffeeCupSlice";
@@ -24,14 +24,16 @@ export const CoffeeCard = () => {
   const [darkMode] = useDarkMode();
   const coffees = useSelector((state) => state.coffees.coffees);
   const loader = useSelector((state) => state.coffees.loader);
-  const query = useSelector((state) => state.coffees.query);
-  const currentPage = useSelector((state) => state.coffees.currentPage);
+  const coffeeQuery = useSelector((state) => state.coffees.coffeeQuery);
+  const currentCoffeePage = useSelector(
+    (state) => state.coffees.currentCoffeePage
+  );
   const dispatch = useDispatch();
   useEffect(() => {
     console.log("Coffees");
-    const pageToFetch = query ? 1 : currentPage;
-    dispatch(getDatas(pageToFetch, query));
-  }, [dispatch, currentPage, query]);
+    const pageToFetch = coffeeQuery ? 1 : currentCoffeePage;
+    dispatch(getDatas(pageToFetch, coffeeQuery));
+  }, [dispatch, currentCoffeePage, coffeeQuery]);
   console.log(coffees);
 
   const handleClick = (id) => {
@@ -55,8 +57,8 @@ export const CoffeeCard = () => {
           type="search"
           placeholder="Enter coffee name"
           className={styles.search_input_coffee}
-          value={query}
-          onChange={(e) => dispatch(setQuery(e.target.value))}
+          value={coffeeQuery}
+          onChange={(e) => dispatch(setCoffeeQuery(e.target.value))}
         />
       </div>
       {coffees.length === 0 && <h1>Nothing was found!</h1>}
@@ -94,8 +96,8 @@ export const CoffeeCard = () => {
           count={3}
           color="primary"
           onChange={(_e, page) => {
-            dispatch(getDatas(page, query));
-            dispatch(setCurrentPage(page));
+            dispatch(getDatas(page, coffeeQuery));
+            dispatch(setCurrentCoffeePage(page));
           }}
           sx={{
             "& .MuiPaginationItem-root": {
