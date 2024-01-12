@@ -1,7 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./IceCreamCard.module.css";
 import { useEffect } from "react";
-import { getIceCreams } from "../../store/features/iceCreamSlice/iceCreamSlice";
+import {
+  getIceCreams,
+  setCurrentIcePage,
+  setIceQuery,
+} from "../../store/features/iceCreamSlice/iceCreamSlice";
 import { SearchLoader } from "../../components/searchLoader/SearchLoader";
 import {
   addToCart,
@@ -16,6 +20,8 @@ export const IceCreamCard = () => {
   const [darkMode] = useDarkMode();
   const iceCreams = useSelector((state) => state.iceCreams.iceCreams);
   const iceLoader = useSelector((state) => state.iceCreams.iceLoader);
+  const iceQuery = useSelector((state) => state.iceCreams.iceQuery);
+  const currentIcePage = useSelector((state) => state.iceCreams.currentIcePage);
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
   const checkCart = (item) => {
@@ -34,10 +40,20 @@ export const IceCreamCard = () => {
     }
   };
   useEffect(() => {
-    dispatch(getIceCreams());
-  }, [dispatch]);
+    const fetchCurrentIcePage = iceQuery ? 1 : currentIcePage;
+    dispatch(getIceCreams(fetchCurrentIcePage, iceQuery));
+  }, [dispatch, currentIcePage, iceQuery]);
   return (
     <>
+      <div className={styles.icecream_search_container}>
+        <input
+          type="search"
+          placeholder="Enter ice-cream name"
+          className={styles.search_input_icecream}
+          value={iceQuery}
+          onChange={(e) => dispatch(setIceQuery(e.target.value))}
+        />
+      </div>
       {iceLoader ? (
         <SearchLoader />
       ) : (
@@ -71,7 +87,10 @@ export const IceCreamCard = () => {
         <Pagination
           count={3}
           color="primary"
-          onChange={(_e, page) => dispatch(getIceCreams(page))}
+          onChange={(_e, page) => {
+            dispatch(getIceCreams(page, iceQuery));
+            dispatch(setCurrentIcePage(page));
+          }}
           sx={{
             "& .MuiPaginationItem-root": {
               color: darkMode ? "white" : "black",
