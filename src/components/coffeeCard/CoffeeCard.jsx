@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./CoffeeCard.module.css";
 import { SearchLoader } from "../../components/searchLoader/SearchLoader";
 import { useEffect } from "react";
-import { getDatas } from "../../store/features/coffees/coffeesSlice";
+import {
+  getDatas,
+  setCurrentPage,
+  setQuery,
+} from "../../store/features/coffees/coffeesSlice";
 import { setCoffeeName } from "../../store/features/coffeeCupSelection/coffeeCupSlice";
 import { setCoffeePrice } from "../../store/features/coffeeCupSelection/coffeeCupSlice";
 import { setCoffeeQuantity } from "../../store/features/coffeeCupSelection/coffeeCupSlice";
@@ -20,11 +24,14 @@ export const CoffeeCard = () => {
   const [darkMode] = useDarkMode();
   const coffees = useSelector((state) => state.coffees.coffees);
   const loader = useSelector((state) => state.coffees.loader);
+  const query = useSelector((state) => state.coffees.query);
+  const currentPage = useSelector((state) => state.coffees.currentPage);
   const dispatch = useDispatch();
   useEffect(() => {
     console.log("Coffees");
-    dispatch(getDatas());
-  }, [dispatch]);
+    const pageToFetch = query ? 1 : currentPage;
+    dispatch(getDatas(pageToFetch, query));
+  }, [dispatch, currentPage, query]);
   console.log(coffees);
 
   const handleClick = (id) => {
@@ -43,6 +50,16 @@ export const CoffeeCard = () => {
   };
   return (
     <>
+      <div className={styles.coffee_search_container}>
+        <input
+          type="search"
+          placeholder="Enter coffee name"
+          className={styles.search_input_coffee}
+          value={query}
+          onChange={(e) => dispatch(setQuery(e.target.value))}
+        />
+      </div>
+      {coffees.length === 0 && <h1>Nothing was found!</h1>}
       {loader ? (
         <SearchLoader />
       ) : (
@@ -76,7 +93,10 @@ export const CoffeeCard = () => {
         <Pagination
           count={3}
           color="primary"
-          onChange={(_e, page) => dispatch(getDatas(page))}
+          onChange={(_e, page) => {
+            dispatch(getDatas(page, query));
+            dispatch(setCurrentPage(page));
+          }}
           sx={{
             "& .MuiPaginationItem-root": {
               color: darkMode ? "white" : "black",
