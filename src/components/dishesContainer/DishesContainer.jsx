@@ -2,7 +2,12 @@ import styles from "./DishesContainer.module.css";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { DishesMenu } from "../../components/dishesMenu/DishesMenu";
-import { dishes, dishesBack, drinks } from "../../../DishesAndDrinks";
+import {
+  dishes,
+  dishesBack,
+  drinks,
+  drinksBack,
+} from "../../../DishesAndDrinks";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -68,7 +73,7 @@ export const DishesContainer = () => {
               ))}
             </div>
             <div className={styles.back} style={{ zIndex: rotate ? "1" : 0 }}>
-              {drinks.map((drink) => (
+              {drinksBack.map((drink) => (
                 <DrinksMenu
                   key={drink.id}
                   drink={drink}
