@@ -1,0 +1,39 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+  background-color: black;
+  color: white;
+}
+.socials_container {
+  margin: 10px;
+}
+.insta,
+.facebook,
+.twitter,
+.youtube {
+  cursor: pointer;
+  margin: 10px;
+}
+.insta:hover {
+  color: red;
+}
+.facebook:hover {
+  color: blue;
+}
+.twitter:hover {
+  color: lightskyblue;
+}
+.youtube:hover {
+  color: red;
+}
+.github_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.github_link {
+  margin-left: 5px;
+}

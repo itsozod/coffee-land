@@ -17,6 +17,7 @@ import "./App.css";
 import { ThemeProvider } from "./hooks/darkmodeHook/ThemeProvider";
 import { IceCreamCard } from "./components/iceCreamCard/IceCreamCard";
 import { CoffeeCard } from "./components/coffeeCard/CoffeeCard";
+import { Footer } from "./components/footer/Footer";
 function App() {
   const [loader, setLoader] = useState(false);
   const [toggle, setToggle] = useState(false);
@@ -65,6 +66,7 @@ function App() {
               {/* <Route path="/signin" element={<SignIn />} /> */}
               <Route path="*" element={<NotFound />} />
             </Routes>
+            <Footer />
           </ThemeProvider>
         </>
       )}
