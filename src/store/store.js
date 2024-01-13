@@ -5,6 +5,7 @@ import { cartSlice } from "./features/cartSlice/cartSlice";
 import { iceCreamSlice } from "./features/iceCreamSlice/iceCreamSlice";
 import { orderSlice } from "./features/orderSlice/orderSlice";
 import { tablesSlice } from "./features/tablesSlice/tablesSlice";
+import { signInSlice } from "./features/signInSlice/signInSlice";
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
     iceCreams: iceCreamSlice.reducer,
     orders: orderSlice.reducer,
     tables: tablesSlice.reducer,
+    signin: signInSlice.reducer,
   },
 });

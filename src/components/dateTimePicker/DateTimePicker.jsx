@@ -15,7 +15,7 @@ import {
   setTableFoodImg,
   setTableDrinkImg,
 } from "../../store/features/tablesSlice/tablesSlice";
-import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
+import { useSnackBar } from "../../hooks/snackBarHook/UseSnackBar";
 import { useState } from "react";
 
 export const DateTimePicker = () => {
@@ -42,20 +42,15 @@ export const DateTimePicker = () => {
   };
 
   const handleBookTable = () => {
-    if (tableTime === null && tableDate === null) {
+    if (tableTime === null) {
       setTimeValidation(true);
-      setDateValidation(true);
-      return;
-    } else if (tableTime !== null && tableDate === null) {
-      setTimeValidation(false);
-      setDateValidation(true);
-      return;
-    } else if (tableTime === null && tableDate !== null) {
-      setTimeValidation(true);
-      setDateValidation(false);
-      return;
     } else {
       setTimeValidation(false);
+    }
+
+    if (tableDate === null) {
+      setDateValidation(true);
+    } else {
       setDateValidation(false);
     }
 

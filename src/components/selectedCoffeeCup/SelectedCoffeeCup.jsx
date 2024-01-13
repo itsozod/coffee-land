@@ -6,7 +6,7 @@ import {
   updateCart,
 } from "../../store/features/cartSlice/cartSlice";
 import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
-import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
+import { useSnackBar } from "../../hooks/snackBarHook/UseSnackBar";
 import { Alert, Snackbar } from "@mui/material";
 
 export const SelectedCoffeeCup = () => {

@@ -14,7 +14,7 @@ import { setCoffeeQuantity } from "../../store/features/coffeeCupSelection/coffe
 import { CoffeeCupSelection } from "../coffeeCupSelection/CoffeeCupSelection";
 import { SelectedCoffeeCup } from "../selectedCoffeeCup/SelectedCoffeeCup";
 import { Alert, Snackbar } from "@mui/material";
-import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
+import { useSnackBar } from "../../hooks/snackBarHook/UseSnackBar";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";

@@ -79,10 +79,6 @@ const navLinks = [
     path: "/chatbot",
     name: "Chatbot",
   },
-  // {
-  //   path: "/signin",
-  //   name: "Sign In",
-  // },
 ];
 
 export const Navbar = ({ onClick }) => {
@@ -166,11 +162,6 @@ export const Navbar = ({ onClick }) => {
               />
             }
           />
-          {/* <li className={styles.link_links_signup}>
-            <NavLink className={styles.btnLink} to="/signup">
-              Sign Up
-            </NavLink>
-          </li> */}
         </div>
       </nav>
     </>

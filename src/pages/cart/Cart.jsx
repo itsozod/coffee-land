@@ -16,7 +16,7 @@ import {
   updateOrder,
 } from "../../store/features/orderSlice/orderSlice";
 import { Alert, Snackbar } from "@mui/material";
-import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
+import { useSnackBar } from "../../hooks/snackBarHook/UseSnackBar";
 
 export const Cart = () => {
   const [snackBar, handleOpenSnackBar, handleCloseSnackBar] = useSnackBar();

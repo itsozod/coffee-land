@@ -4,7 +4,7 @@ import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
 import { Alert, Button, Snackbar } from "@mui/material";
 import { clearOrderedTables } from "../../store/features/tablesSlice/tablesSlice";
 import { useNavigate } from "react-router-dom";
-import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
+import { useSnackBar } from "../../hooks/snackBarHook/UseSnackBar";
 
 export const BookedTable = () => {
   const [darkMode] = useDarkMode();

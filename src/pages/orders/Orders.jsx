@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Box, Button } from "@mui/material";
 import { clearOrders } from "../../store/features/orderSlice/orderSlice";
 import { Alert, Snackbar } from "@mui/material";
-import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
+import { useSnackBar } from "../../hooks/snackBarHook/UseSnackBar";
 
 export const Orders = () => {
   const [darkMode] = useDarkMode();

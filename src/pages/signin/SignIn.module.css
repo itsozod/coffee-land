@@ -1,0 +1,15 @@
+.form_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: aqua;
+  padding: 10px 20px;
+  border-radius: 12px;
+}
