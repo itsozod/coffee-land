@@ -36,6 +36,8 @@ export const DateTimePicker = () => {
       dispatch(setTableImg(""));
       dispatch(setTableFoodImg(""));
       dispatch(setTableDrinkImg(""));
+      dispatch(setTableTime(null));
+      dispatch(setTableDate(null));
     }, 500);
   };
 
