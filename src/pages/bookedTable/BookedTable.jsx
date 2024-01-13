@@ -1,16 +1,23 @@
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./BookedTable.module.css";
 import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
-import { Button } from "@mui/material";
+import { Alert, Button, Snackbar } from "@mui/material";
 import { clearOrderedTables } from "../../store/features/tablesSlice/tablesSlice";
 import { useNavigate } from "react-router-dom";
+import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
 
 export const BookedTable = () => {
   const [darkMode] = useDarkMode();
   const orderedTables = useSelector((state) => state.tables.orderedTables);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [snackBar, handleOpenSnackBar, handleCloseSnackBar] = useSnackBar();
   console.log(orderedTables);
+
+  const handleDeletedTables = () => {
+    dispatch(clearOrderedTables([]));
+    handleOpenSnackBar();
+  };
   return (
     <section
       className={styles.booked_table_section}
@@ -57,14 +64,24 @@ export const BookedTable = () => {
       </div>
       {orderedTables.length > 0 && (
         <div className={styles.clearOrderedTables}>
-          <Button
-            onClick={() => dispatch(clearOrderedTables([]))}
-            variant="contained"
-          >
+          <Button onClick={() => handleDeletedTables()} variant="contained">
             Clear Tables
           </Button>
         </div>
       )}
+      <Snackbar
+        open={snackBar}
+        autoHideDuration={3000}
+        onClose={handleCloseSnackBar}
+      >
+        <Alert
+          onClose={handleCloseSnackBar}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
+          Your page was cleared successfully!
+        </Alert>
+      </Snackbar>
     </section>
   );
 };

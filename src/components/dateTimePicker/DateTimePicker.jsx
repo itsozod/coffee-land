@@ -16,6 +16,8 @@ import {
   setTableDrinkImg,
 } from "../../store/features/tablesSlice/tablesSlice";
 import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
+import { useState } from "react";
+import dayjs from "dayjs";
 
 export const DateTimePicker = () => {
   const tableTime = useSelector((state) => state.tables.tableTime);
@@ -26,6 +28,8 @@ export const DateTimePicker = () => {
   console.log(tableTime, tableDate);
   const dispatch = useDispatch();
   const [snackBar, handleOpenSnackBar, handleCloseSnackBar] = useSnackBar();
+  const [timeValidation, setTimeValidation] = useState(false);
+  const [dateValidation, setDateValidation] = useState(false);
 
   const handleClearTable = () => {
     handleCloseSnackBar();
@@ -33,14 +37,29 @@ export const DateTimePicker = () => {
       dispatch(setTableImg(""));
       dispatch(setTableFoodImg(""));
       dispatch(setTableDrinkImg(""));
+      dispatch(setTableDate(null));
     }, 500);
   };
 
   const handleBookTable = () => {
-    if (tableTime === null || tableDate === null) {
-      alert("Fill both");
+    if (tableTime === null && tableDate === null) {
+      setTimeValidation(true);
+      setDateValidation(true);
       return;
-    } else if (tableDate && tableTime && !tableImg) {
+    } else if (tableTime !== null && tableDate === null) {
+      setTimeValidation(false);
+      setDateValidation(true);
+      return;
+    } else if (tableTime === null && tableDate !== null) {
+      setTimeValidation(true);
+      setDateValidation(false);
+      return;
+    } else {
+      setTimeValidation(false);
+      setDateValidation(false);
+    }
+
+    if (tableDate && tableTime && !tableImg) {
       handleOpenSnackBar();
     } else {
       const newOrdered = {
@@ -58,12 +77,13 @@ export const DateTimePicker = () => {
 
   return (
     <div className={styles.date_time_container}>
-      <h2>Make a reservation</h2>
+      <h2 style={{ marginBottom: "10px" }}>Make a reservation</h2>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoItem label="Time picker">
           <MobileTimePicker
             label="Choose your time"
             sx={{ width: "220px" }}
+            defaultValue={dayjs(new Date().getTime())}
             onChange={(newData) => {
               const timeAsDate = new Date(newData);
               const formattedTime = timeAsDate.toLocaleTimeString([], {
@@ -73,23 +93,28 @@ export const DateTimePicker = () => {
               dispatch(setTableTime(formattedTime));
             }}
           />
+          <p style={{ color: "red" }}>{timeValidation && "*Choose a time"}</p>
         </DemoItem>
-        <DemoItem label="Date picker">
-          <DatePicker
-            sx={{ width: "220px" }}
-            label="Choose date"
-            onChange={(newData) => {
-              const dateAsDate = new Date(newData);
-              const formattedDate = dateAsDate.toLocaleDateString("en-US", {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-              });
+        <div className={styles.date_picker}>
+          <DemoItem label="Date picker">
+            <DatePicker
+              value={tableDate || null}
+              sx={{ width: "220px" }}
+              label="Choose date"
+              onChange={(newData) => {
+                const dateAsDate = new Date(newData);
+                const formattedDate = dateAsDate.toLocaleDateString("en-US", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                });
 
-              dispatch(setTableDate(formattedDate));
-            }}
-          />
-        </DemoItem>
+                dispatch(setTableDate(formattedDate));
+              }}
+            />
+            <p style={{ color: "red" }}>{dateValidation && "*Choose a date"}</p>
+          </DemoItem>
+        </div>
         <Button
           sx={{ margin: "10px" }}
           variant="contained"
@@ -123,7 +148,7 @@ export const DateTimePicker = () => {
             severity="error"
             sx={{ width: "100%" }}
           >
-            Choose a table and dish before booking your table!
+            Choose a table before booking your table!
           </Alert>
         </Snackbar>
       )}

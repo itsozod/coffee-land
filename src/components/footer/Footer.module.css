@@ -6,6 +6,7 @@
   padding: 10px;
   background-color: black;
   color: white;
+  min-height: 250px;
 }
 .socials_container {
   margin: 10px;
