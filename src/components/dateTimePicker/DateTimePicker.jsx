@@ -17,7 +17,6 @@ import {
 } from "../../store/features/tablesSlice/tablesSlice";
 import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
 import { useState } from "react";
-import dayjs from "dayjs";
 
 export const DateTimePicker = () => {
   const tableTime = useSelector((state) => state.tables.tableTime);
@@ -37,7 +36,6 @@ export const DateTimePicker = () => {
       dispatch(setTableImg(""));
       dispatch(setTableFoodImg(""));
       dispatch(setTableDrinkImg(""));
-      dispatch(setTableDate(null));
     }, 500);
   };
 
@@ -83,7 +81,6 @@ export const DateTimePicker = () => {
           <MobileTimePicker
             label="Choose your time"
             sx={{ width: "220px" }}
-            defaultValue={dayjs(new Date().getTime())}
             onChange={(newData) => {
               const timeAsDate = new Date(newData);
               const formattedTime = timeAsDate.toLocaleTimeString([], {
@@ -98,7 +95,6 @@ export const DateTimePicker = () => {
         <div className={styles.date_picker}>
           <DemoItem label="Date picker">
             <DatePicker
-              value={tableDate || null}
               sx={{ width: "220px" }}
               label="Choose date"
               onChange={(newData) => {
