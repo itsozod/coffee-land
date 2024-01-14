@@ -3,9 +3,10 @@ import styles from "./Navbar.module.css";
 import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
-import { useSelector } from "react-redux";
-import { Switch, styled } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { Button, Switch, styled } from "@mui/material";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import { setLoggedIn } from "../../store/features/signInSlice/signInSlice";
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 53,
@@ -84,6 +85,7 @@ const navLinks = [
 export const Navbar = ({ onClick }) => {
   // custom hook to track the state for light/dark mode
   const [darkMode, toggleDarkMode] = useDarkMode();
+  const dispatch = useDispatch();
   console.log("Dark mode:", darkMode);
   const cart = useSelector((state) => state.cart.cart);
   const totalQuantity = cart.reduce(
@@ -101,6 +103,11 @@ export const Navbar = ({ onClick }) => {
   ).length;
   const orderedTables = useSelector((state) => state.tables.orderedTables);
   console.log(orderedTablesLength);
+
+  const handleLogOut = () => {
+    localStorage.removeItem("loggedIn");
+    dispatch(setLoggedIn(false));
+  };
   return (
     <>
       <nav
@@ -151,6 +158,9 @@ export const Navbar = ({ onClick }) => {
           <li className={styles.ordered_tables_length}>
             {orderedTables.length > 0 && orderedTablesLength}
           </li>
+          <Button variant="contained" onClick={() => handleLogOut()}>
+            Log out
+          </Button>
         </ul>
         <div className={styles.navBtnLink}>
           <FormControlLabel

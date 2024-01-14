@@ -8,6 +8,8 @@ export const Home = () => {
   const [darkMode] = useDarkMode();
   console.log("Dark mode", darkMode);
   const navigate = useNavigate();
+  const username = JSON.parse(localStorage.getItem("username"));
+
   return (
     <>
       <section className={styles.section_home}>
@@ -35,7 +37,9 @@ export const Home = () => {
             src="/coffee-icon.png"
             alt="Coffee-icon"
           />
-          <h1 className={styles.home_title}>Welcome to Coffeeland</h1>
+          <h1 className={styles.home_title}>
+            Welcome to Coffeeland {username}
+          </h1>
           <h1 className={styles.home_info}>Experience Coffee</h1>
           <button
             className={styles.menuBtnLink}

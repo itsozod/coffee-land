@@ -31,11 +31,14 @@ export const SignIn = () => {
       setPasswordValidation(false);
     }
 
-    if (username === "ozod" && password === "ozod2905") {
-      localStorage.setItem("username", username);
-      localStorage.setItem("password", password);
+    if (username === "Ozod" && password === "ozod2905") {
+      localStorage.setItem("username", JSON.stringify(username));
+      localStorage.setItem("password", JSON.stringify(password));
       dispatch(setLoggedIn(true));
-    } else {
+    } else if (
+      (username !== "" && username !== "Ozod") ||
+      (password !== "" && password !== "ozod2905")
+    ) {
       handleOpenSnackBar();
     }
   };
