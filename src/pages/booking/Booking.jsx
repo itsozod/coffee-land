@@ -30,7 +30,7 @@ export const Booking = () => {
           ></path>
         </svg>
       </div>
-      <h1 style={{ position: "relative", color: "#fff", textAlign: "center" }}>
+      <h1 style={{ position: "relative", color: "#fff", textAlign: "center", marginTop: "25px"}}>
         Book a table
       </h1>
       <article className={styles.img_container}>

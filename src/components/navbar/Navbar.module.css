@@ -3,6 +3,12 @@
   height: auto;
   padding: 10px;
   object-fit: cover;
+  @media screen and (max-width: 362px) {
+    width: 70px;
+  }
+  @media screen and (max-width: 307px) {
+    width: 50px;
+  }
 }
 .nav {
   height: 80px;
@@ -27,6 +33,12 @@
   height: 100%;
   cursor: pointer;
   font-size: 23px;
+  @media screen and (max-width: 362px) {
+    font-size: 18px;
+  }
+  @media screen and (max-width: 307px) {
+    font-size: 15px;
+  }
 }
 .navLinkHomeDark {
   color: #fff;
@@ -37,6 +49,12 @@
   height: 100%;
   cursor: pointer;
   font-size: 23px;
+  @media screen and (max-width: 362px) {
+    font-size: 18px;
+  }
+  @media screen and (max-width: 307px) {
+    font-size: 15px;
+  }
 }
 .navLink {
   color: #000;
