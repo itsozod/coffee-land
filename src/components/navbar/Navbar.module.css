@@ -63,7 +63,7 @@
 .faBars {
   display: none;
   color: #fff;
-  @media screen and (max-width: 910px) {
+  @media screen and (max-width: 955px) {
     display: block;
     position: absolute;
     top: 0;
@@ -79,7 +79,7 @@
   align-items: center;
   padding: 25px;
   position: relative;
-  @media screen and (max-width: 910px) {
+  @media screen and (max-width: 955px) {
     display: none;
   }
 }
@@ -87,27 +87,6 @@
   display: flex;
   align-items: center;
   margin-right: 24px;
-  /* @media screen and (max-width: 910px) {
-    display: none;
-  } */
-}
-.btnLink {
-  border-radius: 4px;
-  background: #256ce1;
-  padding: 10px 22px;
-  color: #fff;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 20px;
-}
-.btnLink:hover {
-  transition: all 0.2s ease-in-out;
-  background: #fff;
-  color: #010606;
 }
 .toggleDark {
   padding: 10px;
@@ -116,6 +95,7 @@
   border: none;
   cursor: pointer;
 }
+/* cart */
 .cart_length {
   position: absolute;
   list-style-type: none;
@@ -126,6 +106,7 @@
   border-radius: 12px;
   bottom: 53%;
 }
+/* orders */
 .order_length {
   position: absolute;
   list-style-type: none;
@@ -136,6 +117,7 @@
   border-radius: 12px;
   bottom: 53%;
 }
+/* orderedTables */
 .ordered_tables_length {
   position: absolute;
   list-style-type: none;

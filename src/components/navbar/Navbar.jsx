@@ -87,17 +87,21 @@ export const Navbar = ({ onClick }) => {
   const [darkMode, toggleDarkMode] = useDarkMode();
   const dispatch = useDispatch();
   console.log("Dark mode:", darkMode);
+  // cart
   const cart = useSelector((state) => state.cart.cart);
-  const totalQuantity = cart.reduce(
+  const totalCartQuantity = cart.reduce(
     (currentQuantity, { quantity }) => quantity + currentQuantity,
     0
   );
+  
+  // orders
   const orders = useSelector((state) => state.orders.orders);
   const totalOrdersQuantity = orders.reduce(
     (currentOrderQuantity, { quantity }) => quantity + currentOrderQuantity,
     0
   );
 
+// orderedTables
   const orderedTablesLength = useSelector(
     (state) => state.tables.orderedTables
   ).length;
@@ -150,7 +154,7 @@ export const Navbar = ({ onClick }) => {
             </li>
           ))}
           <li className={styles.cart_length}>
-            {cart.length > 0 && totalQuantity}
+            {cart.length > 0 && totalCartQuantity}
           </li>
           <li className={styles.order_length}>
             {orders.length > 0 && totalOrdersQuantity}
@@ -158,7 +162,7 @@ export const Navbar = ({ onClick }) => {
           <li className={styles.ordered_tables_length}>
             {orderedTables.length > 0 && orderedTablesLength}
           </li>
-          <Button variant="contained" onClick={() => handleLogOut()}>
+          <Button sx={{marginLeft: "5px"}} variant="contained" onClick={() => handleLogOut()}>
             Log out
           </Button>
         </ul>
