@@ -15,6 +15,7 @@ import {
   setTableDrinkImg,
 } from "../../store/features/tablesSlice/tablesSlice";
 import { DrinksMenu } from "../drinksMenu/DrinksMenu";
+import { Button } from "@mui/material";
 
 export const DishesContainer = () => {
   const [rotate, setRotate] = useState(false);
@@ -29,6 +30,21 @@ export const DishesContainer = () => {
       >
         {rotate ? <FaArrowAltCircleLeft /> : <FaArrowAltCircleRight />}
       </button>
+      <div className={styles.clear_container}>
+        <Button
+          variant="contained"
+          sx={{ margin: "5px" }}
+          onClick={() => dispatch(setTableFoodImg(""))}
+        >
+          Clear Dish
+        </Button>
+        <Button
+          variant="contained"
+          onClick={() => dispatch(setTableDrinkImg(""))}
+        >
+          Clear Drink
+        </Button>
+      </div>
       <div className={styles.dishes_container}>
         <div className={styles.container}>
           <div

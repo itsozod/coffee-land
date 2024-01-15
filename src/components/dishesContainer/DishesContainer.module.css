@@ -64,3 +64,10 @@
   background-color: transparent;
   color: white;
 }
+
+.clear_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
