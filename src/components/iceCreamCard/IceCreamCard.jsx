@@ -11,7 +11,7 @@ import {
   addToCart,
   updateCart,
 } from "../../store/features/cartSlice/cartSlice";
-import { useSnackBar } from "../../hooks/snackBarHook/useSnackBar";
+import { useSnackBar } from "../../hooks/snackBarHook/UseSnackBar";
 import { Alert, Pagination, Snackbar, Stack } from "@mui/material";
 import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
 
@@ -54,6 +54,11 @@ export const IceCreamCard = () => {
           onChange={(e) => dispatch(setIceQuery(e.target.value))}
         />
       </div>
+      {iceCreams.length === 0 && (
+        <h1 style={{ color: "brown", textAlign: "center" }}>
+          Nothing was found!
+        </h1>
+      )}
       {iceLoader ? (
         <SearchLoader />
       ) : (

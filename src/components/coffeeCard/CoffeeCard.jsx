@@ -61,7 +61,11 @@ export const CoffeeCard = () => {
           onChange={(e) => dispatch(setCoffeeQuery(e.target.value))}
         />
       </div>
-      {coffees.length === 0 && <h1>Nothing was found!</h1>}
+      {coffees.length === 0 && (
+        <h1 style={{ color: "brown", textAlign: "center" }}>
+          Nothing was found!
+        </h1>
+      )}
       {loader ? (
         <SearchLoader />
       ) : (
