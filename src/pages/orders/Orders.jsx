@@ -21,7 +21,7 @@ export const Orders = () => {
   return (
     <section
       className={styles.orders_section}
-      style={{ backgroundColor: darkMode ? "#1a193a" : "bisque" }}
+      style={{ backgroundColor: darkMode ? "#003566" : "#fefae0" }}
     >
       {orders.length === 0 && (
         <div

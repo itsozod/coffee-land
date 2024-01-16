@@ -240,7 +240,7 @@ export const ChatBot = () => {
     <>
       <section
         style={{
-          backgroundColor: darkMode ? "#1a193a" : "bisque",
+          backgroundColor: darkMode ? "#003566" : "#fefae0",
           transition: ".3s ease",
         }}
         className={styles.chatBot_section}

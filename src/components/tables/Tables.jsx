@@ -31,7 +31,7 @@ export const Tables = () => {
             className={styles.table_container}
             style={{
               border: tableImg === table.img ? "2px solid red" : "",
-              backgroundColor: darkMode ? "#1a193a" : "bisque",
+              backgroundColor: darkMode ? "#003566" : "#fefae0",
             }}
           >
             <h1

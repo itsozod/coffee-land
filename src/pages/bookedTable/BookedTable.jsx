@@ -22,7 +22,7 @@ export const BookedTable = () => {
     <section
       className={styles.booked_table_section}
       style={{
-        backgroundColor: darkMode ? "#1a193a" : "bisque",
+        backgroundColor: darkMode ? "#003566" : "#fefae0",
         transition: ".3s",
       }}
     >

@@ -117,7 +117,7 @@ export const Navbar = ({ onClick }) => {
       <nav
         className={styles.nav}
         style={{
-          backgroundColor: darkMode ? "#1a193a" : "bisque",
+          backgroundColor: darkMode ? "#003566" : "#fefae0",
           transition: ".3s ease",
         }}
       >
