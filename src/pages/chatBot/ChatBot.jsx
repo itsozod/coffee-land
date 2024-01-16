@@ -5,7 +5,9 @@ import { Alert, Box, Button, Snackbar, TextField } from "@mui/material";
 import { useSnackBar } from "../../hooks/snackBarHook/UseSnackBar";
 import SendIcon from "@mui/icons-material/Send";
 import CircularProgress from "@mui/material/CircularProgress";
-import { API_KEY, API_ENDPOINT } from "../../../GPT";
+const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT;
+const API_KEY = import.meta.env.VITE_API_KEY;
+
 const questions = [
   "general",
   "coffees",
