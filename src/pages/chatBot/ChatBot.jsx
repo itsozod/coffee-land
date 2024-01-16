@@ -5,8 +5,7 @@ import { Alert, Box, Button, Snackbar, TextField } from "@mui/material";
 import { useSnackBar } from "../../hooks/snackBarHook/UseSnackBar";
 import SendIcon from "@mui/icons-material/Send";
 import CircularProgress from "@mui/material/CircularProgress";
-const API_ENDPOINT = "https://api.openai.com/v1/chat/completions";
-const API_KEY = "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";
+import { API_KEY, API_ENDPOINT } from "../../../GPT";
 const questions = [
   "general",
   "coffees",
