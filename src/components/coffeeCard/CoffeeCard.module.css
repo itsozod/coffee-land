@@ -1,3 +1,6 @@
+.full_container {
+  height: 100vh;
+}
 .coffee_container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -10,7 +13,6 @@
   margin: 10px;
   background-color: #4ea8de;
   border-radius: 12px;
-  border: 2px solid #b56576;
   box-shadow: 3px 3px 5px #fcca46;
 }
 .coffee_title {

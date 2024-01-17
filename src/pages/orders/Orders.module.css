@@ -1,5 +1,7 @@
+.full_container {
+  height: 100vh;
+}
 .orders_section {
-  min-height: 100vh;
   background-color: bisque;
 }
 .orders_container {
@@ -16,6 +18,8 @@
   color: #000;
   border-radius: 12px;
   border: 2px solid #ef233c;
+  padding: 10px;
+  font-weight: bold;
 }
 .order_img {
   width: 120px;

@@ -66,53 +66,56 @@ export const CoffeeCard = () => {
           Nothing was found!
         </h1>
       )}
-      {loader ? (
-        <SearchLoader />
-      ) : (
-        <div className={styles.coffee_container}>
-          {coffees.map((coffee) => (
-            <article className={styles.coffee_card} key={coffee.id}>
-              <p className={styles.coffee_title}>{coffee.title}</p>
-              <img
-                className={styles.coffee_img}
-                src={coffee.img}
-                alt={coffee.title}
-              />
-              <h3>${coffee.price}</h3>
-              <button
-                onClick={() => handleClick(coffee.id)}
-                className={styles.order_btn}
-              >
-                Order
-              </button>
-            </article>
-          ))}
-        </div>
-      )}
-      <Stack
-        display={"flex"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        padding={"10px"}
-        spacing={2}
-      >
-        <Pagination
-          count={3}
-          color="primary"
-          onChange={(_e, page) => {
-            dispatch(getDatas(page, coffeeQuery));
-            dispatch(setCurrentCoffeePage(page));
-          }}
-          sx={{
-            "& .MuiPaginationItem-root": {
-              color: darkMode ? "white" : "black",
-            },
-            "& .MuiPaginationItem-page.Mui-selected": {
-              color: darkMode ? "black" : "white",
-            },
-          }}
-        />
-      </Stack>
+      <div className={styles.full_container}>
+        {loader ? (
+          <SearchLoader />
+        ) : (
+          <div className={styles.coffee_container}>
+            {coffees.map((coffee) => (
+              <article className={styles.coffee_card} key={coffee.id}>
+                <p className={styles.coffee_title}>{coffee.title}</p>
+                <img
+                  className={styles.coffee_img}
+                  src={coffee.img}
+                  alt={coffee.title}
+                />
+                <h3>${coffee.price}</h3>
+                <button
+                  onClick={() => handleClick(coffee.id)}
+                  className={styles.order_btn}
+                >
+                  Order
+                </button>
+              </article>
+            ))}
+          </div>
+        )}
+
+        <Stack
+          display={"flex"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          padding={"10px"}
+          spacing={2}
+        >
+          <Pagination
+            count={3}
+            color="primary"
+            onChange={(_e, page) => {
+              dispatch(getDatas(page, coffeeQuery));
+              dispatch(setCurrentCoffeePage(page));
+            }}
+            sx={{
+              "& .MuiPaginationItem-root": {
+                color: darkMode ? "white" : "black",
+              },
+              "& .MuiPaginationItem-page.Mui-selected": {
+                color: darkMode ? "black" : "white",
+              },
+            }}
+          />
+        </Stack>
+      </div>
       <CoffeeCupSelection />
       <SelectedCoffeeCup />
       <Snackbar

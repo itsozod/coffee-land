@@ -20,7 +20,7 @@ export const Menu = () => {
               borderBottom:
                 location.pathname === "/menu/coffeecard" ||
                 location.pathname === "/menu"
-                  ? "2px solid white"
+                  ? "2px solid brown"
                   : "none",
               color: darkMode ? "white" : "brown",
             }}
@@ -33,7 +33,7 @@ export const Menu = () => {
             style={{
               borderBottom:
                 location.pathname === "/menu/icecreamcard"
-                  ? "2px solid white"
+                  ? "2px solid brown"
                   : "none",
               color: darkMode ? "white" : "brown",
             }}

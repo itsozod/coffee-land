@@ -1,6 +1,8 @@
+.full_container {
+  height: 100vh;
+}
 .cart_section {
   background-color: bisque;
-  height: 100vh;
 }
 .cart_container {
   display: grid;
@@ -49,12 +51,6 @@
   justify-content: center;
   align-items: center;
   margin: 10px;
-}
-.quantity_btn {
-  border: none;
-  border-radius: 12px;
-  padding: 3px 8px;
-  cursor: pointer;
 }
 .checkout_container {
   display: flex;

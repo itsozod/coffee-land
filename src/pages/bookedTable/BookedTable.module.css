@@ -1,3 +1,6 @@
+.full_container {
+  height: 100vh;
+}
 .booked_table_section {
   min-height: 100vh;
 }

@@ -1,26 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Cart.module.css";
 import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   removeFromCart,
   increaseQuantity,
   decreaseQuantity,
 } from "../../store/features/cartSlice/cartSlice";
-import { clearCart } from "../../store/features/cartSlice/cartSlice";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
-import {
-  getFromOrders,
-  updateOrder,
-} from "../../store/features/orderSlice/orderSlice";
-import { Alert, Snackbar } from "@mui/material";
-import { useSnackBar } from "../../hooks/snackBarHook/UseSnackBar";
-import { useState } from "react";
 import { Checkout } from "../../components/checkout/Checkout";
+import { useState } from "react";
+import { useSnackBar } from "../../hooks/snackBarHook/UseSnackBar";
+import { Alert, Snackbar } from "@mui/material";
 
 export const Cart = () => {
+  const navigate = useNavigate();
   const [payment, setPayment] = useState(false);
   const [snackBar, handleOpenSnackBar, handleCloseSnackBar] = useSnackBar();
   const cart = useSelector((state) => state.cart.cart);
@@ -41,6 +37,7 @@ export const Cart = () => {
   console.log("Orders", orders);
 
   const handleRemoveItem = (item) => {
+    handleOpenSnackBar();
     dispatch(removeFromCart(item));
   };
 
@@ -64,32 +61,6 @@ export const Cart = () => {
     );
     dispatch(decreaseQuantity(filterQuantity));
   };
-  const handleAddToOrders = (cart, orders) => {
-    for (const cartItems of cart) {
-      const checkOrder = orders.some(
-        (orderItem) => orderItem.id === cartItems.id
-      );
-      if (checkOrder) {
-        const updatedOrder = orders.map((orderItem) =>
-          orderItem.id === cartItems.id ||
-          (orderItem.title === cartItems.title &&
-            orderItem.img === cartItems.img)
-            ? {
-                ...orderItem,
-                quantity: orderItem.quantity + cartItems.quantity,
-              }
-            : orderItem
-        );
-        dispatch(updateOrder(updatedOrder));
-        dispatch(clearCart([]));
-        handleOpenSnackBar();
-      } else {
-        dispatch(getFromOrders(cartItems));
-        dispatch(clearCart([]));
-        handleOpenSnackBar();
-      }
-    }
-  };
   return (
     <>
       <section
@@ -107,68 +78,79 @@ export const Cart = () => {
               transition: ".3s",
             }}
           >
-            <h3>No items were added yet!</h3>
-            <button className={styles.empty_btn}>
-              <NavLink className={styles.empty_link} to={"/menu"}>
-                Visit our menu page to order!
-              </NavLink>
-            </button>
+            <h2 style={{ color: darkMode ? "white" : "brown" }}>
+              No items were added yet!
+            </h2>
+            <Button
+              variant="contained"
+              sx={{ margin: "10px" }}
+              onClick={() => navigate("/menu")}
+            >
+              Visit our menu page
+            </Button>
           </div>
         )}
-        <div className={styles.cart_container}>
-          {cart.map((item) => (
-            <article key={item.id} className={styles.cart_card}>
-              <p>{item.title}</p>
-              <img className={styles.cart_img} src={item.img} alt="" />
-              <p>Price: ${item.price}</p>
-              <button
-                className={styles.quantity_btn}
-                onClick={() => handleDecQuantity(item)}
+        <div className={styles.full_container}>
+          <div className={styles.cart_container}>
+            {cart.map((item) => (
+              <article key={item.id} className={styles.cart_card}>
+                <p>{item.title}</p>
+                <img className={styles.cart_img} src={item.img} alt="" />
+                <p>Price: ${item.price}</p>
+                <Button
+                  variant="contained"
+                  sx={{ borderRadius: "12px", margin: "10px" }}
+                  onClick={() => handleDecQuantity(item)}
+                >
+                  -
+                </Button>
+                <p>Quantity: {item.quantity}</p>
+                <Button
+                  sx={{ borderRadius: "12px", margin: "10px" }}
+                  variant="contained"
+                  onClick={() => handleIncQuantity(item)}
+                >
+                  +
+                </Button>
+                <p>Subtotal: ${item.price * item.quantity}</p>
+                <Button
+                  onClick={() => handleRemoveItem(item)}
+                  variant="contained"
+                  startIcon={<DeleteIcon />}
+                >
+                  Delete
+                </Button>
+              </article>
+            ))}
+          </div>
+          {cart.length > 0 && (
+            <>
+              <div
+                className={styles.totalContainer}
+                style={{
+                  color: darkMode ? "white" : "black",
+                  transition: ".3s",
+                }}
               >
-                -
-              </button>
-              <p>Quantity: {item.quantity}</p>
-              <button
-                className={styles.quantity_btn}
-                onClick={() => handleIncQuantity(item)}
-              >
-                +
-              </button>
-              <p>Subtotal: ${item.price * item.quantity}</p>
-              <Button
-                onClick={() => handleRemoveItem(item)}
-                variant="contained"
-                startIcon={<DeleteIcon />}
-              >
-                Delete
-              </Button>
-            </article>
-          ))}
+                <p>Total: ${totalPrice}</p>
+              </div>
+              <div className={styles.checkout_container}>
+                <Button
+                  onClick={() => setPayment(true)}
+                  variant="contained"
+                  endIcon={<SendIcon />}
+                >
+                  Checkout
+                </Button>
+                {payment ? (
+                  <Checkout closePayment={() => setPayment(false)} />
+                ) : (
+                  ""
+                )}
+              </div>
+            </>
+          )}
         </div>
-        {cart.length > 0 && (
-          <>
-            <div
-              className={styles.totalContainer}
-              style={{
-                color: darkMode ? "white" : "black",
-                transition: ".3s",
-              }}
-            >
-              <p>Total: ${totalPrice}</p>
-            </div>
-            <div className={styles.checkout_container}>
-              <Button
-                // onClick={() => handleAddToOrders(cart, orders)}
-                onClick={() => setPayment(true)}
-                variant="contained"
-                endIcon={<SendIcon />}
-              >
-                Checkout
-              </Button>
-              {payment && <Checkout />}
-            </div>
-          </>
-        )}
         <Snackbar
           open={snackBar}
           autoHideDuration={4000}
@@ -176,10 +158,10 @@ export const Cart = () => {
         >
           <Alert
             onClose={() => handleCloseSnackBar()}
-            severity="success"
+            severity="error"
             sx={{ width: "100%" }}
           >
-            Your order was accepted, check orders tab to see your orders!
+            Item was removed from cart!
           </Alert>
         </Snackbar>
       </section>

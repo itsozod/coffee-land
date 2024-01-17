@@ -8,14 +8,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT;
 const API_KEY = import.meta.env.VITE_API_KEY;
 
-const questions = [
-  "general",
-  "coffees",
-  "ice-creams",
-  "tables",
-  "dishes",
-  "drinks",
-];
+const questions = ["general", "coffees", "ice-creams", "dishes", "drinks"];
 
 const getPromps = (question, input) => {
   let prompt;
@@ -121,15 +114,6 @@ const getPromps = (question, input) => {
           "price": $5,
         }: ${input}, else say: I only answer questions related to ice-creams in the menu! `;
       break;
-    case "tables":
-      prompt = `Answer questions related to these tables only: Tables
-          {
-            "status": "Standart table",
-          },
-          {
-            "status": "Vip table",
-          }: ${input}, else say: I only answer questions related to tables!`;
-      break;
     case "dishes":
       prompt = `Answer questions related to these dishes only: Dishes
       {
@@ -159,7 +143,7 @@ const getPromps = (question, input) => {
       }: ${input}, else say: I only answer questions related to dishes in the menu!`;
       break;
     case "drinks":
-      prompt = `Answer questions related to these dishes only:   Drinks 
+      prompt = `Answer questions related to these dishes only: Drinks 
       {
         title: "Black coffee",
       },
@@ -274,48 +258,51 @@ export const ChatBot = () => {
         >
           Question type: {questionType}
         </h2>
-        <form className={styles.form} onSubmit={handleSubmit}>
-          <TextField
-            id="filled-basic"
-            label="Search"
-            variant="filled"
-            value={userText}
-            sx={{
-              backgroundColor: "white",
-              width: "100%",
-              maxWidth: "500px",
-              margin: "20px",
-            }}
-            onChange={(e) => setUserText(e.target.value)}
-          />
-          <Button
-            type="submit"
-            variant="contained"
-            endIcon={<SendIcon />}
-            sx={{ height: "55px", margin: "20px" }}
-          >
-            Submit
-          </Button>
-        </form>
-        {spinner ? (
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <CircularProgress color="success" />
-          </Box>
-        ) : (
-          gptResponse && (
-            <div className={styles.gpt_container}>
-              <div className={styles.response_container}>
-                <h3 style={{ color: "white" }}>{gptResponse}</h3>
+        <div className={styles.full_container}>
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <TextField
+              id="filled-basic"
+              label="Search"
+              variant="filled"
+              value={userText}
+              sx={{
+                backgroundColor: "white",
+                width: "100%",
+                maxWidth: "500px",
+                margin: "20px",
+              }}
+              onChange={(e) => setUserText(e.target.value)}
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              endIcon={<SendIcon />}
+              sx={{ height: "55px", margin: "20px" }}
+            >
+              Submit
+            </Button>
+          </form>
+
+          {spinner ? (
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <CircularProgress color="success" />
+            </Box>
+          ) : (
+            gptResponse && (
+              <div className={styles.gpt_container}>
+                <div className={styles.response_container}>
+                  <h3 style={{ color: "white" }}>{gptResponse}</h3>
+                </div>
               </div>
-            </div>
-          )
-        )}
+            )
+          )}
+        </div>
         <Snackbar
           open={snackBar}
           autoHideDuration={4000}

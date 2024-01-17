@@ -37,30 +37,32 @@ export const BookedTable = () => {
           </Button>
         </div>
       )}
-      <div className={styles.ordered_table_container}>
-        {orderedTables.map((entry) => (
-          <div key={entry.id} className={styles.ordered_table_card}>
-            <p>Time: {entry.time.toString()}</p>
-            <p>Date: {entry.date.toString()}</p>
-            <img
-              className={styles.ordered_table_img}
-              src={entry.tableImg}
-              alt=""
-            />
-            {entry.tableFoodImg && (
+      <div className={styles.full_container}>
+        <div className={styles.ordered_table_container}>
+          {orderedTables.map((entry) => (
+            <div key={entry.id} className={styles.ordered_table_card}>
+              <p>Time: {entry.time.toString()}</p>
+              <p>Date: {entry.date.toString()}</p>
               <img
-                className={styles.ordered_tablefood_img}
-                src={entry.tableFoodImg}
-              ></img>
-            )}
-            {entry.tableDrinkImg && (
-              <img
-                className={styles.ordered_tabledrink_img}
-                src={entry.tableDrinkImg}
-              ></img>
-            )}
-          </div>
-        ))}
+                className={styles.ordered_table_img}
+                src={entry.tableImg}
+                alt=""
+              />
+              {entry.tableFoodImg && (
+                <img
+                  className={styles.ordered_tablefood_img}
+                  src={entry.tableFoodImg}
+                ></img>
+              )}
+              {entry.tableDrinkImg && (
+                <img
+                  className={styles.ordered_tabledrink_img}
+                  src={entry.tableDrinkImg}
+                ></img>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
       {orderedTables.length > 0 && (
         <div className={styles.clearOrderedTables}>

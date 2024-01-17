@@ -1,6 +1,5 @@
 .menu_section {
   background-color: bisque;
-  min-height: 100vh;
 }
 .coffee_container {
   display: grid;
