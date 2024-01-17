@@ -1,4 +1,4 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Alert, Box, Button, Snackbar, TextField } from "@mui/material";
 import styles from "./SignUp.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -7,6 +7,8 @@ import {
   setUser,
 } from "../../store/features/signUpSlice/SignUpSlice";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useSnackBar } from "../../hooks/snackBarHook/UseSnackBar";
 
 export const SignUp = () => {
   const users = useSelector((state) => state.signup.users);
@@ -14,13 +16,31 @@ export const SignUp = () => {
   const regPassword = useSelector((state) => state.signup.regPassword);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [usernameValidation, setUsernameValidation] = useState(false);
+  const [passwordValidation, setPasswordValidation] = useState(false);
+  const [snackBar, handleOpenSnackBar, handleCloseSnackBar] = useSnackBar();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Done!");
-    const newUser = { username: regUserName, password: regPassword };
-    dispatch(setUser(newUser));
-    console.log(users);
+    if (regUserName === "") {
+      setUsernameValidation(true);
+    } else {
+      setUsernameValidation(false);
+    }
+
+    if (regPassword === "") {
+      setPasswordValidation(true);
+    } else {
+      setPasswordValidation(false);
+    }
+
+    if (regUserName !== "" && regPassword !== "") {
+      const newUser = { username: regUserName, password: regPassword };
+      dispatch(setUser(newUser));
+      handleOpenSnackBar();
+      console.log(users);
+    }
   };
   return (
     <>
@@ -44,6 +64,8 @@ export const SignUp = () => {
             type="text"
             label="Username"
             value={regUserName}
+            error={usernameValidation}
+            helperText={usernameValidation ? "Enter your username" : ""}
             onChange={(e) => dispatch(setRegUsername(e.target.value))}
             variant="filled"
           />
@@ -52,6 +74,8 @@ export const SignUp = () => {
             type="password"
             label="Password"
             value={regPassword}
+            error={passwordValidation}
+            helperText={passwordValidation ? "Enter your password" : ""}
             onChange={(e) => dispatch(setRegPassword(e.target.value))}
             variant="filled"
           />
@@ -59,6 +83,19 @@ export const SignUp = () => {
             Sign Up
           </Button>
         </form>
+        <Snackbar
+          open={snackBar}
+          autoHideDuration={3000}
+          onClose={() => handleCloseSnackBar()}
+        >
+          <Alert
+            onClose={() => handleCloseSnackBar()}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            Account has been created successfully!
+          </Alert>
+        </Snackbar>
       </div>
     </>
   );
