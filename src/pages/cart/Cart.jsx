@@ -158,7 +158,7 @@ export const Cart = () => {
         >
           <Alert
             onClose={() => handleCloseSnackBar()}
-            severity="error"
+            severity="success"
             sx={{ width: "100%" }}
           >
             Item was removed from cart!

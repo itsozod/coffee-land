@@ -4,10 +4,11 @@ import {
   setPassword,
   setUsername,
 } from "../../store/features/signInSlice/signInSlice";
-import { Alert, Button, Snackbar, TextField } from "@mui/material";
+import { Alert, Box, Button, Snackbar, TextField } from "@mui/material";
 import styles from "./SignIn.module.css";
 import { useState } from "react";
 import { useSnackBar } from "../../hooks/snackBarHook/UseSnackBar";
+import { useNavigate } from "react-router-dom";
 
 export const SignIn = () => {
   const username = useSelector((state) => state.signin.username);
@@ -16,6 +17,8 @@ export const SignIn = () => {
   const [usernameValidation, setUsernameValidation] = useState(false);
   const [passwordValidation, setPasswordValidation] = useState(false);
   const [snackBar, handleOpenSnackBar, handleCloseSnackBar] = useSnackBar();
+  const users = useSelector((state) => state.signup.users);
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -30,27 +33,44 @@ export const SignIn = () => {
     } else {
       setPasswordValidation(false);
     }
-
-    if (username === "Ozod" && password === "ozod2905") {
+    const user = users.find(
+      (u) => u.username === username && u.password === password
+    );
+    if (username !== "" && password !== "" && user) {
       localStorage.setItem("username", JSON.stringify(username));
       localStorage.setItem("password", JSON.stringify(password));
       dispatch(setLoggedIn(true));
-    } else if (
-      (username !== "" && username !== "Ozod") ||
-      (password !== "" && password !== "ozod2905")
-    ) {
+      console.log("Correct!");
+      navigate("/");
+    } else {
       handleOpenSnackBar();
+      console.log("Incorrect!");
     }
   };
   return (
     <>
       <div className={styles.form_container}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            margin: "10px",
+          }}
+        >
+          <Button
+            variant="contained"
+            sx={{ margin: "10px" }}
+            onClick={() => navigate("/signup")}
+          >
+            Sign Up
+          </Button>
+        </Box>
         <form onSubmit={handleLogin} className={styles.form}>
           <h1>Sign In</h1>
           <TextField
             sx={{ margin: "10px" }}
             type="text"
-            id="filled-basic"
             label="Username"
             variant="filled"
             error={usernameValidation}
@@ -61,7 +81,6 @@ export const SignIn = () => {
           <TextField
             sx={{ margin: "10px" }}
             type="password"
-            id="filled-basic"
             label="Password"
             variant="filled"
             error={passwordValidation}

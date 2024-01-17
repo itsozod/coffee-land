@@ -3,12 +3,14 @@ import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
 import { WelcomeContainer } from "../../components/welcomeContainer/WelcomeContainer";
 import { WhyUsContainer } from "../../components/whyUsContainer/WhyUsContainer";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 export const Home = () => {
   // custom hook to track the state for light/dark mode
   const [darkMode] = useDarkMode();
   console.log("Dark mode", darkMode);
   const navigate = useNavigate();
   const username = JSON.parse(localStorage.getItem("username"));
+  const loggedIn = useSelector((state) => state.signin.loggedIn);
 
   return (
     <>
@@ -38,7 +40,7 @@ export const Home = () => {
             alt="Coffee-icon"
           />
           <h1 className={styles.home_title}>
-            Welcome to Coffeeland {username}
+            Welcome to Coffeeland {loggedIn && username}
           </h1>
           <h1 className={styles.home_info}>Experience Coffee</h1>
           <button

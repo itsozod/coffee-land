@@ -45,18 +45,18 @@
   word-wrap: break-word;
   word-break: break-all;
 
-  @media screen and (max-width: 527px) {
+  @media screen and (max-width: 609px) {
     font-size: 2em;
   }
 
-  @media screen and (max-width: 427px) {
+  @media screen and (max-width: 492px) {
     font-size: 1.8em;
   }
 
-  @media screen and (max-width: 388px) {
+  @media screen and (max-width: 445px) {
     font-size: 1.5em;
   }
-  @media screen and (max-width: 328px) {
+  @media screen and (max-width: 374px) {
     font-size: 1.3em;
   }
 }

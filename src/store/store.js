@@ -6,6 +6,7 @@ import { iceCreamSlice } from "./features/iceCreamSlice/iceCreamSlice";
 import { orderSlice } from "./features/orderSlice/orderSlice";
 import { tablesSlice } from "./features/tablesSlice/tablesSlice";
 import { signInSlice } from "./features/signInSlice/signInSlice";
+import { signUpSlice } from "./features/signUpSlice/SignUpSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export const store = configureStore({
     orders: orderSlice.reducer,
     tables: tablesSlice.reducer,
     signin: signInSlice.reducer,
+    signup: signUpSlice.reducer,
   },
 });

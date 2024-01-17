@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./Sidebar.module.css";
 import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
@@ -58,6 +58,10 @@ export const Sidebar = ({ toggle, onClick }) => {
     localStorage.removeItem("loggedIn");
     dispatch(setLoggedIn(false));
   };
+  const loggedIn = useSelector((state) => state.signin.loggedIn);
+  console.log(loggedIn);
+
+  const navigate = useNavigate();
   return (
     <div
       style={{ top: toggle ? "0" : "-100%" }}
@@ -90,9 +94,23 @@ export const Sidebar = ({ toggle, onClick }) => {
           <li className={styles.ordered_tables_length}>
             {orderedTables.length > 0 && orderedTablesLength}
           </li>
-          <Button variant="contained" onClick={() => handleLogOut()}>
-            Log out
-          </Button>
+          {loggedIn ? (
+            <Button
+              sx={{ marginLeft: "5px", width: "90px", fontSize: "12px" }}
+              variant="contained"
+              onClick={() => handleLogOut()}
+            >
+              Log out
+            </Button>
+          ) : (
+            <Button
+              sx={{ marginLeft: "5px", width: "90px", fontSize: "12px" }}
+              variant="contained"
+              onClick={() => navigate("/signup")}
+            >
+              Log in
+            </Button>
+          )}
         </div>
       </nav>
     </div>

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import styles from "./Navbar.module.css";
 import { FaBars } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Switch, styled } from "@mui/material";
@@ -86,6 +86,7 @@ export const Navbar = ({ onClick }) => {
   // custom hook to track the state for light/dark mode
   const [darkMode, toggleDarkMode] = useDarkMode();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   console.log("Dark mode:", darkMode);
   // cart
   const cart = useSelector((state) => state.cart.cart);
@@ -107,6 +108,9 @@ export const Navbar = ({ onClick }) => {
   ).length;
   const orderedTables = useSelector((state) => state.tables.orderedTables);
   console.log(orderedTablesLength);
+
+  const loggedIn = useSelector((state) => state.signin.loggedIn);
+  console.log(loggedIn);
 
   const handleLogOut = () => {
     localStorage.removeItem("loggedIn");
@@ -166,13 +170,23 @@ export const Navbar = ({ onClick }) => {
           <li className={styles.ordered_tables_length}>
             {orderedTables.length > 0 && orderedTablesLength}
           </li>
-          <Button
-            sx={{ marginLeft: "5px", width: "90px",fontSize: "12px" }}
-            variant="contained"
-            onClick={() => handleLogOut()}
-          >
-            Log out
-          </Button>
+          {loggedIn ? (
+            <Button
+              sx={{ marginLeft: "5px", width: "90px", fontSize: "12px" }}
+              variant="contained"
+              onClick={() => handleLogOut()}
+            >
+              Log out
+            </Button>
+          ) : (
+            <Button
+              sx={{ marginLeft: "5px", width: "90px", fontSize: "12px" }}
+              variant="contained"
+              onClick={() => navigate("/signup")}
+            >
+              Log in
+            </Button>
+          )}
         </ul>
         <div className={styles.navBtnLink}>
           <FormControlLabel

@@ -16,12 +16,13 @@ import { ThemeProvider } from "./hooks/darkmodeHook/ThemeProvider";
 import { IceCreamCard } from "./components/iceCreamCard/IceCreamCard";
 import { CoffeeCard } from "./components/coffeeCard/CoffeeCard";
 import { Footer } from "./components/footer/Footer";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { SignIn } from "./pages/signin/SignIn";
+import { SignUp } from "./pages/signup/SignUp";
 function App() {
   const [loader, setLoader] = useState(false);
   const [toggle, setToggle] = useState(false);
-  const loggedIn = useSelector((state) => state.signin.loggedIn);
+  // const loggedIn = useSelector((state) => state.signin.loggedIn);
 
   // function to show loader
   const showLoader = () => {
@@ -47,7 +48,6 @@ function App() {
         <Loader />
       ) : (
         <>
-          {/* {loggedIn ? ( */}
           <ThemeProvider>
             <Navbar onClick={() => toggleSidebar()} />
             <Sidebar toggle={toggle} onClick={() => toggleSidebar()} />
@@ -64,13 +64,12 @@ function App() {
               <Route path="/booking" element={<Booking />} />
               <Route path="/bookedtable" element={<BookedTable />} />
               <Route path="/chatbot" element={<ChatBot />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="signin" element={<SignIn />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer />
           </ThemeProvider>
-          {/* ) : (
-            <SignIn />
-          )} */}
         </>
       )}
     </>
