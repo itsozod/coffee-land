@@ -17,8 +17,11 @@ import {
 } from "../../store/features/orderSlice/orderSlice";
 import { Alert, Snackbar } from "@mui/material";
 import { useSnackBar } from "../../hooks/snackBarHook/UseSnackBar";
+import { useState } from "react";
+import { Checkout } from "../../components/checkout/Checkout";
 
 export const Cart = () => {
+  const [payment, setPayment] = useState(false);
   const [snackBar, handleOpenSnackBar, handleCloseSnackBar] = useSnackBar();
   const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
@@ -155,12 +158,14 @@ export const Cart = () => {
             </div>
             <div className={styles.checkout_container}>
               <Button
-                onClick={() => handleAddToOrders(cart, orders)}
+                // onClick={() => handleAddToOrders(cart, orders)}
+                onClick={() => setPayment(true)}
                 variant="contained"
                 endIcon={<SendIcon />}
               >
                 Checkout
               </Button>
+              {payment && <Checkout />}
             </div>
           </>
         )}

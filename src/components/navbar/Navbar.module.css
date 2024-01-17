@@ -65,7 +65,7 @@
   height: 100%;
   cursor: pointer;
   border-radius: 12px;
-  font-size: 18px;
+  font-size: 16px;
 }
 .navLinkDark {
   color: #fff;
@@ -75,16 +75,16 @@
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 16px;
   border-radius: 12px;
 }
 .faBars {
   display: none;
   color: #fff;
-  @media screen and (max-width: 955px) {
+  @media screen and (max-width: 971px) {
     display: block;
     position: absolute;
-    top: 0;
+    top: -6px;
     right: 0;
     transform: translate(-100%, 115%);
     font-size: 1.8rem;
@@ -97,14 +97,15 @@
   align-items: center;
   padding: 25px;
   position: relative;
-  @media screen and (max-width: 955px) {
+  @media screen and (max-width: 971px) {
     display: none;
   }
 }
 .navBtnLink {
   display: flex;
+  justify-content: center;
   align-items: center;
-  margin-right: 24px;
+  margin-right: 34px;
 }
 .toggleDark {
   padding: 10px;

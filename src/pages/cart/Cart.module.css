@@ -1,6 +1,6 @@
 .cart_section {
   background-color: bisque;
-  min-height: 100vh;
+  height: 100vh;
 }
 .cart_container {
   display: grid;

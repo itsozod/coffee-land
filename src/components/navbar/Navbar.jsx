@@ -93,7 +93,7 @@ export const Navbar = ({ onClick }) => {
     (currentQuantity, { quantity }) => quantity + currentQuantity,
     0
   );
-  
+
   // orders
   const orders = useSelector((state) => state.orders.orders);
   const totalOrdersQuantity = orders.reduce(
@@ -101,7 +101,7 @@ export const Navbar = ({ onClick }) => {
     0
   );
 
-// orderedTables
+  // orderedTables
   const orderedTablesLength = useSelector(
     (state) => state.tables.orderedTables
   ).length;
@@ -136,7 +136,11 @@ export const Navbar = ({ onClick }) => {
           />
         </NavLink>
 
-        <FaBars className={styles.faBars} onClick={onClick} />
+        <FaBars
+          className={styles.faBars}
+          onClick={onClick}
+          color={darkMode ? "white" : "black"}
+        />
         <ul className={styles.nav_menu}>
           {navLinks.map((navLink, idx) => (
             <li className={styles.link_links} key={idx}>
@@ -162,7 +166,11 @@ export const Navbar = ({ onClick }) => {
           <li className={styles.ordered_tables_length}>
             {orderedTables.length > 0 && orderedTablesLength}
           </li>
-          <Button sx={{marginLeft: "5px"}} variant="contained" onClick={() => handleLogOut()}>
+          <Button
+            sx={{ marginLeft: "5px", width: "90px",fontSize: "12px" }}
+            variant="contained"
+            onClick={() => handleLogOut()}
+          >
             Log out
           </Button>
         </ul>
