@@ -47,30 +47,30 @@ function App() {
         <Loader />
       ) : (
         <>
-          {loggedIn ? (
-            <ThemeProvider>
-              <Navbar onClick={() => toggleSidebar()} />
-              <Sidebar toggle={toggle} onClick={() => toggleSidebar()} />
-              {/* Routes */}
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/menu" element={<Menu />}>
-                  <Route index element={<CoffeeCard />} />
-                  <Route path="coffeecard" element={<CoffeeCard />} />
-                  <Route path="icecreamcard" element={<IceCreamCard />} />
-                </Route>
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/orders" element={<Orders />} />
-                <Route path="/booking" element={<Booking />} />
-                <Route path="/bookedtable" element={<BookedTable />} />
-                <Route path="/chatbot" element={<ChatBot />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-              <Footer />
-            </ThemeProvider>
-          ) : (
+          {/* {loggedIn ? ( */}
+          <ThemeProvider>
+            <Navbar onClick={() => toggleSidebar()} />
+            <Sidebar toggle={toggle} onClick={() => toggleSidebar()} />
+            {/* Routes */}
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/menu" element={<Menu />}>
+                <Route index element={<CoffeeCard />} />
+                <Route path="coffeecard" element={<CoffeeCard />} />
+                <Route path="icecreamcard" element={<IceCreamCard />} />
+              </Route>
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/orders" element={<Orders />} />
+              <Route path="/booking" element={<Booking />} />
+              <Route path="/bookedtable" element={<BookedTable />} />
+              <Route path="/chatbot" element={<ChatBot />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <Footer />
+          </ThemeProvider>
+          {/* ) : (
             <SignIn />
-          )}
+          )} */}
         </>
       )}
     </>

@@ -59,53 +59,55 @@ export const IceCreamCard = () => {
           Nothing was found!
         </h1>
       )}
-      {iceLoader ? (
-        <SearchLoader />
-      ) : (
-        <div className={styles.ice_cream_container}>
-          {iceCreams.map((iceCream) => (
-            <article className={styles.iceCream_card} key={iceCream.id}>
-              <p className={styles.iceCream_title}>{iceCream.title}</p>
-              <img
-                className={styles.iceCream_img}
-                src={iceCream.img}
-                alt={iceCream.title}
-              />
-              <h3>${iceCream.price}</h3>
-              <button
-                onClick={() => checkCart(iceCream)}
-                className={styles.order_btn}
-              >
-                Add to cart
-              </button>
-            </article>
-          ))}
-        </div>
-      )}
-      <Stack
-        display={"flex"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        padding={"10px"}
-        spacing={2}
-      >
-        <Pagination
-          count={3}
-          color="primary"
-          onChange={(_e, page) => {
-            dispatch(getIceCreams(page, iceQuery));
-            dispatch(setCurrentIcePage(page));
-          }}
-          sx={{
-            "& .MuiPaginationItem-root": {
-              color: darkMode ? "white" : "black",
-            },
-            "& .MuiPaginationItem-page.Mui-selected": {
-              color: darkMode ? "black" : "white",
-            },
-          }}
-        />
-      </Stack>
+      <div className={styles.full_container}>
+        {iceLoader ? (
+          <SearchLoader />
+        ) : (
+          <div className={styles.ice_cream_container}>
+            {iceCreams.map((iceCream) => (
+              <article className={styles.iceCream_card} key={iceCream.id}>
+                <p className={styles.iceCream_title}>{iceCream.title}</p>
+                <img
+                  className={styles.iceCream_img}
+                  src={iceCream.img}
+                  alt={iceCream.title}
+                />
+                <h3>${iceCream.price}</h3>
+                <button
+                  onClick={() => checkCart(iceCream)}
+                  className={styles.order_btn}
+                >
+                  Add to cart
+                </button>
+              </article>
+            ))}
+          </div>
+        )}
+        <Stack
+          display={"flex"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          padding={"10px"}
+          spacing={2}
+        >
+          <Pagination
+            count={3}
+            color="primary"
+            onChange={(_e, page) => {
+              dispatch(getIceCreams(page, iceQuery));
+              dispatch(setCurrentIcePage(page));
+            }}
+            sx={{
+              "& .MuiPaginationItem-root": {
+                color: darkMode ? "white" : "black",
+              },
+              "& .MuiPaginationItem-page.Mui-selected": {
+                color: darkMode ? "black" : "white",
+              },
+            }}
+          />
+        </Stack>
+      </div>
       <Snackbar
         open={snackBar}
         autoHideDuration={4000}
