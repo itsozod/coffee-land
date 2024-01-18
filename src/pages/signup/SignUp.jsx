@@ -9,6 +9,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useSnackBar } from "../../hooks/snackBarHook/UseSnackBar";
+import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
 
 export const SignUp = () => {
   const users = useSelector((state) => state.signup.users);
@@ -19,6 +20,7 @@ export const SignUp = () => {
   const [usernameValidation, setUsernameValidation] = useState(false);
   const [passwordValidation, setPasswordValidation] = useState(false);
   const [snackBar, handleOpenSnackBar, handleCloseSnackBar] = useSnackBar();
+  const [darkMode] = useDarkMode();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,45 +46,57 @@ export const SignUp = () => {
   };
   return (
     <>
-      <div className={styles.signup_container}>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: "10px",
-          }}
-        >
-          <Button variant="contained" onClick={() => navigate("/signin")}>
-            Sign In
-          </Button>
-        </Box>
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <h1>Sign Up</h1>
-          <TextField
-            sx={{ margin: "10px" }}
-            type="text"
-            label="Username"
-            value={regUserName}
-            error={usernameValidation}
-            helperText={usernameValidation ? "Enter your username" : ""}
-            onChange={(e) => dispatch(setRegUsername(e.target.value))}
-            variant="filled"
-          />
-          <TextField
-            sx={{ margin: "10px" }}
-            type="password"
-            label="Password"
-            value={regPassword}
-            error={passwordValidation}
-            helperText={passwordValidation ? "Enter your password" : ""}
-            onChange={(e) => dispatch(setRegPassword(e.target.value))}
-            variant="filled"
-          />
-          <Button variant="contained" type="submit">
-            Sign Up
-          </Button>
-        </form>
+      <div
+        className={styles.signup_container}
+        style={{
+          backgroundColor: darkMode ? "#003566" : "#fefae0",
+          transition: ".3s ease",
+        }}
+      >
+        <div className={styles.full_container}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              margin: "10px",
+            }}
+          >
+            <Button
+              variant="contained"
+              sx={{ margin: "10px" }}
+              onClick={() => navigate("/signin")}
+            >
+              Sign In
+            </Button>
+          </Box>
+          <form onSubmit={handleSubmit} className={styles.form}>
+            <h1>Sign Up</h1>
+            <TextField
+              sx={{ margin: "10px" }}
+              type="text"
+              label="Username"
+              value={regUserName}
+              error={usernameValidation}
+              helperText={usernameValidation ? "Enter your username" : ""}
+              onChange={(e) => dispatch(setRegUsername(e.target.value))}
+              variant="filled"
+            />
+            <TextField
+              sx={{ margin: "10px" }}
+              type="password"
+              label="Password"
+              value={regPassword}
+              error={passwordValidation}
+              helperText={passwordValidation ? "Enter your password" : ""}
+              onChange={(e) => dispatch(setRegPassword(e.target.value))}
+              variant="filled"
+            />
+            <Button variant="contained" type="submit">
+              Sign Up
+            </Button>
+          </form>
+        </div>
         <Snackbar
           open={snackBar}
           autoHideDuration={3000}

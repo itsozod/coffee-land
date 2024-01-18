@@ -56,6 +56,11 @@ export const Sidebar = ({ toggle, onClick }) => {
   const dispatch = useDispatch();
   const handleLogOut = () => {
     localStorage.removeItem("loggedIn");
+    localStorage.removeItem("cart");
+    localStorage.removeItem("orders");
+    localStorage.removeItem("orderedtables");
+    navigate("/");
+    window.location.reload();
     dispatch(setLoggedIn(false));
   };
   const loggedIn = useSelector((state) => state.signin.loggedIn);

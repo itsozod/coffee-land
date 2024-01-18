@@ -4,6 +4,8 @@
 .selected_coffee_container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .coffeeCupCard {
   margin: 10px;

@@ -238,27 +238,28 @@ export const ChatBot = () => {
         >
           AI Chatbot
         </h1>
-        <div className={styles.question_btns}>
-          {questions.map((question) => (
-            <Button
-              variant="contained"
-              key={question}
-              sx={{
-                margin: "10px",
-                border: questionType === question ? "2px solid red" : "",
-              }}
-              onClick={() => setQuestionType(question)}
-            >
-              {question}
-            </Button>
-          ))}
-        </div>
-        <h2
-          style={{ color: darkMode ? "white" : "brown", textAlign: "center" }}
-        >
-          Question type: {questionType}
-        </h2>
         <div className={styles.full_container}>
+          <div className={styles.question_btns}>
+            {questions.map((question) => (
+              <Button
+                variant="contained"
+                key={question}
+                sx={{
+                  margin: "10px",
+                  border: questionType === question ? "2px solid red" : "",
+                }}
+                onClick={() => setQuestionType(question)}
+              >
+                {question}
+              </Button>
+            ))}
+          </div>
+          <h2
+            style={{ color: darkMode ? "white" : "brown", textAlign: "center" }}
+          >
+            Question type: {questionType}
+          </h2>
+
           <form className={styles.form} onSubmit={handleSubmit}>
             <TextField
               id="filled-basic"

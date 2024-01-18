@@ -114,6 +114,11 @@ export const Navbar = ({ onClick }) => {
 
   const handleLogOut = () => {
     localStorage.removeItem("loggedIn");
+    localStorage.removeItem("cart");
+    localStorage.removeItem("orders");
+    localStorage.removeItem("orderedtables");
+    navigate("/");
+    window.location.reload();
     dispatch(setLoggedIn(false));
   };
   return (

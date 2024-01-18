@@ -52,55 +52,57 @@ export const SelectedCoffeeCup = () => {
   };
   return (
     <>
-      {coffeeName && (
-        <article
-          className={styles.selectedCoffeeCup}
-          style={{ color: darkMode ? "white" : "black" }}
-        >
-          <h3>{coffeeName}</h3>
-          <img
-            className={styles.selectedCoffeeCupImg}
-            src={coffeeCupImg}
-            alt="Selected Coffee Cup"
-          />
-          <h4>Price: ${coffeePrice}</h4>
-          <button
-            className={styles.selected_cup_cart}
-            onClick={() => handleAddToCart()}
+      <div className={styles.selected_coffeecup_container}>
+        {coffeeName && (
+          <article
+            className={styles.selectedCoffeeCup}
+            style={{ color: darkMode ? "white" : "black" }}
           >
-            Add to cart
-          </button>
-        </article>
-      )}
-      {loggedIn ? (
-        <Snackbar
-          open={snackBar}
-          autoHideDuration={4000}
-          onClose={() => handleCloseSnackBar()}
-        >
-          <Alert
+            <h3>{coffeeName}</h3>
+            <img
+              className={styles.selectedCoffeeCupImg}
+              src={coffeeCupImg}
+              alt="Selected Coffee Cup"
+            />
+            <h4>Price: ${coffeePrice}</h4>
+            <button
+              className={styles.selected_cup_cart}
+              onClick={() => handleAddToCart()}
+            >
+              Add to cart
+            </button>
+          </article>
+        )}
+        {loggedIn ? (
+          <Snackbar
+            open={snackBar}
+            autoHideDuration={4000}
             onClose={() => handleCloseSnackBar()}
-            severity="success"
-            sx={{ width: "100%" }}
           >
-            Your coffee is added to cart!
-          </Alert>
-        </Snackbar>
-      ) : (
-        <Snackbar
-          open={snackBar}
-          autoHideDuration={4000}
-          onClose={() => handleCloseSnackBar()}
-        >
-          <Alert
+            <Alert
+              onClose={() => handleCloseSnackBar()}
+              severity="success"
+              sx={{ width: "100%" }}
+            >
+              Your coffee is added to cart!
+            </Alert>
+          </Snackbar>
+        ) : (
+          <Snackbar
+            open={snackBar}
+            autoHideDuration={4000}
             onClose={() => handleCloseSnackBar()}
-            severity="error"
-            sx={{ width: "100%" }}
           >
-            Log in to add items to cart!
-          </Alert>
-        </Snackbar>
-      )}
+            <Alert
+              onClose={() => handleCloseSnackBar()}
+              severity="error"
+              sx={{ width: "100%" }}
+            >
+              Log in to add items to cart!
+            </Alert>
+          </Snackbar>
+        )}
+      </div>
     </>
   );
 };

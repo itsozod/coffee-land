@@ -1,5 +1,7 @@
 .full_container {
   height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .booked_table_section {
   min-height: 100vh;

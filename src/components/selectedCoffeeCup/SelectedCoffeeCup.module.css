@@ -1,3 +1,7 @@
+.selected_coffeecup_container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 .selectedCoffeeCup {
   width: 120px;
   display: flex;

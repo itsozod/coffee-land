@@ -41,8 +41,8 @@ export const BookedTable = () => {
         <div className={styles.ordered_table_container}>
           {orderedTables.map((entry) => (
             <div key={entry.id} className={styles.ordered_table_card}>
-              <p>Time: {entry.time.toString()}</p>
-              <p>Date: {entry.date.toString()}</p>
+              <p>Time: {entry.time}</p>
+              <p>Date: {entry.date}</p>
               <img
                 className={styles.ordered_table_img}
                 src={entry.tableImg}
