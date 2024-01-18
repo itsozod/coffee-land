@@ -19,8 +19,13 @@ export const SelectedCoffeeCup = () => {
   const dispatch = useDispatch();
   const [darkMode] = useDarkMode();
   console.log("cart:", cart);
+  const loggedIn = useSelector((state) => state.signin.loggedIn);
 
   const handleAddToCart = () => {
+    if (!loggedIn) {
+      handleOpenSnackBar();
+      return;
+    }
     const coffeeItem = {
       id: uuid(),
       title: coffeeName,
@@ -67,19 +72,35 @@ export const SelectedCoffeeCup = () => {
           </button>
         </article>
       )}
-      <Snackbar
-        open={snackBar}
-        autoHideDuration={4000}
-        onClose={() => handleCloseSnackBar()}
-      >
-        <Alert
+      {loggedIn ? (
+        <Snackbar
+          open={snackBar}
+          autoHideDuration={4000}
           onClose={() => handleCloseSnackBar()}
-          severity="success"
-          sx={{ width: "100%" }}
         >
-          Your coffee is added to cart!
-        </Alert>
-      </Snackbar>
+          <Alert
+            onClose={() => handleCloseSnackBar()}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            Your coffee is added to cart!
+          </Alert>
+        </Snackbar>
+      ) : (
+        <Snackbar
+          open={snackBar}
+          autoHideDuration={4000}
+          onClose={() => handleCloseSnackBar()}
+        >
+          <Alert
+            onClose={() => handleCloseSnackBar()}
+            severity="error"
+            sx={{ width: "100%" }}
+          >
+            Log in to add items to cart!
+          </Alert>
+        </Snackbar>
+      )}
     </>
   );
 };

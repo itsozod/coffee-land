@@ -23,10 +23,14 @@ export const CoffeeCupSelection = () => {
       {coffeeName && (
         <>
           <h2
-            style={{ textAlign: "center", color: darkMode ? "white" : "brown" }}
+            style={{
+              textAlign: "center",
+              color: darkMode ? "white" : "brown",
+            }}
           >
             Coffee boxes
           </h2>
+
           <div className={styles.selected_coffee_container}>
             {coffeeCups.map((coffeeCup) => (
               <article

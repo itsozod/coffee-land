@@ -1,5 +1,5 @@
 .full_container {
-  height: 100vh;
+  min-height: 100vh;
 }
 .ice_cream_container {
   display: grid;

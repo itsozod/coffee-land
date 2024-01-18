@@ -23,8 +23,13 @@ export const IceCreamCard = () => {
   const iceQuery = useSelector((state) => state.iceCreams.iceQuery);
   const currentIcePage = useSelector((state) => state.iceCreams.currentIcePage);
   const dispatch = useDispatch();
+  const loggedIn = useSelector((state) => state.signin.loggedIn);
   const cart = useSelector((state) => state.cart.cart);
   const checkCart = (item) => {
+    if (!loggedIn) {
+      handleOpenSnackBar();
+      return;
+    }
     const checkedCart = cart.some((cartItem) => cartItem.id === item.id);
     if (checkedCart) {
       const updatedCart = cart.map((cartItem) =>
@@ -108,19 +113,35 @@ export const IceCreamCard = () => {
           />
         </Stack>
       </div>
-      <Snackbar
-        open={snackBar}
-        autoHideDuration={4000}
-        onClose={() => handleCloseSnackBar()}
-      >
-        <Alert
+      {loggedIn ? (
+        <Snackbar
+          open={snackBar}
+          autoHideDuration={4000}
           onClose={() => handleCloseSnackBar()}
-          severity="success"
-          sx={{ width: "100%" }}
         >
-          Your ice-cream is added to cart!
-        </Alert>
-      </Snackbar>
+          <Alert
+            onClose={() => handleCloseSnackBar()}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            Your ice-cream is added to cart!
+          </Alert>
+        </Snackbar>
+      ) : (
+        <Snackbar
+          open={snackBar}
+          autoHideDuration={4000}
+          onClose={() => handleCloseSnackBar()}
+        >
+          <Alert
+            onClose={() => handleCloseSnackBar()}
+            severity="error"
+            sx={{ width: "100%" }}
+          >
+            Log in to add items to cart!
+          </Alert>
+        </Snackbar>
+      )}
     </>
   );
 };
