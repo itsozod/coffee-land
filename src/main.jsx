@@ -8,7 +8,7 @@ import { store } from "./store/store.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter basename={import.meta.env.DEV ? "/" : "/coffeeland/"}>
+    <BrowserRouter basename={import.meta.env.DEV ? "/" : "/coffee-land/"}>
       <Provider store={store}>
         <App />
       </Provider>
