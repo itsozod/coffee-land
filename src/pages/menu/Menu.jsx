@@ -18,27 +18,27 @@ export const Menu = () => {
           <NavLink
             style={{
               borderBottom:
-                location.pathname === "/menu/coffeecard" ||
-                location.pathname === "/menu"
+                location.pathname === "/coffee-land/menu/coffeecard" ||
+                location.pathname === "/coffee-land/menu"
                   ? "2px solid brown"
                   : "none",
               color: darkMode ? "white" : "brown",
             }}
             className={styles.menu_link_tab}
-            to={"/menu/coffeecard"}
+            to={"/coffee-land/menu/coffeecard"}
           >
             Coffees
           </NavLink>
           <NavLink
             style={{
               borderBottom:
-                location.pathname === "/menu/icecreamcard"
+                location.pathname === "/coffee-land/menu/icecreamcard"
                   ? "2px solid brown"
                   : "none",
               color: darkMode ? "white" : "brown",
             }}
             className={styles.menu_link_tab}
-            to={"/menu/icecreamcard"}
+            to={"/coffee-land/menu/icecreamcard"}
           >
             Ice-creams
           </NavLink>

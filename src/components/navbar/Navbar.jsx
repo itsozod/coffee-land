@@ -61,23 +61,23 @@ const navLinks = [
     name: "Menu",
   },
   {
-    path: "/cart",
+    path: "/coffee-land/cart",
     name: "Cart",
   },
   {
-    path: "/orders",
+    path: "/coffee-land/orders",
     name: "Orders",
   },
   {
-    path: "/booking",
+    path: "/coffee-land/booking",
     name: "Book",
   },
   {
-    path: "/bookedtable",
+    path: "/coffee-land/bookedtable",
     name: "Tables",
   },
   {
-    path: "/chatbot",
+    path: "/coffee-land/chatbot",
     name: "Chatbot",
   },
 ];
@@ -138,11 +138,7 @@ export const Navbar = ({ onClick }) => {
           to={"coffee-land/"}
         >
           <h3>Coffeeland</h3>
-          <img
-            className={styles.coffee_img}
-            src="coffee-icon.png"
-            alt="logo"
-          />
+          <img className={styles.coffee_img} src="coffee-icon.png" alt="logo" />
         </NavLink>
 
         <FaBars

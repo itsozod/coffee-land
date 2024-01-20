@@ -56,16 +56,22 @@ function App() {
               <Route path="/coffee-land/" element={<Home />} />
               <Route path="/coffee-land/menu" element={<Menu />}>
                 <Route index element={<CoffeeCard />} />
-                <Route path="coffeecard" element={<CoffeeCard />} />
+                <Route
+                  path="coffeecard"
+                  element={<CoffeeCard />}
+                />
                 <Route path="icecreamcard" element={<IceCreamCard />} />
               </Route>
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/orders" element={<Orders />} />
-              <Route path="/booking" element={<Booking />} />
-              <Route path="/bookedtable" element={<BookedTable />} />
-              <Route path="/chatbot" element={<ChatBot />} />
-              <Route path="/signup" element={<SignUp />} />
-              <Route path="signin" element={<SignIn />} />
+              <Route path="/coffee-land/cart" element={<Cart />} />
+              <Route path="/coffee-land/orders" element={<Orders />} />
+              <Route path="/coffee-land/booking" element={<Booking />} />
+              <Route
+                path="/coffee-land/bookedtable"
+                element={<BookedTable />}
+              />
+              <Route path="/coffee-land/chatbot" element={<ChatBot />} />
+              <Route path="/coffee-land/signup" element={<SignUp />} />
+              <Route path="/coffee-land/signin" element={<SignIn />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer />
