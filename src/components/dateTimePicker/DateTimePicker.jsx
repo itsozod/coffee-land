@@ -42,32 +42,34 @@ export const DateTimePicker = () => {
   };
 
   const handleBookTable = () => {
-    if (tableTime === null || tableDate === null) {
-      setTimeValidation(tableTime === null);
-      setDateValidation(tableDate === null);
-      handleOpenSnackBar(); // Show error Snackbar
+    if (tableTime === null) {
+      setTimeValidation(true);
     } else {
-      // Clear validation flags
       setTimeValidation(false);
-      setDateValidation(false);
-
-      // Check if tableImg is falsy
-      if (!tableImg) {
-        handleOpenSnackBar(); // Show error Snackbar
-      } else {
-        // Booking logic
-        const newOrdered = {
-          id: uuid(),
-          time: tableTime,
-          date: tableDate,
-          tableImg: tableImg,
-          tableFoodImg: tableFoodImg,
-          tableDrinkImg: tableDrinkImg,
-        };
-        handleOpenSnackBar(); // Show success Snackbar
-        dispatch(setOrderedTables(newOrdered));
-      }
     }
+
+    if (tableDate === null) {
+      setDateValidation(true);
+    } else {
+      setDateValidation(false);
+    }
+
+    // Check if tableImg is falsy
+    if (!tableImg) {
+      handleOpenSnackBar(); // Show error Snackbar
+      return;
+    }
+    // Booking logic
+    const newOrdered = {
+      id: uuid(),
+      time: tableTime,
+      date: tableDate,
+      tableImg: tableImg,
+      tableFoodImg: tableFoodImg,
+      tableDrinkImg: tableDrinkImg,
+    };
+    handleOpenSnackBar(); // Show success Snackbar
+    dispatch(setOrderedTables(newOrdered));
   };
 
   return (
