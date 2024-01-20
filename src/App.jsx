@@ -53,8 +53,8 @@ function App() {
             <Sidebar toggle={toggle} onClick={() => toggleSidebar()} />
             {/* Routes */}
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/menu" element={<Menu />}>
+              <Route path="coffee-land/" element={<Home />} />
+              <Route path="coffee-land/menu" element={<Menu />}>
                 <Route index element={<CoffeeCard />} />
                 <Route path="coffeecard" element={<CoffeeCard />} />
                 <Route path="icecreamcard" element={<IceCreamCard />} />

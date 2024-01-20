@@ -57,7 +57,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 
 const navLinks = [
   {
-    path: "/menu",
+    path: "coffee-land/menu",
     name: "Menu",
   },
   {
@@ -135,12 +135,12 @@ export const Navbar = ({ onClick }) => {
             return isActive ? { color: "#15cdfc" } : {};
           }}
           className={darkMode ? styles.navLinkHomeDark : styles.navLinkHome}
-          to={"/"}
+          to={"coffee-land/"}
         >
           <h3>Coffeeland</h3>
           <img
             className={styles.coffee_img}
-            src="/coffee-icon.png"
+            src="coffee-icon.png"
             alt="logo"
           />
         </NavLink>
