@@ -55,21 +55,21 @@ export const DateTimePicker = () => {
     }
 
     // Check if tableImg is falsy
-    if (!tableImg) {
-      handleOpenSnackBar(); // Show error Snackbar
-      return;
+    if (!tableImg || tableTime === null || tableDate === null) {
+      handleOpenSnackBar();
+    } else {
+      // Booking logic
+      const newOrdered = {
+        id: uuid(),
+        time: tableTime,
+        date: tableDate,
+        tableImg: tableImg,
+        tableFoodImg: tableFoodImg,
+        tableDrinkImg: tableDrinkImg,
+      };
+      handleOpenSnackBar(); // Show success Snackbar
+      dispatch(setOrderedTables(newOrdered));
     }
-    // Booking logic
-    const newOrdered = {
-      id: uuid(),
-      time: tableTime,
-      date: tableDate,
-      tableImg: tableImg,
-      tableFoodImg: tableFoodImg,
-      tableDrinkImg: tableDrinkImg,
-    };
-    handleOpenSnackBar(); // Show success Snackbar
-    dispatch(setOrderedTables(newOrdered));
   };
 
   return (
@@ -118,7 +118,7 @@ export const DateTimePicker = () => {
           Book a table
         </Button>
       </LocalizationProvider>
-      {tableImg ? (
+      {tableImg && tableDate !== null && tableTime !== null ? (
         <Snackbar
           open={snackBar}
           autoHideDuration={3000}
