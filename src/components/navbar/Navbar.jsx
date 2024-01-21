@@ -57,27 +57,27 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 
 const navLinks = [
   {
-    path: "/coffee-land/menu",
+    path: "/menu",
     name: "Menu",
   },
   {
-    path: "/coffee-land/cart",
+    path: "/cart",
     name: "Cart",
   },
   {
-    path: "/coffee-land/orders",
+    path: "/orders",
     name: "Orders",
   },
   {
-    path: "/coffee-land/booking",
+    path: "/booking",
     name: "Book",
   },
   {
-    path: "/coffee-land/bookedtable",
+    path: "/bookedtable",
     name: "Tables",
   },
   {
-    path: "/coffee-land/chatbot",
+    path: "/chatbot",
     name: "Chatbot",
   },
 ];
@@ -135,7 +135,7 @@ export const Navbar = ({ onClick }) => {
             return isActive ? { color: "#15cdfc" } : {};
           }}
           className={darkMode ? styles.navLinkHomeDark : styles.navLinkHome}
-          to={"coffee-land/"}
+          to={"/"}
         >
           <h3>Coffeeland</h3>
           <img className={styles.coffee_img} src="coffee-icon.png" alt="logo" />
