@@ -110,7 +110,7 @@ export const Navbar = ({ onClick }) => {
   console.log(orderedTablesLength);
 
   const loggedIn = useSelector((state) => state.signin.loggedIn);
-  console.log(loggedIn);
+  console.log("Logged", loggedIn);
 
   const handleLogOut = () => {
     localStorage.removeItem("loggedIn");

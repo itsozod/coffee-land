@@ -29,6 +29,8 @@ export const DateTimePicker = () => {
   const [snackBar, handleOpenSnackBar, handleCloseSnackBar] = useSnackBar();
   const [timeValidation, setTimeValidation] = useState(false);
   const [dateValidation, setDateValidation] = useState(false);
+  const loggedIn = useSelector((state) => state.signin.loggedIn);
+  console.log("Logged in Booking", loggedIn);
 
   const handleClearTable = () => {
     handleCloseSnackBar();
@@ -42,6 +44,11 @@ export const DateTimePicker = () => {
   };
 
   const handleBookTable = () => {
+    // if (!loggedIn) {
+    //   console.log("Log in before booking!");
+    //   // alert("Log in before booking!");
+    //   return;
+    // }
     if (tableTime === null) {
       setTimeValidation(true);
     } else {
@@ -55,7 +62,7 @@ export const DateTimePicker = () => {
     }
 
     // Check if tableImg is falsy
-    if (!tableImg || tableTime === null || tableDate === null) {
+    if (!loggedIn || !tableImg || tableTime === null || tableDate === null) {
       handleOpenSnackBar();
     } else {
       // Booking logic
@@ -118,7 +125,8 @@ export const DateTimePicker = () => {
           Book a table
         </Button>
       </LocalizationProvider>
-      {tableImg && tableDate !== null && tableTime !== null ? (
+
+      {loggedIn && tableImg && tableDate !== null && tableTime !== null ? (
         <Snackbar
           open={snackBar}
           autoHideDuration={3000}
@@ -143,7 +151,9 @@ export const DateTimePicker = () => {
             severity="error"
             sx={{ width: "100%" }}
           >
-            Choose a table before booking your table!
+            {loggedIn
+              ? "Choose a table before booking your table!"
+              : "Log in to book a table"}
           </Alert>
         </Snackbar>
       )}
