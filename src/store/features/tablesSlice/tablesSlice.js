@@ -72,7 +72,9 @@ export const getTables = () => {
   return async (dispatch) => {
     try {
       dispatch(setTableLoader(true));
-      const response = await fetch("http://localhost:3000/tables");
+      const response = await fetch(
+        "https://coffeeland-api.onrender.com/tables"
+      );
       const data = await response.json();
       dispatch(setTables(data));
       dispatch(setTableLoader(false));

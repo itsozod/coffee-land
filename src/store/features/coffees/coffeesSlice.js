@@ -32,7 +32,7 @@ export const getDatas = (page, query) => {
     try {
       dispatch(setLoader(true));
       const response = await fetch(
-        `http://localhost:3000/coffees?title_like=${query}&_page=${page}&_limit=4`
+        `https://coffeeland-api.onrender.com//coffees?title_like=${query}&_page=${page}&_limit=4`
       );
       const data = await response.json();
       dispatch(setDatas(data));
