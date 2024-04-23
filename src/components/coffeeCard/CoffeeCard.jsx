@@ -5,7 +5,6 @@ import { SearchLoader } from "../../components/searchLoader/SearchLoader";
 import { useEffect } from "react";
 import {
   getDatas,
-  setCurrentCoffeePage,
   setCoffeeQuery,
 } from "../../store/features/coffees/coffeesSlice";
 import { setCoffeeName } from "../../store/features/coffeeCupSelection/coffeeCupSlice";
@@ -18,23 +17,21 @@ import { useSnackBar } from "../../hooks/snackBarHook/UseSnackBar";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
+import { useSearchParams } from "react-router-dom";
 
 export const CoffeeCard = () => {
+  const [searchParams, setSearchParams] = useSearchParams()
   const [snackBar, handleOpenSnackBar, handleCloseSnackBar] = useSnackBar();
   const [darkMode] = useDarkMode();
   const coffees = useSelector((state) => state.coffees.coffees);
   const loader = useSelector((state) => state.coffees.loader);
   const coffeeQuery = useSelector((state) => state.coffees.coffeeQuery);
-  const currentCoffeePage = useSelector(
-    (state) => state.coffees.currentCoffeePage
-  );
+
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log("Coffees");
-    const pageToFetch = coffeeQuery ? 1 : currentCoffeePage;
-    dispatch(getDatas(pageToFetch, coffeeQuery));
-  }, [dispatch, currentCoffeePage, coffeeQuery]);
-  console.log(coffees);
+    dispatch(getDatas(Number(searchParams.get("page")), coffeeQuery));
+  }, [dispatch, coffeeQuery, searchParams]);
+
 
   const handleClick = (id) => {
     console.log("Id:", id);
@@ -58,7 +55,11 @@ export const CoffeeCard = () => {
           placeholder="Enter coffee name"
           className={styles.search_input_coffee}
           value={coffeeQuery}
-          onChange={(e) => dispatch(setCoffeeQuery(e.target.value))}
+          onChange={(e) => {
+            dispatch(setCoffeeQuery(e.target.value))
+            searchParams.delete("page")
+            setSearchParams(searchParams)
+          }}
         />
       </div>
       {coffees.length === 0 && (
@@ -101,9 +102,11 @@ export const CoffeeCard = () => {
           <Pagination
             count={3}
             color="primary"
+            page={Number(searchParams.get("page")) ? Number(searchParams.get("page")) : 1}
             onChange={(_e, page) => {
               dispatch(getDatas(page, coffeeQuery));
-              dispatch(setCurrentCoffeePage(page));
+              searchParams.set("page", page)
+              setSearchParams(searchParams)
             }}
             sx={{
               "& .MuiPaginationItem-root": {
