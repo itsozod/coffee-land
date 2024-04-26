@@ -32,7 +32,7 @@ export const getDatas = (page, query) => {
     try {
       dispatch(setLoader(true));
       const response = await fetch(
-        `https://coffeeland-api.onrender.com//coffees?title_like=${query}&_page=${page}&_limit=4`
+        `https://vercel-server-itsozods-projects.vercel.app/coffees?title_like=${query}&_page=${page}&_limit=4`
       );
       const data = await response.json();
       dispatch(setDatas(data));

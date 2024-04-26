@@ -32,7 +32,7 @@ export const getIceCreams = (page, query) => {
     try {
       dispatch(setIceLoader(true));
       const response = await fetch(
-        `https://coffeeland-api.onrender.com//ice-creams?title_like=${query}&_page=${page}&_limit=5`
+        `https://vercel-server-itsozods-projects.vercel.app/ice-creams?title_like=${query}&_page=${page}&_limit=5`
       );
       const data = await response.json();
       console.log(data);

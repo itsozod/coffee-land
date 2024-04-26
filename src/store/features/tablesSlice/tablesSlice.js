@@ -73,7 +73,7 @@ export const getTables = () => {
     try {
       dispatch(setTableLoader(true));
       const response = await fetch(
-        "https://coffeeland-api.onrender.com/tables"
+        "https://vercel-server-itsozods-projects.vercel.app/tables"
       );
       const data = await response.json();
       dispatch(setTables(data));
