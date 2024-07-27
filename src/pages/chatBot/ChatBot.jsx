@@ -5,8 +5,14 @@ import { Alert, Box, Button, Snackbar, TextField } from "@mui/material";
 import { useSnackBar } from "../../hooks/snackBarHook/UseSnackBar";
 import SendIcon from "@mui/icons-material/Send";
 import CircularProgress from "@mui/material/CircularProgress";
+import { GoogleGenerativeAI } from "@google/generative-ai"
 const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT;
 const API_KEY = import.meta.env.VITE_API_KEY;
+const GEN_KEY = import.meta.env.VITE_GEM_API_KEY
+
+const genAI = new GoogleGenerativeAI(GEN_KEY)
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
 
 const questions = ["general", "coffees", "ice-creams", "dishes", "drinks"];
 
@@ -17,54 +23,93 @@ const getPromps = (question, input) => {
       prompt = input;
       break;
     case "coffees":
-      prompt = `Answer question related to these coffees only: Coffees
-      {
-        "title": "Americano",
-        "price": $3,
-      },
-      {
-        "title": "Cappucino",
-        "price": $2,
-      },
-      {
-        "title": "Cold Brew",
-        "price": $3,
-      },
-      {
-        "title": "Iced Coffee",
-        "price": $4,
-      },
-      {
-        "title": "Latte",
-        "price": $5,
-      },
-      {
-        "title": "Black",
-        "price": $7,
-      },
-      {
-        "title": "Expresso",
-        "price": $9,
-      },
-      {
-        "title": "Cortado",
-        "price": $10,
-      },
-      {
-        "title": "Frappuccino",
-        "price": $13,
-      },
-      {
-        "title": "Macchiato",
-        "price": $10,
-      },
-        "title": "Breve",
-        "price": $9,
-      },
-      {
-        "title": "Red eye",
-        "price": $12,
-      }: ${input}, else say: I only answer questions related to coffees in the menu!`;
+      prompt = `Answer question related to these coffees only: 
+       "coffees": [
+    {
+      "id": 1,
+      "title": "Americano",
+      "img": "/americano.jpg",
+      "price": 3,
+      "quantity": 1
+    },
+    {
+      "id": 2,
+      "title": "Cappucino",
+      "img": "/cappucino.jpg",
+      "price": 2,
+      "quantity": 1
+    },
+    {
+      "id": 3,
+      "title": "Cold Brew",
+      "img": "/cold brew.jpg",
+      "price": 3,
+      "quantity": 1
+    },
+    {
+      "id": 4,
+      "title": "Iced Coffee",
+      "img": "/iced coffee.jpg",
+      "price": 4,
+      "quantity": 1
+    },
+    {
+      "id": 5,
+      "title": "Latte",
+      "img": "/latte-coffee.jpg",
+      "price": 5,
+      "quantity": 1
+    },
+    {
+      "id": 6,
+      "title": "Black",
+      "img": "/black-coffee.jpg",
+      "price": 7,
+      "quantity": 1
+    },
+    {
+      "id": 7,
+      "title": "Expresso",
+      "img": "/expresso-coffee.jpg",
+      "price": 9,
+      "quantity": 1
+    },
+    {
+      "id": 8,
+      "title": "Cortado",
+      "img": "/cortado-coffee.jpg",
+      "price": 10,
+      "quantity": 1
+    },
+    {
+      "id": 9,
+      "title": "Frappuccino",
+      "img": "/frappuccino.jpg",
+      "price": 13,
+      "quantity": 1
+    },
+    {
+      "id": 10,
+      "title": "Macchiato",
+      "img": "/macchiato.png",
+      "price": 10,
+      "quantity": 1
+    },
+    {
+      "id": 11,
+      "title": "Breve",
+      "img": "/coffee-breve.jpg",
+      "price": 9,
+      "quantity": 1
+    },
+    {
+      "id": 12,
+      "title": "Red eye",
+      "img": "/red-eye.png",
+      "price": 12,
+      "quantity": 1
+    }
+  ]: ${input}, else say: I only answer questions related to coffees in the menu!`;
       break;
     case "ice-creams":
       prompt = `Answer questions related to these ice-creams only: Ice-creams
@@ -188,30 +233,32 @@ export const ChatBot = () => {
     if (userText.trim() !== "") {
       try {
         setSpinner(true);
-        const response = await fetch(API_ENDPOINT, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${API_KEY}`,
-          },
-          body: JSON.stringify({
-            model: "gpt-3.5-turbo",
-            messages: [
-              {
-                role: "system",
-                content: "AI Assistant",
-              },
-              {
-                role: "user",
-                content: getPromps(questionType, userText),
-              },
-            ],
-          }),
-        });
-        const data = await response.json();
+        const response = await model.generateContent(getPromps(questionType, userText))
+        console.log("Response", response?.response?.candidates?.[0]?.content?.parts?.[0]?.text);
+        // const response = await fetch(API_ENDPOINT, {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //     Authorization: `Bearer ${API_KEY}`,
+        //   },
+        //   body: JSON.stringify({
+        //     model: "gpt-3.5-turbo",
+        //     messages: [
+        //       {
+        //         role: "system",
+        //         content: "AI Assistant",
+        //       },
+        //       {
+        //         role: "user",
+        //         content: getPromps(questionType, userText),
+        //       },
+        //     ],
+        //   }),
+        // });
+        // const data = await response.json();
         setSpinner(false);
-        setGptResponse(data.choices[0].message.content);
-        console.log(data.choices[0].message.content);
+        setGptResponse(response?.response?.candidates?.[0]?.content?.parts?.[0]?.text);
+        // console.log(data.choices[0].message.content);
       } catch (error) {
         setSpinner(false);
         console.error(error);

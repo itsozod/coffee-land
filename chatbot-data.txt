@@ -1,0 +1,161 @@
+Coffees
+    {
+      "title": "Americano",
+      "price": $3,
+    },
+    {
+      "title": "Cappucino",
+      "price": $2,
+    },
+    {
+      "title": "Cold Brew",
+      "price": $3,
+    },
+    {
+      "title": "Iced Coffee",
+      "price": $4,
+    },
+    {
+      "title": "Latte",
+      "price": $5,
+    },
+    {
+      "title": "Black",
+      "price": $7,
+    },
+    {
+      "title": "Expresso",
+      "price": $9,
+    },
+    {
+      "title": "Cortado",
+      "price": $10,
+    },
+    {
+      "title": "Frappuccino",
+      "price": $13,
+    },
+    {
+      "title": "Macchiato",
+      "price": $10,
+    },
+      "title": "Breve",
+      "price": $9,
+    },
+    {
+      "title": "Red eye",
+      "price": $12,
+    }
+
+
+
+  Ice-creams
+    {
+      "title": "Waffle cone",
+      "price": $4,
+    },
+    {
+      "title": "Chocolate strawberry",
+      "price": $2,
+    },
+    {
+      "title": "Green ice-cream",
+      "price": $3,
+    },
+    {
+      "title": "White ice-cream",
+      "price": $2,
+    },
+    {
+      "title": "Chocolate Vanilla",
+      "price": $5,
+    },
+    {
+      "title": "Pink ice-cream",
+      "price": $2,
+    },
+    {
+      "title": "Cherry ice-cream",
+      "price": $4,
+    },
+    {
+      "title": "Waffle ice-cream",
+      "price": $9,
+    },
+    {
+      "title": "Neapolitan ice-cream",
+      "price": $9,
+    },
+    {
+    
+      "title": "Milk ice-cream",
+      "price": $5,
+    },
+    {
+      "title": "Vanilla and chocolate",
+      "price": $5,
+    }
+
+
+  Tables
+    {
+      "status": "Standart table",
+    },
+    {
+      "status": "Vip table",
+    }
+
+
+  Dishes
+  {
+    title: "Egg",
+  },
+  {
+    title: "Hamburger",
+  },
+  {
+    title: "Nuggets",
+  },
+  {
+    title: "Sushi-Platter",
+  },
+  {
+    title: "Fresh Salad",
+  },
+  {
+    title: "Spaghetti",
+  },
+  {
+    id: 3,
+    title: "Dessert"
+  },
+  {
+    title: "Samosa",
+  },
+
+
+  Drinks 
+  {
+    title: "Black coffee",
+  },
+  {
+    title: "Coke",
+  },
+  {
+    title: "Water",
+  },
+  {
+    title: "Fanta",
+  },
+  {
+    title: "Cappuccino",
+  },
+  {
+    title: "Americano",
+  },
+  {
+    title: "Red Eye",
+  },
+  {
+    title: "Expresso",
+  },
