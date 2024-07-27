@@ -6,8 +6,8 @@ import { useSnackBar } from "../../hooks/snackBarHook/UseSnackBar";
 import SendIcon from "@mui/icons-material/Send";
 import CircularProgress from "@mui/material/CircularProgress";
 import { GoogleGenerativeAI } from "@google/generative-ai"
-const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT;
-const API_KEY = import.meta.env.VITE_API_KEY;
+// const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT;
+// const API_KEY = import.meta.env.VITE_API_KEY;  
 const GEN_KEY = import.meta.env.VITE_GEM_API_KEY
 
 const genAI = new GoogleGenerativeAI(GEN_KEY)
