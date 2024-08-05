@@ -11,7 +11,7 @@ import { setCoffeeName } from "../../store/features/coffeeCupSelection/coffeeCup
 import { setCoffeePrice } from "../../store/features/coffeeCupSelection/coffeeCupSlice";
 import { setCoffeeQuantity } from "../../store/features/coffeeCupSelection/coffeeCupSlice";
 import { CoffeeCupSelection } from "../coffeeCupSelection/CoffeeCupSelection";
-import { SelectedCoffeeCup } from "../selectedCoffeeCup/SelectedCoffeeCup";
+import SelectedCoffeeCup from "../selectedCoffeeCup/SelectedCoffeeCup";
 import { Alert, Snackbar } from "@mui/material";
 import { useSnackBar } from "../../hooks/snackBarHook/UseSnackBar";
 import Pagination from "@mui/material/Pagination";

@@ -8,31 +8,38 @@ import {
 import { useDarkMode } from "../../hooks/darkmodeHook/UseDarkMode";
 import { useSnackBar } from "../../hooks/snackBarHook/UseSnackBar";
 import { Alert, Snackbar } from "@mui/material";
+import { memo, useCallback, useMemo } from "react";
 
-export const SelectedCoffeeCup = () => {
+const SelectedCoffeeCup = memo(() => {
+  console.log("Render");
   const [snackBar, handleOpenSnackBar, handleCloseSnackBar] = useSnackBar();
-  const coffeeCupImg = useSelector((state) => state.coffeeCup.coffeeCupImg);
-  const coffeeName = useSelector((state) => state.coffeeCup.coffeeName);
-  const coffeePrice = useSelector((state) => state.coffeeCup.coffeePrice);
-  const coffeeQuantity = useSelector((state) => state.coffeeCup.coffeeQuantity);
-  const cart = useSelector((state) => state.cart.cart);
+  // Combine selectors into a single call
+  const { coffeeCupImg, coffeeName, coffeePrice, coffeeQuantity, cart, loggedIn } = useSelector((state) => ({
+    coffeeCupImg: state.coffeeCup.coffeeCupImg,
+    coffeeName: state.coffeeCup.coffeeName,
+    coffeePrice: state.coffeeCup.coffeePrice,
+    coffeeQuantity: state.coffeeCup.coffeeQuantity,
+    cart: state.cart.cart,
+    loggedIn: state.signin.loggedIn
+  }));
+
   const dispatch = useDispatch();
   const [darkMode] = useDarkMode();
-  console.log("cart:", cart);
-  const loggedIn = useSelector((state) => state.signin.loggedIn);
 
-  const handleAddToCart = () => {
+  const coffeeItem = useMemo(() => ({
+    id: uuid(),
+    title: coffeeName,
+    img: coffeeCupImg,
+    price: coffeePrice,
+    quantity: coffeeQuantity,
+  }), [coffeeName, coffeeCupImg, coffeePrice, coffeeQuantity]);
+
+  const handleAddToCart = useCallback(() => {
     if (!loggedIn) {
       handleOpenSnackBar();
       return;
     }
-    const coffeeItem = {
-      id: uuid(),
-      title: coffeeName,
-      img: coffeeCupImg,
-      price: coffeePrice,
-      quantity: coffeeQuantity,
-    };
+
     const checkedCart = cart.some(
       (cartItem) =>
         cartItem.title === coffeeItem.title && cartItem.img === coffeeItem.img
@@ -49,7 +56,7 @@ export const SelectedCoffeeCup = () => {
       dispatch(addToCart(coffeeItem));
       handleOpenSnackBar();
     }
-  };
+  }, [dispatch, cart, coffeeItem, loggedIn, handleOpenSnackBar]);
   return (
     <>
       <div className={styles.selected_coffeecup_container}>
@@ -105,4 +112,7 @@ export const SelectedCoffeeCup = () => {
       </div>
     </>
   );
-};
+});
+SelectedCoffeeCup.displayName = "SelectedCoffeeCup"
+
+export default SelectedCoffeeCup

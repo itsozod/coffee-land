@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Loader } from "./components/loader/Loader";
-import { Navbar } from "./components/navbar/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import { Sidebar } from "./components/sidebar/Sidebar";
 import { Routes, Route } from "react-router-dom";
 import { Home } from "./pages/home/Home";
@@ -38,9 +38,9 @@ function App() {
   }, []);
 
   // toggle sidebar after 768px width
-  const toggleSidebar = () => {
+  const toggleSidebar = useCallback(() => {
     setToggle((prevToggle) => !prevToggle);
-  };
+  }, []);
 
   return (
     <>

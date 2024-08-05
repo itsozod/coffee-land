@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, Switch, styled } from "@mui/material";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { setLoggedIn } from "../../store/features/signInSlice/signInSlice";
+import { memo, useCallback, useMemo } from "react";
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 53,
@@ -82,37 +83,51 @@ const navLinks = [
   },
 ];
 
-export const Navbar = ({ onClick }) => {
+const useCart = () => {
+  return useSelector((state) => state.cart.cart);
+
+}
+const useOrders = () => {
+  return useSelector((state) => state.orders.orders);
+}
+const useOrderedTables = () => {
+  return useSelector((state) => state.tables.orderedTables);
+}
+const useCartQuantity = () => {
+  const cart = useSelector((state) => state.cart.cart);
+  return useMemo(() => cart.reduce((currentQuantity, { quantity }) => quantity + currentQuantity, 0), [cart]);
+};
+
+const useOrdersQuantity = () => {
+  const orders = useSelector((state) => state.orders.orders);
+  return useMemo(() => orders.reduce((currentOrderQuantity, { quantity }) => quantity + currentOrderQuantity, 0), [orders]);
+};
+
+const useOrderedTablesLength = () => {
+  const orderedTables = useSelector((state) => state.tables.orderedTables);
+  return useMemo(() => orderedTables.length, [orderedTables]);
+};
+
+const useLoggedIn = () => {
+  return useSelector((state) => state.signin.loggedIn);
+};
+
+const Navbar = memo(({ onClick }) => {
   // custom hook to track the state for light/dark mode
   const [darkMode, toggleDarkMode] = useDarkMode();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log("Dark mode:", darkMode);
-  // cart
-  const cart = useSelector((state) => state.cart.cart);
-  const totalCartQuantity = cart.reduce(
-    (currentQuantity, { quantity }) => quantity + currentQuantity,
-    0
-  );
 
-  // orders
-  const orders = useSelector((state) => state.orders.orders);
-  const totalOrdersQuantity = orders.reduce(
-    (currentOrderQuantity, { quantity }) => quantity + currentOrderQuantity,
-    0
-  );
+    const cart = useCart()
+    const totalCartQuantity = useCartQuantity();
+    const totalOrdersQuantity = useOrdersQuantity();
+    const orderedTablesLength = useOrderedTablesLength();
+    const loggedIn = useLoggedIn();
+    const orders = useOrders()
+    const orderedTables = useOrderedTables()
 
-  // orderedTables
-  const orderedTablesLength = useSelector(
-    (state) => state.tables.orderedTables
-  ).length;
-  const orderedTables = useSelector((state) => state.tables.orderedTables);
-  console.log(orderedTablesLength);
 
-  const loggedIn = useSelector((state) => state.signin.loggedIn);
-  console.log("Logged", loggedIn);
-
-  const handleLogOut = () => {
+  const handleLogOut = useCallback(() => {
     localStorage.removeItem("loggedIn");
     localStorage.removeItem("cart");
     localStorage.removeItem("orders");
@@ -120,7 +135,7 @@ export const Navbar = ({ onClick }) => {
     navigate("/");
     window.location.reload();
     dispatch(setLoggedIn(false));
-  };
+  }, [dispatch, navigate]);
   return (
     <>
       <nav
@@ -203,4 +218,7 @@ export const Navbar = ({ onClick }) => {
       </nav>
     </>
   );
-};
+});
+Navbar.displayName = "Navbar"
+
+export default Navbar
