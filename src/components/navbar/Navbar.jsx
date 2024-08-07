@@ -118,13 +118,13 @@ const Navbar = memo(({ onClick }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-    const cart = useCart()
-    const totalCartQuantity = useCartQuantity();
-    const totalOrdersQuantity = useOrdersQuantity();
-    const orderedTablesLength = useOrderedTablesLength();
-    const loggedIn = useLoggedIn();
-    const orders = useOrders()
-    const orderedTables = useOrderedTables()
+  const cart = useCart()
+  const totalCartQuantity = useCartQuantity();
+  const totalOrdersQuantity = useOrdersQuantity();
+  const orderedTablesLength = useOrderedTablesLength();
+  const loggedIn = useLoggedIn();
+  const orders = useOrders()
+  const orderedTables = useOrderedTables()
 
 
   const handleLogOut = useCallback(() => {

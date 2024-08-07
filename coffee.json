@@ -168,12 +168,12 @@
     {
       "id": 1,
       "status": "Standart table",
-      "img": "standart-table.png"
+      "img": "https://i.postimg.cc/TY5KJffv/standart-table.png"
     },
     {
       "id": 2,
       "status": "Vip table",
-      "img": "vip-table.png"
+      "img": "https://i.postimg.cc/dVMLWpVk/vip-table.png"
     }
   ]
 }
