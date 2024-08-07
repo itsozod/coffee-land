@@ -8,7 +8,7 @@ import {
   drinks,
   drinksBack,
 } from "../../../DishesAndDrinks";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setTableFoodImg,
@@ -22,6 +22,51 @@ export const DishesContainer = () => {
   const tableFoodImg = useSelector((state) => state.tables.tableFoodImg);
   const tableDrinkImg = useSelector((state) => state.tables.tableDrinkImg);
   const dispatch = useDispatch();
+
+  const DishesFrontParser = useMemo(() => {
+    return dishes.map((dish) => (
+      <DishesMenu
+        key={dish.id}
+        dish={dish}
+        menuFood={tableFoodImg}
+        onClick={() => dispatch(setTableFoodImg(dish.food))}
+      />
+    ))
+  }, [dishes])
+
+  const DishesBackParser = useMemo(() => {
+    return dishesBack.map((dish) => (
+      <DishesMenu
+        key={dish.id}
+        dish={dish}
+        menuFood={tableFoodImg}
+        onClick={() => dispatch(setTableFoodImg(dish.food))}
+      />
+    ))
+  }, [dishesBack])
+
+  const DrinksFrontParser = useMemo(() => {
+    return drinks.map((drink) => (
+      <DrinksMenu
+        key={drink.id}
+        drink={drink}
+        menuDrink={tableDrinkImg}
+        onClick={() => dispatch(setTableDrinkImg(drink.drink))}
+      />
+    ))
+  }, [drinks])
+
+  const DrinksBackParser = useMemo(() => {
+    return drinksBack.map((drink) => (
+      <DrinksMenu
+        key={drink.id}
+        drink={drink}
+        menuDrink={tableDrinkImg}
+        onClick={() => dispatch(setTableDrinkImg(drink.drink))}
+      />
+    ))
+  }, [drinksBack])
+
   return (
     <>
       <button
@@ -52,24 +97,11 @@ export const DishesContainer = () => {
             style={{ transform: rotate ? "rotateY(180deg)" : "" }}
           >
             <div className={styles.front}>
-              {dishes.map((dish) => (
-                <DishesMenu
-                  key={dish.id}
-                  dish={dish}
-                  menuFood={tableFoodImg}
-                  onClick={() => dispatch(setTableFoodImg(dish.food))}
-                />
-              ))}
+              {DishesFrontParser
+              }
             </div>
             <div className={styles.back} style={{ zIndex: rotate ? "1" : 0 }}>
-              {dishesBack.map((dish) => (
-                <DishesMenu
-                  key={dish.id}
-                  dish={dish}
-                  menuFood={tableFoodImg}
-                  onClick={() => dispatch(setTableFoodImg(dish.food))}
-                />
-              ))}
+              {DishesBackParser}
             </div>
           </div>
         </div>
@@ -79,24 +111,10 @@ export const DishesContainer = () => {
             style={{ transform: rotate ? "rotateY(180deg)" : "" }}
           >
             <div className={styles.front}>
-              {drinks.map((drink) => (
-                <DrinksMenu
-                  key={drink.id}
-                  drink={drink}
-                  menuDrink={tableDrinkImg}
-                  onClick={() => dispatch(setTableDrinkImg(drink.drink))}
-                />
-              ))}
+              {DrinksFrontParser}
             </div>
             <div className={styles.back} style={{ zIndex: rotate ? "1" : 0 }}>
-              {drinksBack.map((drink) => (
-                <DrinksMenu
-                  key={drink.id}
-                  drink={drink}
-                  menuDrink={tableDrinkImg}
-                  onClick={() => dispatch(setTableDrinkImg(drink.drink))}
-                />
-              ))}
+              {DrinksBackParser}
             </div>
           </div>
         </div>
