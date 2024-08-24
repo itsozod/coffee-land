@@ -19,6 +19,7 @@ import { Footer } from "./components/footer/Footer";
 // import { useSelector } from "react-redux";
 import { SignIn } from "./pages/signin/SignIn";
 import { SignUp } from "./pages/signup/SignUp";
+import AppUpdateModal from "./components/appUpdateModal/AppUpdateModal";
 function App() {
   const [loader, setLoader] = useState(false);
   const [toggle, setToggle] = useState(false);
@@ -70,6 +71,7 @@ function App() {
             </Routes>
             <Footer />
           </ThemeProvider>
+          <AppUpdateModal />
         </>
       )}
     </>
